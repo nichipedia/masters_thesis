@@ -1,0 +1,63 @@
+\section{Data Analysis}
+The data for this paper was aggregated from many studies.
+The ETOPO study was used for the bathymetry readings \cite{national1988etopo}.
+Other features were aggregated from several studys.
+See figure below for a list of features used and correponding origin study. 
+
+\begin{center}
+    \begin{figure}
+        \begin{tabular}{ |c|c| }
+            \hline
+                \textbf{Feature} & \textbf{Origin Study} \\
+                Mantle Density & CRUST1 \cite{laske2013update} \\
+                LAND One Hot & ETOPO \cite{national1988etopo} \\
+                Crust Thickness & CRUST1 \cite{laske2013update} \\
+                Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
+                Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
+                Sea Nitrate, Phosphate, Salinity, Silicate Measurements & WOA \\
+                Sea Temperate & WOA \\
+                Sediment Thickness & CRUST1 \cite{laske2013update} \\
+                BioMass Features & Goyetx \\
+                Geoid Features & EGM \cite{pavlis2008earth} \\
+                Wave height, period & WAVEWATCH \cite{tolman20072007}
+            \hline
+        \end{tabular}
+    \end{figure}
+\end{center}
+
+\subsection{Feature Selection}
+A gentic algorithm was used for feature selection \cite{yang1998feature}.
+The initial population was created using one hots to represent the space of features.
+A random number generator assigned each member a set of the potential features. 
+Each member was then used to train a model and the resulting balanced accuracy of that model represented a fitness level.
+The top two percent are then moved to the next generation.
+While the rest of the top forty percent are randomly paried to produce offspring.
+A cross over mutation is applied using the multi point cross over method.
+A mutation is then applied to one percent of the population.
+
+\par
+This algorithm terminates when the balanced accuracy of a model exceeds a threshold.
+The highest ranked member of the population is then chosen as the selected features.
+The result of my implementation of this algorithm are documented in figure...
+
+\subsection{Data Representation}
+The data used in this project is organized into cell centered grids.
+Where each grid cell value represents a average value across the cell.
+Each grid represents a cell that maps to the EPSG:3857 coordinate reference system.
+% this sentence below seems weird but meh?
+The grids have a resolution which defines the number of cells along an axis.
+High resolutions grids provide a more accurate coverage at the cost of memory.
+
+\par
+Data used in this project is fit into two minute bathymetry grid. 
+This was done to minimize the interpolation required to fit higher resolution grids.
+While also maximizing the original studies accuracies and avalaible resources.
+However, some studies offer data at a smaller resolution than what is used in this project.
+See the SRMTM30 \cite{becker2009global} for an example of such a study.
+
+\subsection{Bathymetry Values}
+The bathymetry values used for training are extracted from the ETOPO study \cite{national1988etopo}.
+This data is a aggregation of predictions from gravitational models \cite{smith1997global} \cite{smith1994bathymetric}, and Multi Beam Echo Sonar (MBES) readings \cite{farr1980multibeam}.
+MBES readings are accurate and reliable. 
+Naturaly, it is cost and time prohibitive for a set of ships to survey the entire world.
+The ETOPO dataset uses predicted values from gravitational models to fill the coverage.
