@@ -4,5 +4,35 @@ This model is built upon the idea that there is not a optimal single model for p
 It leverages several different models to predict bathymetry in a area by recording the best preforming models across a grid.
 This allows the model to use the optimal model for predicting bathymetry.
 
+\subsection{Grid Optimizing Background}
+According to the "No Free Lunch Theorem" \cite{wolpert1997no}, there is no optimal model to solve all problems.
+For machine learning this therom esspicially holds true.
+To append onto the theorm, there is not a single model that will optimally predict the entire globes bathymetry.
+A model that preforms well in a area of the pacific may not preform well in the atlantic.
+This notion is intuitive as Earth's environments change across lattitude so will the features for prediction.
+
+
+There is a configuration where each model has an optimal coverage of the earth.
+This coverage should be designated to maximize accurate predictions.
+Therefore, a proof of concept for this model will be to divide the Earth into coverages and test a set of models against each.
+This will prove that a optimal set of coverages for a model does exsist, and that localizing these models will yield benefit for predictions.
+
 \subsection{Grid Optimizing}
-A data structure to contain all optimal 
+This idea was tested by partioning the world into coverages.
+These coverages represent an area of the earth where there is a potential prediction.
+For this test, the prediction is bathymetry.
+
+
+\begin{center}
+    \begin{figure}
+        \begin{tabular} { |c|c|c| }
+            \hline
+                K Nearest Neighbors & Decision Tree & Random Forest Ensemble \\
+                Artifical Neural Net & Ada Boosting Model & Gaussian Naive Bayes \\
+                Quadratic Discriminant Analysis & Bagging Model & Gradient Boosting Model \\
+                Voting Model & &
+            \hline
+        \end{tabular}
+    \end{figure}
+\end{center}
+
