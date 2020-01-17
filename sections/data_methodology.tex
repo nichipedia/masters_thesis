@@ -1,29 +1,28 @@
 \section{Data Analysis}
+\setlength{\parindent}{10ex}
 The data for this paper was aggregated from many studies.
 The ETOPO study was used for the bathymetry readings \cite{national1988etopo}.
 Other features were aggregated from several studys.
 See figure below for a list of features used and correponding origin study. 
 
-\begin{center}
-    \begin{figure}
-        \begin{tabular}{ |c|c| }
-            \hline
-                \textbf{Feature} & \textbf{Origin Study} \\
-                Mantle Density & CRUST1 \cite{laske2013update} \\
-                LAND One Hot & ETOPO \cite{national1988etopo} \\
-                Crust Thickness & CRUST1 \cite{laske2013update} \\
-                Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
-                Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
-                Sea Nitrate, Phosphate, Salinity, Silicate Measurements & WOA \\
-                Sea Temperate & WOA \\
-                Sediment Thickness & CRUST1 \cite{laske2013update} \\
-                BioMass Features & Goyetx \\
-                Geoid Features & EGM \cite{pavlis2008earth} \\
-                Wave height, period & WAVEWATCH \cite{tolman20072007}
-            \hline
-        \end{tabular}
-    \end{figure}
-\end{center}
+\begin{table}[htb]
+    \begin{tabular}{ |c|c| p{10cm}}
+        \hline
+            \textbf{Feature} & \textbf{Origin Study} \\
+            Mantle Density & CRUST1 \cite{laske2013update} \\
+            LAND One Hot & ETOPO \cite{national1988etopo} \\
+            Crust Thickness & CRUST1 \cite{laske2013update} \\
+            Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
+            Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
+            Sea Nitrate, Phosphate, Salinity, Silicate Measurements & WOA \\
+            Sea Temperate & WOA \\
+            Sediment Thickness & CRUST1 \cite{laske2013update} \\
+            BioMass Features & Goyetx \\
+            Geoid Features & EGM \cite{pavlis2008earth} \\
+            Wave height, period & WAVEWATCH \cite{tolman20072007} \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Feature Selection}
 A gentic algorithm was used for feature selection \cite{yang1998feature}.
@@ -61,5 +60,10 @@ This data is a aggregation of predictions from gravitational models \cite{smith1
 MBES readings are accurate and reliable. 
 Naturaly, it is cost and time prohibitive for a set of ships to survey the entire world.
 The ETOPO dataset uses predicted values from gravitational models to fill the coverage.
+
+\par
+The bathymetry used for training was binned into classes for classification.
+These classes where partioned on a interval of 150 meters.
+This partitioning scheme was chosen to improve upon the results from a similar project \cite{national1988etopo}.
 
 

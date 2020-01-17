@@ -1,4 +1,5 @@
 \section{Optimized Grid Model}
+\setlength{\parindent}{10ex}
 The Optimized Grid Model is a structure devised in this project to leverage locally efficent models.
 This model is built upon the idea that there is not a optimal single model for predicting all of the worlds bathymetry.
 It leverages several different models to predict bathymetry in a area by recording the best preforming models across a grid.
@@ -18,21 +19,23 @@ Therefore, a proof of concept for this model will be to divide the Earth into co
 This will prove that a optimal set of coverages for a model does exsist, and that localizing these models will yield benefit for predictions.
 
 \subsection{Grid Optimizing}
-This idea was tested by partioning the world into coverages.
+This idea was implemented by partioning the world into coverages.
 These coverages represent an area of the earth where there is a potential prediction.
-For this test, the prediction is bathymetry.
+For this project, I trained a set of models on each coverage to predict bathymetry.
+The model that preformed the best at predicting bathymetry was then recorded and stored into a data structure.
+This structure is a simple map of a bounding box to a model.
 
+\begin{table}[htbp]
+    \begin{tabular} { |c|c|c| p{10cm}}
+        \hline
+            K Nearest Neighbors & Decision Tree & Random Forest Ensemble \\
+            Artifical Neural Net & Ada Boosting Model & Gaussian Naive Bayes \\
+            Quadratic Discriminant Analysis & Bagging Model & Gradient Boosting Model \\
+            Voting Model & & \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\begin{center}
-    \begin{figure}
-        \begin{tabular} { |c|c|c| }
-            \hline
-                K Nearest Neighbors & Decision Tree & Random Forest Ensemble \\
-                Artifical Neural Net & Ada Boosting Model & Gaussian Naive Bayes \\
-                Quadratic Discriminant Analysis & Bagging Model & Gradient Boosting Model \\
-                Voting Model & &
-            \hline
-        \end{tabular}
-    \end{figure}
-\end{center}
-
+\par
+Each model is then trained on the full worlds data.
+This trained model is persisted and stored for use in predictions.
