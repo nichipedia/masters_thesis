@@ -1,5 +1,8 @@
 \section{Optimized Grid Model}
 \setlength{\parindent}{10ex}
+%Purpose of this section is to identify the optimized grid structure.
+%I need to check with Hoque to identify what I should and shouldnt include
+%I need to consider rewording this and restructuring to manage the correctness for example etc.
 The Optimized Grid Model is a structure devised in this project to leverage locally efficent models.
 This model is built upon the idea that there is not a optimal single model for predicting all of the worlds bathymetry.
 It leverages several different models to predict bathymetry in a area by recording the best preforming models across a grid.
@@ -12,7 +15,7 @@ To append onto the theorm, there is not a single model that will optimally predi
 A model that preforms well in a area of the pacific may not preform well in the atlantic.
 This notion is intuitive as Earth's environments change across lattitude so will the features for prediction.
 
-
+\par
 There is a configuration where each model has an optimal coverage of the earth.
 This coverage should be designated to maximize accurate predictions.
 Therefore, a proof of concept for this model will be to divide the Earth into coverages and test a set of models against each.
@@ -26,7 +29,7 @@ The model that preformed the best at predicting bathymetry was then recorded and
 This structure is a simple map of a bounding box to a model.
 
 \begin{table}[htbp]
-    \begin{tabular} { |c|c|c| p{10cm}}
+    \begin{tabular} { |c|c|c| }
         \hline
             K Nearest Neighbors & Decision Tree & Random Forest Ensemble \\
             Artifical Neural Net & Ada Boosting Model & Gaussian Naive Bayes \\
@@ -36,6 +39,35 @@ This structure is a simple map of a bounding box to a model.
     \end{tabular}
 \end{table}
 
+%This is where I define what happens after the appropriate coverages have been found.
 \par
 Each model is then trained on the full worlds data.
 This trained model is persisted and stored for use in predictions.
+There is a mechanisam that checks the list of coverages for each model and then injects the best model for that coverage.
+
+\par
+In theory, this injection will allow each model to preform to its optimum.
+Each coverage will highlight distinct features that preform better for a certain estimator.
+If that estimator preformed relativly well on a subset of data, then it will preform better with the breadth of the worlds data.
+
+
+\subsection{Model Validation and Metrics}
+The world wide ETOPO bathymetry dataset \cite{national1988etopo} at two minute resolution is used for valadation and metrics.
+This dataset is treated as the ground truth for all predictions.
+During the experiment, a one third holdout was used for validation in some cases.
+For finding the optimum model for a coverage a 10 fold cross validation was utilized.
+
+%Include metrics information here.... possibly graphs and a list of scores? I dont really know.
+
+%I dont like how I worded this whole section...
+%The idea here is that I want to say "Hey, these people did this research and found the their regression model preforms poorly for predicting seamounts espicially after 500m.
+%I clearly noticed a similar trend, but saw better preformance from some models than others. 
+%This research is to identify those coverages and then use those results to build a super classifier.
+%These metrics are important for identifying where the models preform well. 
+\par
+A confusion matrix is generated for each model as a metric tool.
+Balanced accuracy, precision, recall, F1 score, and support are also recorded for metrics.
+These metrics give a measurement of the effectiveness for a model in a coverage.
+%Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
+
+%Maybe here I can have a table show casing the preformance of models or possibly statistics about the coverages??
