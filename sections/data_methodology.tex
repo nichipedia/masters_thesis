@@ -5,8 +5,13 @@ The ETOPO study was used for the bathymetry readings \cite{national1988etopo}.
 Other features were aggregated from several studys.
 See figure below for a list of features used and correponding origin study. 
 
+%This section is for defining the data being used in the experiment
+%It should define where the data came from and its format
+%I can also explain any of the special stuff I am doing (Binning for example)
+%
+
 \begin{table}[htb]
-    \begin{tabular}{ |c|c| p{10cm}}
+    \begin{tabular}{ |c|c| }
         \hline
             \textbf{Feature} & \textbf{Origin Study} \\
             Mantle Density & CRUST1 \cite{laske2013update} \\
@@ -24,6 +29,9 @@ See figure below for a list of features used and correponding origin study.
     \end{tabular}
 \end{table}
 
+%I am using this section to introduce the feature selection method that I preformed
+%Maybe I can flesh this out more and talk about it in def??
+%Maybe make a diagram for the flow of the GA?
 \subsection{Feature Selection}
 A gentic algorithm was used for feature selection \cite{yang1998feature}.
 The initial population was created using one hots to represent the space of features.
@@ -39,6 +47,8 @@ This algorithm terminates when the balanced accuracy of a model exceeds a thresh
 The highest ranked member of the population is then chosen as the selected features.
 The result of my implementation of this algorithm are documented in figure...
 
+%This decribes how the grid files are used and oragnized...
+%They are essentially binary files...
 \subsection{Data Representation}
 The data used in this project is organized into cell centered grids.
 Where each grid cell value represents a average value across the cell.
@@ -61,9 +71,14 @@ MBES readings are accurate and reliable.
 Naturaly, it is cost and time prohibitive for a set of ships to survey the entire world.
 The ETOPO dataset uses predicted values from gravitational models to fill the coverage.
 
+%There is a better was to describe why the features were binned like this
+%I want to describe the value that was added by binning my data into classes!
 \par
 The bathymetry used for training was binned into classes for classification.
 These classes where partioned on a interval of 150 meters.
 This partitioning scheme was chosen to improve upon the results from a similar project \cite{national1988etopo}.
+The binning is preformed to leverage the unique advantages inherient to classification problems.
+For example, the use of metrics such as a confusion matrix makes comparing the preformance of the model signifigantly easier.
+
 
 

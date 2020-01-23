@@ -8,6 +8,7 @@ This model is built upon the idea that there is not a optimal single model for p
 It leverages several different models to predict bathymetry in a area by recording the best preforming models across a grid.
 This allows the model to use the optimal model for predicting bathymetry.
 
+%Give the background for the idea in this section!
 \subsection{Grid Optimizing Background}
 According to the "No Free Lunch Theorem" \cite{wolpert1997no}, there is no optimal model to solve all problems.
 For machine learning this therom esspicially holds true.
@@ -21,6 +22,8 @@ This coverage should be designated to maximize accurate predictions.
 Therefore, a proof of concept for this model will be to divide the Earth into coverages and test a set of models against each.
 This will prove that a optimal set of coverages for a model does exsist, and that localizing these models will yield benefit for predictions.
 
+%In this section I am defining what the Grid optimization is and why it matters.
+%There may be a better name for this?? Who knows really...
 \subsection{Grid Optimizing}
 This idea was implemented by partioning the world into coverages.
 These coverages represent an area of the earth where there is a potential prediction.
@@ -71,3 +74,5 @@ These metrics give a measurement of the effectiveness for a model in a coverage.
 %Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
 
 %Maybe here I can have a table show casing the preformance of models or possibly statistics about the coverages??
+%It will be intersting to see what has preformed better across the globe
+%Also is intersting to see which models have preformed best overall.
