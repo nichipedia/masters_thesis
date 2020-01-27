@@ -64,19 +64,35 @@ While also maximizing the original studies accuracies and avalaible resources.
 However, some studies offer data at a smaller resolution than what is used in this project.
 See the SRMTM30 \cite{becker2009global} for an example of such a study.
 
+\subsection{Ocean Features}
+This effort utilizes aggregated ocean features from other projects to predict bathymetry.
+The most current efforts in predicting bathymetry are gravitational models that use sattelite altimeter data as a feature.
+A related work \cite{jena2012prediction} uses machine learning models with altimeter data to as a feature to programatically find a regression line.
+This effort is focussed on using a collection of ocean features as opposed to just sattelite altimetry.
+
+\par
+These ocean features are aggregated into corresponding grid files.
+The initial set of features was randomly chosen without a speicific purpose.
+All studies that potentially yielded helpful features were used to build the set.
+Correlation tests were ran as experiments to see how the set of data will correlate.
+
+%Maybe I can talk about some of the correlations I preformed here???? A few graphs perhaps???
+%Maybe talk about the PCC???
+%Possibly need to talk about the breadth of features here....
+
 \subsection{Bathymetry Values}
 The bathymetry data used for training are extracted from the ETOPO study \cite{national1988etopo}.
 This data is a aggregation of predictions from gravitational models \cite{smith1997global} \cite{smith1994bathymetric}, and Multi Beam Echo Sonar (MBES) readings \cite{farr1980multibeam}.
 MBES readings are accurate and reliable. 
 Naturaly, it is cost and time prohibitive for a set of ships to survey the entire world.
-The ETOPO dataset uses predicted values from gravitational models to fill the coverage.
+The ETOPO dataset uses predicted values from gravitational models to fill gaps in the coverage.
 
 %There is a better was to describe why the features were binned like this
 %I want to describe the value that was added by binning my data into classes!
 \par
 The bathymetry used for training was binned into classes for classification.
 These classes where partioned on a interval of 150 meters.
-This partitioning scheme was chosen to improve upon the results from a similar project \cite{national1988etopo}.
+This partitioning scheme was chosen to improve upon the results from a similar project \cite{jena2012prediction}.
 The binning is preformed to leverage the unique advantages inherient to classification problems.
 For example, the use of metrics such as a confusion matrix makes comparing the preformance of the model signifigantly easier.
 

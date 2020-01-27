@@ -7,6 +7,8 @@
     sorting=ynt
     ]{biblatex}
 \addbibresource{references.bib}
+% For handling acronyms
+\usepackage[printonlyused]{acronym}
 \begin{document}
 
 %\input{style/head-acm}
@@ -33,6 +35,9 @@
 \input{sections/optimized_grid_model.tex}
 \input{sections/results.tex}
 \input{sections/conclusion.tex}
+
+\section{Acronyms}
+\input{acronyms.tex}
 
 \printbibliography
 
