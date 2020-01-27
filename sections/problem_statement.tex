@@ -1,0 +1,31 @@
+\section{Problem Statement}
+\setlength{\parindent}{10ex}
+
+Sea floor topography is monumentally important for Earth's natural processes and mankind.
+It influences ocean circulation, helps moderate Earth's climate, and effects the biological diversity of the sea \cite{kunze2004role}.
+Accurate mapping of sea floor topography is also of great interest to national defense \cite{goodman1982defence}.
+With applications in \ac{ASW}, \ac{MIW}, and the entire Naval Fleet.
+Along with being important to the shipping and commercial maritime industries.
+
+\par
+Depisite the importance of sea floor topography to all which has been listed.
+Mankind has made much better maps of other planets, moons, and asteroids than Earth's sea floor \cite{becker2009global}.
+Earth's oceans are vast and deep making accurate bathymetry measurement techniques like \ac{SDB} impossible for the majority of the ocean.
+Unknown sediment composition and other environmental features limit the global accuracy of gravitational regression models to ~200 meters.
+As of 2009, it is estimated that ~90 percent of Earth's oceans remains inaccurately mapped at a high resolution \cite{becker2009global}.
+
+\par
+Therefore, improving exsisting bathymetry prediction techniques is of great interest to many domains.
+Coastal predictions can be preformed at very high accuracies, but are unable predict depths greater than ~50 meters.
+Previous works as described in the Literature Review chapter have improved exsisting physics models using aggegation, optimization, and \ac{ML}.
+Each work is based upon improving the exsisting physics model.
+
+\par
+In this work, I present a novel approach to predicting bathymetry using \ac{ML}.
+My approach is based on using a set of ocean features to train a model for predicting bathymetry.
+This differs in that my work is not based on improving a exsisting model, but using the \ac{ML} pipeline to create a model for prediction.
+This work centers around three approaches used for prediction.
+The first being a set of linear regression models compare to exsisting \ac{EGM}s.
+Second a set of classification models using binned classes.
+The third approach being a novel model created for this experiment.
+I call it the "Grid Optimized" Bathymetry Classification Model.
