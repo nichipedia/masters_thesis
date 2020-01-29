@@ -1,14 +1,16 @@
-\input{styles/preamble-two-col}
+\input{styles/preamble-one-col}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[printonlyused]{acronym}
 \usepackage[
     backend=biber,
     style=alphabetic,
     sorting=ynt
     ]{biblatex}
 \addbibresource{references.bib}
+\graphicspath{{./images/}}
 % For handling acronyms
-\usepackage[printonlyused]{acronym}
 \begin{document}
 
 %\input{style/head-acm}
@@ -30,6 +32,8 @@
 
 \input{sections/abstract.tex}
 \input{sections/introduction}
+\input{sections/literature_review.tex}
+\input{sections/problem_statement.tex}
 \input{sections/data_methodology.tex}
 \input{sections/regression_results.tex}
 \input{sections/optimized_grid_model.tex}
