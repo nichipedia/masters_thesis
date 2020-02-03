@@ -31,17 +31,12 @@ For this project, I trained a set of models on each coverage to predict bathymet
 The model that preformed the best at predicting bathymetry was then recorded and stored into a data structure.
 This structure is a simple map of a bounding box to a model.
 
-\begin{table}[htbp]
-    \begin{tabular} { |c|c|c| }
-        \hline
-            K Nearest Neighbors & Decision Tree & Random Forest Ensemble \\
-            Artifical Neural Net & Ada Boosting Model & Gaussian Naive Bayes \\
-            Quadratic Discriminant Analysis & Bagging Model & Gradient Boosting Model \\
-            Voting Model & & \\
-        \hline
-    \end{tabular}
-\end{table}
-
+\begin{figure}[h]
+    \centering
+    \includegraphics{optgriddraft.png}
+    \caption{Graphic Showing the World Coverages and Successful Models}
+    \label{fig:coveragegrid}
+\end{figure}
 %This is where I define what happens after the appropriate coverages have been found.
 \par
 Each model is then trained on the full worlds data.

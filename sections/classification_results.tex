@@ -1,12 +1,18 @@
-\section{Classification Resuls}
+\section{Classification Results}
 \setlength{\parindent}{10ex}
 %Maybe reword this opening chapter???
-The regression results showed that the feature space had correlations that could lead to accurate predictions.
-Classification models were trained to test the advantages leveraged by classification models.
-All bathymetry values were binned into classes at 150m intervals.
-Validation is preformed using a 10 cross fold validation using balanced accuracy at the measurement.
+The next approach used in this work was to convert the regression problem into a ordinal classification problem.
+Convertion was preformed by mapping the bathymetry values into dicrete classes.
+This conversion is a natural step taken in response to the regression results.
+While the regression models yielded a poor accuracy, they held a strong R2 score.
+This score is indicative of correlations in the dataset.
+These underlying correlations will benefit a classification model, as they are, simpler and easier to fit.
+In addition, the continous nature of bathymetry allows this problem to easily be converted into a ordinal classes.
 
-
+\par
+The ordinal classes were created on a interval of 150m.
+This was done to improve accuracy beyond the reported findings of \cite{jena2012prediction}.
+Validation was preformed using a 10 fold cross validation using balanced accuracy as the scoring function.
 
 \begin{center}
     \begin{table}[htb]
@@ -15,11 +21,11 @@ Validation is preformed using a 10 cross fold validation using balanced accuracy
 			\textbf{Model} & \textbf{Average F1 Score} & \textbf{Mean Balanced Accuracy} \\
 			\hline
 			Random Forest & 0.81 & 0.82 \\
-			Bagging & 0.884 & 294.92m \\
-	        Decession Tree & 0.885 & 265.43m \\
+            Bagging & 0.884 & 294.92m \\
+            Decession Tree & 0.885 & 265.43m \\
 			\hline
         \end{tabular}
-        \label{table:REGRESSION_RESULTS}
+        \label{table:CLASSIFICATION_RESULTS}
         \caption{Regression Results}
     \end{table}
 \end{center}
@@ -28,4 +34,4 @@ Validation is preformed using a 10 cross fold validation using balanced accuracy
 The Random Forest model preformed excellently with a balanced accuracy of 82\%.
 Breaking down the results by class the classifier predicted some classes with greater precission than others.
 This is indicative that the model responded to certain trends in the data.
-
+This was also observed in the Bagging and simple Decision Tree Models.
