@@ -61,7 +61,7 @@ Upon termination the resulting fittest string is used as the selected features.
     \begin{figure}[h]
         \caption{Diagram of Generic Genetic Algorithm}
         \label{fig:GA}
-        \includegraphics{genetic_algorithm.png}
+        \includegraphics[scale=0.5]{genetic_algorithm.png}
     \end{figure}
 \end{center}
 
@@ -102,46 +102,51 @@ Absent data points was either interpolated, or filled with default values.
 See \ref{table:FEATURE_LIST} for a complete list of all features.
 
 \par
-\ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
+Figure \ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
 There is a direct relationship that trends toward less biomass as the ocean gets deeper.
-Naturally, this relationship is explained by the availability of food and light at such lower depths.
-\ref{fig:bathyxfauna} shows a similar relationship to the fish biomass.
+Naturally, this relationship can explained by the availability of food and light at such lower depths.
+In any event, the figure shows that estimated biomass can be used as a effective feature.
+
 
 \par
 \ref{fig:bathyxdensity} shows a example of a inverse relationship to bathymetry.
-\ref{fig:pairplot} Shows a pair plot of all the features used in training.
-The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
-Each of the discussed plots were taken from data in the south Pacific ocean.
-This was done as a isolated demonstration of the data.
+The dense crust will be at lower depths.
+Therefore, this relationship shows that having accurate measurements could result in better predictions.
+This and other features are important for the performance of the resulting models.
+
+%\ref{fig:pairplot} Shows a pair plot of all the features used in training.
+%The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
+%Each of the discussed plots were taken from data in the south Pacific ocean.
+%This was done as a isolated demonstration of the data.
 %Talk about the plots here and include them once seaborn has decided to stop being dumb...
 
 \begin{figure}[h]
     \centering
-    \includegraphics{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
+    \includegraphics[scale=0.5]{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
     \caption{Graph of Bathymetry and Estimated Fish BIOMASS}
     \label{fig:bathyxfish}
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics{Bathymetry_X_SS_BIOMASS_MEGAFAUNA_LOG10_MGCM2_Wei2010x.png}
-    \caption{Graph of Bathymetry and Estimated MegaFauna Bio Mass}
-    \label{fig:bathyxfauna}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.5]{Bathymetry_X_SS_BIOMASS_MEGAFAUNA_LOG10_MGCM2_Wei2010x.png}
+%    \caption{Graph of Bathymetry and Estimated MegaFauna Bio Mass}
+%    \label{fig:bathyxfauna}
+%\end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
+    \includegraphics[scale=0.5]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
     \caption{Graph of Bathymetry and Estimated Crust Density}
     \label{fig:bathyxdensity}
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics{pairplot.png}
-    \caption{Pair Plot of All Features Used in Training}
-    \label{fig:pairplot}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.5]{pairplot.png}
+%    \caption{Pair Plot of All Features Used in Training}
+%    \label{fig:pairplot}
+%\end{figure}
 
 %Maybe I can talk about some of the correlations I preformed here???? A few graphs perhaps???
 %Maybe talk about the PCC???
