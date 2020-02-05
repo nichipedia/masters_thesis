@@ -2,12 +2,12 @@
 \setlength{\parindent}{10ex}
 %Maybe reword this opening chapter???
 The next approach used in this work was to convert the regression problem into a ordinal classification problem.
-Convertion was preformed by mapping the bathymetry values into dicrete classes.
+Conversion was preformed by mapping the bathymetry values into discrete classes.
 This conversion is a natural step taken in response to the regression results.
 While the regression models yielded a poor accuracy, they held a strong R2 score.
 This score is indicative of correlations in the dataset.
 These underlying correlations will benefit a classification model, as they are, simpler and easier to fit.
-In addition, the continous nature of bathymetry allows this problem to easily be converted into a ordinal classes.
+In addition, the continuous nature of bathymetry allows this problem to easily be converted into a ordinal classes.
 
 \par
 The ordinal classes were created on a interval of 150m.
@@ -22,7 +22,7 @@ Validation was preformed using a 10 fold cross validation using balanced accurac
 			\hline
 			Random Forest & 0.81 & 0.82 \\
             Bagging & 0.884 & 294.92m \\
-            Decession Tree & 0.885 & 265.43m \\
+            Decision Tree & 0.885 & 265.43m \\
 			\hline
         \end{tabular}
         \label{table:CLASSIFICATION_RESULTS}
@@ -32,6 +32,6 @@ Validation was preformed using a 10 fold cross validation using balanced accurac
 
 \subsection{Classification Results Discussion}
 The Random Forest model preformed excellently with a balanced accuracy of 82\%.
-Breaking down the results by class the classifier predicted some classes with greater precission than others.
+Breaking down the results by class the classifier predicted some classes with greater precision than others.
 This is indicative that the model responded to certain trends in the data.
 This was also observed in the Bagging and simple Decision Tree Models.

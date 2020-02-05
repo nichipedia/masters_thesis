@@ -6,19 +6,19 @@ There is also a third approach discussed that improves upon the idea of a \ac{EG
 
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
-\subsection{Sattelite Derived Bathymetry (SDB)}
+\subsection{Satellite Derived Bathymetry (SDB)}
 \ac{SDB} is a precise method of predicting coastal bathymetry. 
 This method relies on the phenomena of light passing through a water column at a certain depth described by the Beer-Lambert law \cite{chybicki2018three}\cite{vinayaraj2016satellite}.
 Sunlight passes through the water column and is reflected by the sediment at the bottom.
-Sattlelites measure the attenuated light that is reflected from the bottom and uses the wavelength to estimate the depth of the column.
-The technique accounts for atmospheric light absorbsion, water surface reflection, attenuation through and out of the column, and reflectance from the bottom sediment.
+Satellites measure the attenuated light that is reflected from the bottom and uses the wavelength to estimate the depth of the column.
+The technique accounts for atmospheric light absorption, water surface reflection, attenuation through and out of the column, and reflectance from the bottom sediment.
 Clear waters are the best environment for this method which has the potential to predict bathymetry with a small RMSE \cite{chybicki2018three}.
 
 \par
 This method is important for its ability to predict swaths of bathymetry in shallow water.
 Areas where the water is far to shallow for a survey ship to pass, and large swaths of coastal waters are easily predicted by the \ac{SDB} method.
 For example, the marsh lands of Louisiana where water depth is only deep enough for flat bed vessels.
-This method also has use in the scope of national defence for predicting, or identifying changes in shallow water bathymetry.
+This method also has use in the scope of national defense for predicting, or identifying changes in shallow water bathymetry.
 These changes can be caused by sediments or man made objects. 
 
 \par
@@ -32,17 +32,17 @@ Environmental characteristics such as sediment composition and weather effect th
 \par
 Current \ac{SDB} models can predict bathymetry with a \ac{RMSE} of less that 2.5 meters at a maximum depth of 50 meters.
 Work preformed by \cite{vinayaraj2016satellite} has improved the depth by using blue light sensing techniques.
-Work preformed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavlengths.
+Work preformed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
 \ac{SDB} models are ideal for coastal areas with a high water visibility.
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
 Work preformed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
-They proposed that the relationship between seafloor topography and sea surface gravity is conviently related \cite{smith1994bathymetric}.
+They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related \cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
 They identified the areas that could be predicted with this relationship, and used sparse ship soundings to fill in gaps of their recordings.
 Areas with large seamounts found the correlation to be strongest.
 While areas of flat sediments found the correlation to be weakest.
-This technique they named the "inverse Nettleton procedure" used a simple linear regression model to exploit this correlation and improve exsisting aggregated datasets.
+This technique they named the "inverse Nettleton procedure" used a simple linear regression model to exploit this correlation and improve existing aggregated datasets.
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based Multi Beam Echo Sounding sonar data.
@@ -53,33 +53,33 @@ Ichinet yielded prediction accuracy within ~100 meters in coastal waters, and ~2
 %Discuss the STRM Global Dataset here in detail....
 \par 
 This work was later improved in \cite{becker2009global}.
-The model was substansially improved by increasing the number of ship soundings and increasing the aggregation sources.
+The model was substantially improved by increasing the number of ship soundings and increasing the aggregation sources.
 Ten external datasets were aggregated for the SRTM30 grid.
 Agencies in these sources include \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and \ac{JAMSTEC}.
 These datasets include high resolution coastal bathymetry from around the world and greatly increased the global accuracy.
 
 %Spelling check big time bruh
 \par
-The limitations of aggregated \ac{EGM}s is based on correlation uncertanty and unknown ocean features.
+The limitations of aggregated \ac{EGM}s is based on correlation uncertainty and unknown ocean features.
 Sediment density drives the correlation between sea surface gravity and bathymetry.
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
-This is all controlled by the scalling factor described in \cite{smith1994bathymetric}. 
+This is all controlled by the scaling factor described in \cite{smith1994bathymetric}. 
 However, there is not a optimal scaling factor for the entire world.
 Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
 
 
-\subsection{Machine Learning Optimised \ac{EGM}}
+\subsection{Machine Learning Optimized \ac{EGM}}
 The aggregated \ac{EGM} is a physics based model that is by definition deterministic.
 Rooted in the correlation between sea surface gravity and bathymetry.
 This correlation is often nondeterministic due to environmental factors.
 The nondeterministic behavior is compensated by the scaling factor mentioned in the previous section.
-Therefore, machine learning can be used to effectivly model this nondeterministic scaling factor.
+Therefore, machine learning can be used to effectively model this nondeterministic scaling factor.
 
 \par
-The work preformed by \cite{jena2012prediction} used this idea to optimise their gravitational regression models.
-Instead of identifying an optimal scaling factor deterministically, they used a artifical neural network to optimise the scaling factor.
-This was done using precise \ac{MBES} data as truth data and sattelite altimeter data.
+The work preformed by \cite{jena2012prediction} used this idea to optimize their gravitational regression models.
+Instead of identifying an optimal scaling factor deterministically, they used a artificial neural network to optimize the scaling factor.
+This was done using precise \ac{MBES} data as truth data and satellite altimeter data.
 This method was tested on a localized swatch of ocean in the Arabian Sea.
 
 \par

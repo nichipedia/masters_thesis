@@ -1,7 +1,7 @@
 \section{Data Analysis}
 \setlength{\parindent}{10ex}
 
-All data used in this work was aggregated from exsisting studies.
+All data used in this work was aggregated from existing studies.
 The ETOPO dataset was used for bathymetry soundings \cite{national1988etopo}.
 All other features and their origin datasets can be seen in the table below. %Insert point to figure yadaydada
 
@@ -38,11 +38,11 @@ All other features and their origin datasets can be seen in the table below. %In
 %Maybe make a diagram for the flow of the GA?
 \subsection{Feature Selection}
 Feature selection was used to identify the most relevant features for classification.
-This important step in the \ac{ML} pipline removes noise from irrelevant data.
+This important step in the \ac{ML} pipeline removes noise from irrelevant data.
 This work used a genetic algorithm approach for feature selection \cite{yang1998feature}.
-Other approaches that where considered included a grid search, dimensional analysis, and simple variable correlations.
+Other approaches that were considered included a grid search, dimensional analysis, and simple variable correlations.
 These approaches were found to either take to long, or simply not offer enough improvement to the model.
-Where as, the genetic algorithm approach gave relativly quick model improvements with little effort.
+Where as, the genetic algorithm approach gave relatively quick model improvements with little effort.
 See \ref{fig:GA} for an illustration of a generic genetic algorithm.
 
 \par
@@ -51,7 +51,7 @@ The initialized population is a set of random binary strings.
 Each string has a character length equal to the number of features in our feature space.
 The binary characters represent if a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
-The fittness of that string is represented by the resulting models accuracy.
+The fitness of that string is represented by the resulting models accuracy.
 Selection is preformed by choosing the most accurate models, and their characteristics are passed to the next generation.
 A simple crossover mutation of the strings is used, along with a modest 5 percent mutation rate.
 Upon termination the resulting fittest string is used as the selected features.
@@ -70,29 +70,29 @@ Upon termination the resulting fittest string is used as the selected features.
 \subsection{Data Representation}
 Representing global data is typically done using a grid.
 Where each grid represents a coverage of the Earth's surface.
-This representation can an average of the data across the coverage of that cell, but is not garunteed.
+This representation can an average of the data across the coverage of that cell, but is not guaranteed.
 The data used in this work has been organized into a grid for this purpose.
-Each grid represents a cell centered data point, and they are oragnized into a EPSG:3857 \ac{CRS}.
+Each grid represents a cell centered data point, and they are organized into a EPSG:3857 \ac{CRS}.
 
 \par
 The spatial resolution of a grid defines its coverage.
 This spatial resolution can be described as the height and width of a grid.
-This height and width is not physicaly constant.
+This height and width is not physically constant.
 For example, a cell at the equator is larger and covers more physical area than a cell at the poles.
 However, this is the best way to represent the data in a consistent and structured manner.
 
 \par
-All data in this project has been oragnized into two minute bathymetry grids.
+All data in this project has been organized into two minute bathymetry grids.
 A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell.
 This is approximately 3 kilometers of spatial coverage.
 The grids have a column length of 5400 and a row width of 10800.
 
 \par
 This resolution was chosen for experiments to conserve memory and time.
-Larger grids have a exponentially larger memory and computatiional footprint.
+Larger grids have a exponentially larger memory and computational footprint.
 I used the \ac{ETOPO}2v2 \cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
-Finer resolution datasets exsist, such as the SRMT30 \cite{becker2009global} at 30 second resolution.
-However, portions of data in that set is upsampled from lower resolution datasets such as ETOPO.
+Finer resolution datasets exist, such as the SRMT30 \cite{becker2009global} at 30 second resolution.
+However, portions of data in that set is up sampled from lower resolution datasets such as ETOPO.
 In any event, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
 
 \subsection{Ocean Features}
@@ -104,13 +104,13 @@ See \ref{table:FEATURE_LIST} for a complete list of all features.
 \par
 \ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
 There is a direct relationship that trends toward less biomass as the ocean gets deeper.
-Naturaly, this relationship is explained by the availability of food and light at such lower depths.
+Naturally, this relationship is explained by the availability of food and light at such lower depths.
 \ref{fig:bathyxfauna} shows a similar relationship to the fish biomass.
 
 \par
 \ref{fig:bathyxdensity} shows a example of a inverse relationship to bathymetry.
-\ref{fig:pairplot} Shows a pairplot of all the features used in training.
-The diagnol in the pair plot will show the correlation of point distributions in each individual plot.
+\ref{fig:pairplot} Shows a pair plot of all the features used in training.
+The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
 Each of the discussed plots were taken from data in the south Pacific ocean.
 This was done as a isolated demonstration of the data.
 %Talk about the plots here and include them once seaborn has decided to stop being dumb...
@@ -149,9 +149,9 @@ This was done as a isolated demonstration of the data.
 
 \subsection{Bathymetry Values}
 ETOPO2v2 is used for the bathymetry soundings \cite{national20062}.
-This extention of the ETOPO2 dataset \cite{national1988etopo} is a more accurate and updated version of the ETOPO2 dataset.
-Specifically this version elimates a westward bias present in the original version.
-The two minue \ac{ETOPO} dataset was used to match the chosen resolution for this work.
+This extension of the ETOPO2 dataset \cite{national1988etopo} is a more accurate and updated version of the ETOPO2 dataset.
+Specifically this version eliminates a westward bias present in the original version.
+The two minute \ac{ETOPO} dataset was used to match the chosen resolution for this work.
 \ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
 \par
@@ -164,7 +164,7 @@ This is applied to the data before training.
 %I want to describe the value that was added by binning my data into classes!
 \par
 The classification preformed in this work used binned bathymetry from \ac{ETOPO}.
-These classes where partioned on a interval of 150 meters.
+These classes were partitioned on a interval of 150 meters.
 This partitioning scheme was chosen to improve upon the results from a similar project \cite{jena2012prediction}.
-The binning is preformed to leverage the unique advantages inherient to classification problems and test if this problem is better suited for classification.
-For example, the use of metrics such as a confusion matrix makes comparing the preformance of the model signifigantly easier.
+The binning is preformed to leverage the unique advantages inherent to classification problems and test if this problem is better suited for classification.
+For example, the use of metrics such as a confusion matrix makes comparing the performance of the model significantly easier.
