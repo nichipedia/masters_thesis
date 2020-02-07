@@ -2,6 +2,14 @@
 The first approach was to compare fitting a regression model against the feature space to a physics based \ac{EGM}.
 Three models were fit to the data. 
 A SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
+These models were trained against a reduced set of data shown in figure \ref{fig:trainset}, and validated against the rest of the world.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{worldtraininglocal.png}
+    \caption{Figure demonstrating initial training sets.}
+    \label{fig:trainset}
+\end{figure}
 
 \begin{center}
     \begin{table}[htb]
