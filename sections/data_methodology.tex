@@ -3,7 +3,7 @@
 
 All data used in this work was aggregated from existing studies.
 The ETOPO dataset was used for bathymetry soundings \cite{national1988etopo}.
-All other features and their origin datasets can be seen in the table below. %Insert point to figure yadaydada
+All other features and their origin datasets can be seen in the table \ref{table:FEATURE_LIST}. %Insert point to figure yadaydada
 
 %This section is for defining the data being used in the experiment
 %It should define where the data came from and its format
@@ -41,19 +41,19 @@ Feature selection was used to identify the most relevant features for classifica
 This important step in the \ac{ML} pipeline removes noise from irrelevant data.
 This work used a genetic algorithm approach for feature selection \cite{yang1998feature}.
 Other approaches that were considered included a grid search, dimensional analysis, and simple variable correlations.
-These approaches were found to either take to long, or simply not offer enough improvement to the model.
-Where as, the genetic algorithm approach gave relatively quick model improvements with little effort.
-See \ref{fig:GA} for an illustration of a generic genetic algorithm.
+These approaches were found to either take too long or simply not offer enough improvement to the model.
+Where as the genetic algorithm approach gave relatively quick model improvements with little effort.
+See figure \ref{fig:GA} for an illustration of a generic genetic algorithm.
 
 \par
 Using a genetic algorithm for feature selection is a simple application of the original process.
 The initialized population is a set of random binary strings.
 Each string has a character length equal to the number of features in our feature space.
-The binary characters represent if a feature is active or inactive.
+The binary characters represent wether a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
-The fitness of that string is represented by the resulting models accuracy.
-Selection is preformed by choosing the most accurate models, and their characteristics are passed to the next generation.
-A simple crossover mutation of the strings is used, along with a modest 5 percent mutation rate.
+The fitness of that string is represented by the resulting model's accuracy.
+Selection is performed by choosing the most accurate models and their characteristics are passed to the next generation.
+A simple crossover mutation of the strings is used along with a modest 5\% mutation rate.
 Upon termination the resulting fittest string is used as the selected features.
 
 
@@ -68,11 +68,10 @@ Upon termination the resulting fittest string is used as the selected features.
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
-Representing global data is typically done using a grid.
-Where each grid represents a coverage of the Earth's surface.
-This representation can an average of the data across the coverage of that cell, but is not guaranteed.
+Global data is tpically represented in a grid formated where each grid represents a coverage of the Earth's surface.
+This representation is an average of the data across the coverage of that cell, but is not guaranteed.
 The data used in this work has been organized into a grid for this purpose.
-Each grid represents a cell centered data point, and they are organized into a EPSG:3857 \ac{CRS}.
+Each grid represents a cell centered data point and they are organized into a EPSG:3857 \ac{CRS}.
 
 \par
 The spatial resolution of a grid defines its coverage.
@@ -83,8 +82,7 @@ However, this is the best way to represent the data in a consistent and structur
 
 \par
 All data in this project has been organized into two minute bathymetry grids.
-A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell.
-This is approximately 3 kilometers of spatial coverage.
+A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell, which is approximately 3 kilometers of spatial coverage.
 The grids have a column length of 5400 and a row width of 10800.
 
 \par
@@ -92,27 +90,26 @@ This resolution was chosen for experiments to conserve memory and time.
 Larger grids have a exponentially larger memory and computational footprint.
 I used the \ac{ETOPO}2v2 \cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
 Finer resolution datasets exist, such as the SRMT30 \cite{becker2009global} at 30 second resolution.
-However, portions of data in that set is up sampled from lower resolution datasets such as ETOPO.
 In any event, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
 
 \subsection{Ocean Features}
 Similar to bathymetry values, all extracted ocean features for this project were organized into a two minute bathymetry grid.
 They were aggregated from several projects.
-Absent data points was either interpolated, or filled with default values.
-See \ref{table:FEATURE_LIST} for a complete list of all features.
+Absent data points were either interpolated, or filled with default values.
+See table \ref{table:FEATURE_LIST} for a complete list of all features.
 
 \par
 Figure \ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
 There is a direct relationship that trends toward less biomass as the ocean gets deeper.
-Naturally, this relationship can explained by the availability of food and light at such lower depths.
-In any event, the figure shows that estimated biomass can be used as a effective feature.
+Naturally, this relationship can be explained by the decreased availability of food and light at such lower depths.
+This intuition supports that estimated biomass can be used as a effective feature.
 
 
 \par
-\ref{fig:bathyxdensity} shows a example of a inverse relationship to bathymetry.
+Figure \ref{fig:bathyxdensity} shows an example of a inverse relationship to bathymetry.
 The dense crust will be at lower depths.
 Therefore, this relationship shows that having accurate measurements could result in better predictions.
-This and other features are important for the performance of the resulting models.
+This ,and other features, are important for the performance of the resulting models.
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
 %The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
@@ -155,21 +152,21 @@ This and other features are important for the performance of the resulting model
 \subsection{Bathymetry Values}
 ETOPO2v2 is used for the bathymetry soundings \cite{national20062}.
 This extension of the ETOPO2 dataset \cite{national1988etopo} is a more accurate and updated version of the ETOPO2 dataset.
-Specifically this version eliminates a westward bias present in the original version.
+Specifically, this version eliminates a westward bias present in the original version.
 The two minute \ac{ETOPO} dataset was used to match the chosen resolution for this work.
 \ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
 \par
 Land topography is included in the \ac{ETOPO} dataset.
-A mask was created to mask out the land topography in all training datasets.
-The masking is the LAND One hots feature listed in \ref{table:FEATURE_LIST}.
-This is applied to the data before training.
+This proved to be problematic in making ocean predictions.
+Therefore, a mask was created to remove the land topography in all training datasets.
+This is applied to the data before training to ensure that land data is not used in training.
 
 %There is a better was to describe why the features were binned like this
 %I want to describe the value that was added by binning my data into classes!
 \par
-The classification preformed in this work used binned bathymetry from \ac{ETOPO}.
+The classification performed in this work used binned bathymetry from \ac{ETOPO}.
 These classes were partitioned on a interval of 150 meters.
 This partitioning scheme was chosen to improve upon the results from a similar project \cite{jena2012prediction}.
-The binning is preformed to leverage the unique advantages inherent to classification problems and test if this problem is better suited for classification.
-For example, the use of metrics such as a confusion matrix makes comparing the performance of the model significantly easier.
+The binning is performed to leverage the unique advantages inherent to classification problems.
+Classification models are easier to fit and can perform better than regression models for some domains.

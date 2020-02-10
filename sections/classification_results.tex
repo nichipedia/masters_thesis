@@ -1,16 +1,16 @@
 \section{Classification Results}
 \setlength{\parindent}{10ex}
 %Maybe reword this opening chapter???
-The next approach used in this work was to convert the regression problem into a ordinal classification problem.
-Conversion was preformed by mapping the bathymetry values into discrete classes.
+The next approach used in this work was to convert the regression problem into an ordinal classification problem.
+Conversion was executed by mapping the bathymetry values into discrete classes.
 This conversion is a natural step taken in response to the regression results.
 While the regression models yielded a poor accuracy, they held a strong R2 score.
 This score is indicative of correlations in the dataset.
-These underlying correlations will benefit a classification model, as they are, simpler and easier to fit.
+These underlying correlations will benefit a classification model as they are simpler and easier to fit.
 In addition, the continuous ordered nature of bathymetry allows this problem to easily be converted into a ordinal classes.
 
 \par
-The ordinal classes were created on a interval of 150m.
+The ordinal classes were created on a interval of 150 meters.
 This was done to improve accuracy beyond the reported findings of \cite{jena2012prediction}.
 Validation was preformed using a 10 fold cross validation using balanced accuracy as the scoring function.
 
@@ -21,8 +21,8 @@ Validation was preformed using a 10 fold cross validation using balanced accurac
 			\textbf{Model} & \textbf{Average F1 Score} & \textbf{Mean Balanced Accuracy} \\
 			\hline
 			Random Forest & 0.81 & 0.82 \\
-            Bagging & 0.884 & 294.92m \\
-            Decision Tree & 0.885 & 265.43m \\
+            Bagging & 0.80 & 0.79 \\
+            Decision Tree & 0.44 & 0.47 \\
 			\hline
         \end{tabular}
         \label{table:CLASSIFICATION_RESULTS}
@@ -31,17 +31,17 @@ Validation was preformed using a 10 fold cross validation using balanced accurac
 \end{center}
 
 \subsection{Classification Results Discussion}
-The Random Forest model preformed excellently with a balanced accuracy of 82\%.
-Breaking down the results by class the classifier predicted some classes with greater precision than others.
+The Random Forest model performed excellently with a balanced accuracy of 82\%.
+Breaking down the results by class, the classifier predicted some classes with greater precision than others.
 This is indicative that the model responded to certain trends in the data.
-These results show that a Random Forest classification model can predict 82\% of the earths bathymetry within 150m of error.
+These results show that a Random Forest classification model can predict 82\% of the Earth's bathymetry within 150 meters of error.
 
 \par
-The Bagging classifier preformed on par with the Random Forest Classifier with a balanced accuray of 79\%.
-As seen with \ac{RFC} bagging preformed better at predicting some classes than others.
+The Bagging classifier performed on par with the Random Forest Classifier with a balanced accuracy of 79\%.
+As seen with \ac{RFC}, bagging performed better at predicting some classes than others.
 This supports the theory that trends in the data help certain classifiers predict areas better.
 
 \par
-The Decision Tree classifier signifigantly worse than the other models.
-The 47\% balanced accuracy is not ussable for predictions.
-This model is not a ensemble, and leads to the hypothosis that a "weak" classifier is not ideal for predictions involving a large feature space.
+The Decision Tree classifier performed signifigantly worse than the other models.
+The 47\% balanced accuracy is not useable for predictions.
+This model is not an ensemble, and leads to the hypothosis that a "weak" classifier is not ideal for predictions in this domain.

@@ -1,7 +1,7 @@
 \section{Regression Results}
 The first approach was to compare fitting a regression model against the feature space to a physics based \ac{EGM}.
-Three models were fit to the data. 
-A SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
+Three models were fit to the data: 
+an SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
 These models were trained against a reduced set of data shown in figure \ref{fig:trainset}, and validated against the rest of the world.
 
 \begin{figure}[h]
@@ -28,12 +28,12 @@ These models were trained against a reduced set of data shown in figure \ref{fig
 \end{center}
 
 \subsection{Regression Results Discussion}
-The regression preformed on the aggregated datasets under preformed compared to existing \ac{EGM}s.
+The regression model predictions under performed compared to existing \ac{EGM}s.
 \cite{jena2012prediction} achieved a \ac{RMSE} of ~175m in their optimized model.
 The linear regression model I fit in this work is 90m less accurate than the optimized model used in \cite{jena2012prediction}.
 However, the R squared score is high for each model. 
 This shows that the data correlates well and that a good model can fit the data well.
-While the regression results were uninspiring, the R2 score showed promise that a model can preform well.
+While the regression results were uninspiring, the R2 score shows that a model can potentially perform well.
 
 
 

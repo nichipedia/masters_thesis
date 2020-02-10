@@ -1,22 +1,20 @@
 \section{Problem Statement}
 \setlength{\parindent}{10ex}
 
-Sea floor topography is monumentally important for Earth's natural processes and mankind.
+Sea floor topography is crucially important for Earth's natural processes and mankind.
 It influences ocean circulation, helps moderate Earth's climate, and effects the biological diversity of the sea \cite{kunze2004role}.
 Accurate mapping of sea floor topography is also of great interest to national defense \cite{goodman1982defence}.
-With applications in \ac{ASW}, \ac{MIW}, and the entire Naval Fleet.
-Along with being important to the shipping and commercial maritime industries.
+With applications in \ac{ASW}, \ac{MIW}, and the general Naval Fleet, along with being important to the shipping and commercial maritime industries.
 
 \par
-Despite the importance of sea floor topography to all which has been listed.
-Mankind has made much better maps of other planets, moons, and asteroids than Earth's sea floor \cite{becker2009global}.
-Earth's oceans are vast and deep making accurate bathymetry measurement techniques like \ac{SDB} impossible for the majority of the ocean.
+Despite the importance of sea floor topography to all, mankind has produced much better maps of other planets, moons, and asteroids than Earth's sea floor \cite{becker2009global}.
+Earth's oceans are vast and deep which makes accurate bathymetry measurement techniques like \ac{SDB} impossible for the majority of the ocean.
 Unknown sediment composition and other environmental features limit the global accuracy of gravitational regression models to ~200 meters.
 As of 2009, it is estimated that ~90 percent of Earth's oceans remains inaccurately mapped at a high resolution \cite{becker2009global}.
 
 \par
 Therefore, improving existing bathymetry prediction techniques is of great interest to many domains.
-Coastal predictions can be preformed at very high accuracy's, but are unable predict depths greater than ~50 meters.
+Coastal predictions can be performed at very high accuracies, but are unable predict depths greater than ~50 meters.
 Previous works as described in the Literature Review chapter have improved existing physics models using aggregation, optimization, and \ac{ML}.
 Each work is based upon improving the existing physics model.
 
@@ -26,8 +24,8 @@ My approach is based on using a set of ocean features to train a model for predi
 This differs in that my work is not based on extending a existing physics model, but using the \ac{ML} pipeline to create a model for prediction.
 Initially, this work centered around fitting a regression model for predictions.
 However, initial experiments and analysis indicated other approaches to be worth attempting.
-This lead to three different approaches being tested in this work.
-The first being a set of linear regression models intended to be compared to existing \ac{EGM}s.
-Second a set of classification models using binned classes.
-The third approach being a novel model created for this experiment.
-I call it the "Grid Optimized" Bathymetry Classification Model.
+This lead to three different approaches being tested in this work:
+the first being a set of linear regression models intended to be compared to existing \ac{EGM}s;
+second, a set of classification models using binned classes;
+the third, a novel model created for this experiment.
+I call it the \textit{Grid Optimized Model Injector Classifier}.

@@ -2,15 +2,15 @@
 %Here is what I am about to tell you in this paper. Fairly informal and loose.
 \section{Introduction}
 \setlength{\parindent}{10ex}
-The most accurate world bathymetry mappings come from a aggregate of predicted and measured sources. 
-Earth Gravitational Models (EGM) are popularly used for predicting bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
-While sonar platforms such as the Multi Beam Echo Sonar (MBES) \cite{farr1980multibeam} are used for accurate measurements of the bathymetry.
-Naturally, it is not cost and time effective to collect large swaths of MBES bathymetry measurements.
-EGMs use satellite altimeter data to create gravitational models for predicting geoids.
+The forefront in global bathymetry mappings are aggregations of predicted and measured sources. 
+These \ac{EGM}s are the standard for measureing global bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
+While sonar platforms such as the Multi Beam Echo Sonar (MBES) \cite{farr1980multibeam} are the most accurate measurements of seafloor depth.
+It is not cost and time effective to collect large swaths of \ac{MBES} bathymetry measurements.
+\ac{EGM}s use satellite altimeter data to create gravitational models for predicting bathymetry at a fraction of the cost and time.
 In general, these models predict bathymetry with a error of 190 meters \cite{jena2012prediction}.
 
 \par
-There has been much work on using satellite altimeter derived gravity to predict bathymetry.
-This work focuses on using ocean features derived from other studies as predictors.
-The goal being to create a model that can predict bathymetry using other features than gravity.
-In this work I introduce an approach for optimizing model selection, feature selection, and a novel approach to predicting bathymetry.
+There has been much work using satellite altimeter derived gravity to predict bathymetry.
+However, the work in this paper focuses on using ocean features derived from other studies as predictors.
+The goal being to create a model that can predict bathymetry using many ocean features.
+In this work I introduce an approach for optimizing model selection, feature selection, and conclude with evidence that a \ac{ML} model trained on ocean features is effective at predicting bathymetry.

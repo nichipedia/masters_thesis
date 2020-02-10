@@ -1,17 +1,17 @@
 \section{Literature Review}
 \setlength{\parindent}{10ex}
 In this review I cover the different approaches for predicting bathymetry.
-The two main methods for collecting bathymetry data is \ac{SDB} and \ac{EGM}.
+The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of a \ac{EGM}.
 I also discuss echo sounders for precise measurements of bathymetry \cite{farr1980multibeam}.
 
 \subsection{Echo Sounders (\ac{MBES})(\ac{SBES}) }
-Echo sounders have been mounted on vessels for decades to accuratly measure bathymetry.
+Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for the ship to avoid running aground.
 However, survey vessels have utilized \ac{MBES} systems to reliably create bathymetry charts \cite{farr1980multibeam}.
-This can give a very accurate measurement of bathymetry in all water depths.
-This methods downside is that it is expensive and slow for global coverage.
-A vessel must transport these sensors, and it could potentially take decades of expensive surveys to gain full global coverage.
+This can give a accurate measurement of bathymetry in all water depths.
+This methods downside is the cost and time required to map global coverage.
+A vessel must transport these sensors, and potentially take decades of expensive surveys to gain full global coverage.
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
 \subsection{Satellite Derived Bathymetry (SDB)}
@@ -24,39 +24,41 @@ Clear waters are the best environment for this method which has the potential to
 
 \par
 This method is important for its ability to predict swaths of bathymetry in shallow water.
-Areas where the water is far to shallow for a survey ship to pass, and large swaths of coastal waters are easily predicted by the \ac{SDB} method.
+Shallow waters where larger vessels can not sail, and large swaths of coastal waters are measured by \ac{SDB} in a cost and time effective processs.
 For example, the marsh lands of Louisiana where water depth is only deep enough for flat bed vessels.
-This method also has use in the scope of national defense for predicting, or identifying changes in shallow water bathymetry.
+This method also has use in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
 These changes can be caused by sediments or man made objects. 
 
 \par
 The limitations of the \ac{SDB} method are based on water depth and clarity.
-As depth increases water is unable to pass through the water column to the bottom.
+As depth increases light is unable to pass through the water column to the bottom.
 The depth that light can penetrate is determined by the characteristics of the water.
-Clear water will allow for much deeper depths to be predicted.
-Where as murky cluttered water limits the maximum depth.
-Environmental characteristics such as sediment composition and weather effect the clarity of water \cite{vinayaraj2016satellite}.
+Clear water will allow for much deeper depths to be predicted, where as murky, cluttered water limits the maximum depth.
+Environmental characteristics such as sediment composition and weather affect the clarity of water \cite{vinayaraj2016satellite}.
 
 \par
 Current \ac{SDB} models can predict bathymetry with a \ac{RMSE} of less that 2.5 meters at a maximum depth of 50 meters.
-Work preformed by \cite{vinayaraj2016satellite} has improved the depth by using blue light sensing techniques.
-Work preformed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
+Work performed by \cite{vinayaraj2016satellite} has improved the depth by using blue light sensing techniques.
+Work performed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
 \ac{SDB} models are ideal for coastal areas with a high water visibility.
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
-Work preformed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
+Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
 They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related \cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
-They identified the areas that could be predicted with this relationship, and used sparse ship soundings to fill in gaps of their recordings.
-Areas with large seamounts found the correlation to be strongest.
-While areas of flat sediments found the correlation to be weakest.
-This technique they named the "inverse Nettleton procedure" used a simple linear regression model to exploit this correlation and improve existing aggregated datasets.
+They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in gaps of their predictions.
+Areas with large seamounts found the correlation to be strongest, while areas of flat sediments found the correlation to be weakest.
+They named this technique the "Inverse Nettleton Procedure" and used a simple linear regression model to exploit this correlation and improve existing aggregated datasets.
+
+\begin{equation}
+    b(x) = D(x) + s(x)g(x)
+\end{equation}
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based Multi Beam Echo Sounding sonar data.
-The sonar data is sparse, but provides accurate readings of the oceans bathymetry.
+The sonar data is sparse, but provides accurate readings of the ocean's bathymetry.
 This aggregation yielded global coverage up to 81 degrees.
-Ichinet yielded prediction accuracy within ~100 meters in coastal waters, and ~200 meters in the global ocean space.
+The aggregation yielded prediction accuracy within ~100 meters in coastal waters, and ~200 meters in the global ocean space.
 
 %Discuss the STRM Global Dataset here in detail....
 \par 
@@ -72,21 +74,20 @@ The limitations of aggregated \ac{EGM}s is based on correlation uncertainty and 
 Sediment density drives the correlation between sea surface gravity and bathymetry.
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
-This is all controlled by the scaling factor described in \cite{smith1994bathymetric}. 
+This is all controlled by the scaling factor described in \cite{smith1994bathymetric} and shown in equation 1. 
 However, there is not a optimal scaling factor for the entire world.
 Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
 
 
 \subsection{Machine Learning Optimized \ac{EGM}}
-The aggregated \ac{EGM} is a physics based model that is by definition deterministic.
-Rooted in the correlation between sea surface gravity and bathymetry.
-This correlation is often nondeterministic due to environmental factors.
+The aggregated \ac{EGM} is a physics based model that wants the relationship between gravity and bathymetry to directly correlated.
+This correlation is often non-trivial to define due to environmental factors.
 The nondeterministic behavior is compensated by the scaling factor mentioned in the previous section.
-Therefore, machine learning can be used to effectively model this nondeterministic scaling factor.
+Attempts to optimize this scaling factor have been made, and \ac{ML} has shown much promise in this regard.
 
 \par
-The work preformed by \cite{jena2012prediction} used this idea to optimize their gravitational regression models.
-Instead of identifying an optimal scaling factor deterministically, they used a artificial neural network to optimize the scaling factor.
+The work preformed by \cite{jena2012prediction} used \ac{ML} to optimize their gravitational regression models.
+Instead of identifying an optimal scaling factor deterministically, they used an \ac{ANN} to optimize the scaling factor.
 This was done using precise \ac{MBES} data as truth data and satellite altimeter data.
 This method was tested on a localized swatch of ocean in the Arabian Sea.
 
@@ -94,7 +95,6 @@ This method was tested on a localized swatch of ocean in the Arabian Sea.
 This optimization improved upon the current physics models.
 Their model could predict bathymetry within a \ac{RMSE} of ~129 meters for flat sea floor.
 Geoids resulted in a \ac{RMSE} of ~179 meters.
-Both of these results are globally similar with aggregated models.
-While boasting increased accuracy in their localized training area of the Arabian Sea.
+Both of these results are globally similar with aggregated models, while boasting increased accuracy in their localized training area of the Arabian Sea.
 
 %\subsection{Machine Learning Models}
