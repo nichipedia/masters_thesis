@@ -17,10 +17,10 @@ For machine learning this theorem especially holds true.
 To append onto the therm, there is not a single model that will optimally predict the entire globes bathymetry.
 A model that preforms well in a area of the pacific may not preform well in the Atlantic.
 Earth is a large planet with vastly different environments across degrees of latitude.
-Likewise, the ocean ecosystem and topography changes realative to the location on the Earth.
+Likewise, the ocean ecosystem and topography changes relative to the location on the Earth.
 
 \par
-In the classification portion of this work there was evidence that a optimum model for a coverage exsists.
+In the classification portion of this work there was evidence that a optimum model for a coverage exists.
 This coverage should be designated to maximize accurate predictions.
 Therefore, a proof of concept for this model will be to divide the Earth into coverages and test a set of models against each.
 This will prove that a optimal set of coverages for a model does exist, and that localizing these models will yield benefit for predictions.
@@ -33,8 +33,8 @@ This will prove that a optimal set of coverages for a model does exist, and that
 \end{figure}
 
 \par
-This proof of concept was implemented and executed against the existing dicrete classed bathymetry data used in the classification section.
-A Python script iteratored across a grid of the world and trained the set of models.
+This proof of concept was implemented and executed against the existing discrete classed bathymetry data used in the classification section.
+A Python script iterated across a grid of the world and trained the set of models.
 Then compared the trained models and selected the best performing model.
 Figure \ref{fig:coveragegrid} shows the results of this script.
 Clearly, there are consistencies in depth, fault lines, and coast lines for the best models.
@@ -44,7 +44,7 @@ This supports the idea that dynamically injecting models will locally boost accu
 %There may be a better name for this?? Who knows really...
 \subsection{Grid Optimizing}
 This concept was further implemented by partitioning the world into coverages.
-These coverages mirror the partioned areas used in figure \ref{fig:coveragegrid} for simplicity.
+These coverages mirror the partitioned areas used in figure \ref{fig:coveragegrid} for simplicity.
 For this project, I trained a set of classification models on each coverage to predict bathymetry.
 The model that most accurately predicted bathymetry was then recorded and stored into a data structure.
 This structure is a simple map of a bounding boxes and models.

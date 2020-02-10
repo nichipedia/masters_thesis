@@ -49,7 +49,7 @@ See figure \ref{fig:GA} for an illustration of a generic genetic algorithm.
 Using a genetic algorithm for feature selection is a simple application of the original process.
 The initialized population is a set of random binary strings.
 Each string has a character length equal to the number of features in our feature space.
-The binary characters represent wether a feature is active or inactive.
+The binary characters represent whither a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
 The fitness of that string is represented by the resulting model's accuracy.
 Selection is performed by choosing the most accurate models and their characteristics are passed to the next generation.
@@ -68,7 +68,7 @@ Upon termination the resulting fittest string is used as the selected features.
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
-Global data is tpically represented in a grid formated where each grid represents a coverage of the Earth's surface.
+Global data is typically represented in a grid formatted where each grid represents a coverage of the Earth's surface.
 This representation is an average of the data across the coverage of that cell, but is not guaranteed.
 The data used in this work has been organized into a grid for this purpose.
 Each grid represents a cell centered data point and they are organized into a EPSG:3857 \ac{CRS}.
