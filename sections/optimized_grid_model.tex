@@ -3,27 +3,23 @@
 %Purpose of this section is to identify the optimized grid structure.
 %I need to check with Hoque to identify what I should and shouldnt include
 %I need to consider rewording this and restructuring to manage the correctness for example etc.
-Classification results showed that groups of classes had higher prediction rates in different models.
-These results support that there is a optimum classifier for a area of the ocean.
+Further analysis of figure \ref{fig:rfc_report} shows that models are sensitive to potentially local characteristics.
+In an attempt to test this notion and increase the accuracy of these models a novel model selection method was employed.
+The objective being to identify if a model will predict more accuractly based on geospatial location.
+The hypothysis being that decision boundaries across different models will respond to features based on location.
+
 The Grid Optimized Model Injector Classifier was created to test this theory.
 This model is built upon the idea that there is not a optimal single model for predicting all of the worlds bathymetry.
 It leverages several different models to predict bathymetry in a area by recording the best preforming models across a grid of the world.
 This allows the model to use the optimal model for predicting bathymetry.
 
 %Give the background for the idea in this section!
-\subsection{Grid Optimizing Background}
-According to the "No Free Lunch Theorem" \cite{wolpert1997no}, there is no optimal model to solve all problems.
-For machine learning this theorem especially holds true.
-To append onto the therm, there is not a single model that will optimally predict the entire globes bathymetry.
-A model that preforms well in a area of the pacific may not preform well in the Atlantic.
-Earth is a large planet with vastly different environments across degrees of latitude.
-Likewise, the ocean ecosystem and topography changes relative to the location on the Earth.
-
-\par
-In the classification portion of this work there was evidence that a optimum model for a coverage exists.
-This coverage should be designated to maximize accurate predictions.
-Therefore, a proof of concept for this model will be to divide the Earth into coverages and test a set of models against each.
-This will prove that a optimal set of coverages for a model does exist, and that localizing these models will yield benefit for predictions.
+\subsection{Analysis of Global Model Optimization}
+Testing this hypothysis was performed by splitting the world into coverages.
+Each coverage represented a exclusive area of the Earth's ocean.
+A set of models were trained on each coverage and their prediction accuracies were compared.
+The most accurate model was then saved for each coverage and stored in a map.
+The results of this script are displayed in figure \ref{fig:coveragegrid}.
 
 \begin{figure}[h]
     \centering
@@ -33,40 +29,31 @@ This will prove that a optimal set of coverages for a model does exist, and that
 \end{figure}
 
 \par
-This proof of concept was implemented and executed against the existing discrete classed bathymetry data used in the classification section.
-A Python script iterated across a grid of the world and trained the set of models.
-Then compared the trained models and selected the best performing model.
-Figure \ref{fig:coveragegrid} shows the results of this script.
-Clearly, there are consistencies in depth, fault lines, and coast lines for the best models.
-This supports the idea that dynamically injecting models will locally boost accuracy.
+Clearly, figure \ref{fig:coveragegrid} provides evidence that model decision boundaries are sensitive to the features based on location.
+Leading to the conclusion that there is not a single best fit model for predicting global bathymetry.
+Analysis of figure \ref{fig:coveragegrid} shows interesting consistencies that raise questions about the underlying features.
+For example, the decision tree classifier preformed poorly as configured in the classification section when used for global predictions.
+When predicting near fault lines it preformed the best out of other models.
+Bagging seemed to dominate on coast lines while \ac{RFC} performed best in open waters.
 
 %In this section I am defining what the Grid optimization is and why it matters.
 %There may be a better name for this?? Who knows really...
 \subsection{Grid Optimizing}
-This concept was further implemented by partitioning the world into coverages.
-These coverages mirror the partitioned areas used in figure \ref{fig:coveragegrid} for simplicity.
-For this project, I trained a set of classification models on each coverage to predict bathymetry.
-The model that most accurately predicted bathymetry was then recorded and stored into a data structure.
-This structure is a simple map of a bounding boxes and models.
+The results of the experiment were then used for model selection.
+Using the successful model for each coverage as a \textit{optimum} selection.
+A trivial geospatial query is used to query the best model by location.
+This selection is implemented in a novel model I call the \textit{Grid Optimized Model Injector Classifier}.
+This name is chosen because the result model acquired from the spatial query is injected for classification.
 
 %This is where I define what happens after the appropriate coverages have been found.
 \par
-The map structure is then used to create an ensemble that selects the optimal model for predicting in a coverage.
-I call this ensemble the \textit{Grid Optimized Model Injector Classifier}.
-Each model is retrained and validated using a 10 fold cross validation on the worlds set of data.
-This trained model is then persisted and stored for use in predictions.
-The model injector then references the optimized grid map and injects the best model for that coverage.
-This reference is a simple geospatial query for the latitude and longitude of the bathymetry point.
-
-\par
 In theory, this injection will allow each model to perform to its optimum.
-Each coverage highlights distinct characteristics that perform better for a certain estimator.
-There are several patterns that can be gleaned from figure \ref{fig:coveragegrid}. 
-Such as: consistencies with depth, along fault lines, and potentially sediment composition. 
+Each coverage highlights distinct characteristics that will produce a better decision boundary.
+These coverages are simple partitions of the world, but could be extended in future work to optimize the selection.
 % Reconsider this sentence....
 
 
-\subsection{Results and Metrics}
+\subsection{Results and Discussion}
 %The world wide ETOPO bathymetry dataset \cite{national1988etopo} at two minute resolution is used for valadation and metrics.
 %This dataset is treated as the ground truth for all predictions.
 %During the experiment, a one third holdout was used for validation in some cases.
@@ -79,13 +66,17 @@ Such as: consistencies with depth, along fault lines, and potentially sediment c
 %I clearly noticed a similar trend, but saw better preformance from some models than others. 
 %This research is to identify those coverages and then use those results to build a super classifier.
 %These metrics are important for identifying where the models preform well. 
-The Grid Optimized Model Injector improved the accuracy of predictions by ~5\%.
-These gains are made by leveraging the "strongest" classifier for a coverage.
-The balanced accuracy was generated using 10 fold cross validation on the worlds set of data.
-The average F1 score across classes was generated by training against the trainsets in figure \ref{fig:trainset} and validated against the rest of the world.
+\par
+The Grid Optimized Model Injector improved the accuracy of predictions by \~{}5\%.
 These results are displayed in table \ref{table:GRID_OPT_RESULTS}.
+Obviously, the model selection and subsequent injection improved the results of this classifier.
+Creating a ensemble of many models and selecting them on demand.
+This could be caused by geophysical characteristics that benefit one classifier.
+For example, in figure \ref{fig:coveragegrid} the Decision Tree classifier preformed best along what appears to be fault lines.
+It is possible that the characteristics related to being in proximity to a fault line benefited the models decision boundary. 
 
 \begin{table}[htb]
+    \centering
     \begin{tabular}{|c c c|}
         \hline
         \textbf{Model} & \textbf{Average F1 Score} & \textbf{Mean Balanced Accuracy} \\
@@ -97,6 +88,13 @@ These results are displayed in table \ref{table:GRID_OPT_RESULTS}.
     \caption{Grid Optimized Model Injector Results}
 \end{table}
 
+\par
+In any event, there is evidence to support geophysical location drives the factors that help predict bathymetry.
+Things to optimize may include investigating the appropriate feature sets, coverage boundaries, depth boundaires, parameters, and metrics based on geophysical location.
+For example, volcanic activity creates new land.
+This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipotle point.
+Another example being that the coverage boundaries are potentially a naive selection choice.
+It is possible that chossing models by preformance across depth boundaries proves to be a better selector.
 %Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
 
 %Maybe here I can have a table show casing the preformance of models or possibly statistics about the coverages??

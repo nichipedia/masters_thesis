@@ -1,38 +1,38 @@
-\section{Data Analysis}
+\section{Data Methodology}
 \setlength{\parindent}{10ex}
 
-All data used in this work was aggregated from existing studies.
-The ETOPO dataset was used for bathymetry soundings \cite{national1988etopo}.
-All other features and their origin datasets can be seen in the table \ref{table:FEATURE_LIST}. %Insert point to figure yadaydada
+All feature data used in this work was aggregated from existing studies.
+All features and their origin datasets can be seen in the table \ref{table:FEATURE_LIST}. %Insert point to figure yadaydada
+The ETOPO dataset was used for bathymetry values.
+This dataset contains predicted bathymetry with sparsely populated \ac{MBES} soundings.
 
 %This section is for defining the data being used in the experiment
 %It should define where the data came from and its format
 %I can also explain any of the special stuff I am doing (Binning for example)
 %
 
-\begin{center}
-    \begin{table}[htb]
-        \begin{tabular}{ |p{0.5\textwidth} p{0.5\textwidth}| }
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{ |p{0.5\textwidth} p{0.5\textwidth}| }
+        \hline
+            \textbf{Feature} & \textbf{Origin Study} \\
             \hline
-                \textbf{Feature} & \textbf{Origin Study} \\
-                \hline
-                Mantle Density & CRUST1 \cite{laske2013update} \\
-                LAND One Hot & ETOPO \cite{national1988etopo} \\
-                Crust Thickness & CRUST1 \cite{laske2013update} \\
-                Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
-                Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
-                Sea Nitrate, Phosphate, Salinity Measurements & NASA Studies \cite{meissner2018salinity} \cite{parekh2005decoupling}  \\
-                Sea Temperature, Silicate Measurements & NASA Studies \\
-                Sediment Thickness & CRUST1 \cite{laske2013update} \\
-                BioMass Features & \cite{wei2010global} \\
-                Geoid Features & EGM \cite{pavlis2008earth} \\
-                Wave height, period & WAVEWATCH \cite{tolman20072007} \\
-            \hline
-        \end{tabular}
-        \label{table:FEATURE_LIST}
-        \caption{List of Ocean Features used in Models for this Project.}
-    \end{table}
-\end{center}
+            Mantle Density & CRUST1 \cite{laske2013update} \\
+            LAND One Hot & ETOPO \cite{national1988etopo} \\
+            Crust Thickness & CRUST1 \cite{laske2013update} \\
+            Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
+            Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
+            Sea Nitrate, Phosphate, Salinity Measurements & NASA Studies \cite{meissner2018salinity} \cite{parekh2005decoupling}  \\
+            Sea Temperature, Silicate Measurements & NASA Studies \\
+            Sediment Thickness & CRUST1 \cite{laske2013update} \\
+            BioMass Features & \cite{wei2010global} \\
+            Geoid Features & EGM \cite{pavlis2008earth} \\
+            Wave height, period & WAVEWATCH \cite{tolman20072007} \\
+        \hline
+    \end{tabular}
+    \label{table:FEATURE_LIST}
+    \caption{List of Ocean Features used in Models for this Project.}
+\end{table}
 %I am using this section to introduce the feature selection method that I preformed
 %Maybe I can flesh this out more and talk about it in def??
 %Maybe make a diagram for the flow of the GA?
@@ -57,20 +57,27 @@ A simple crossover mutation of the strings is used along with a modest 5\% mutat
 Upon termination the resulting fittest string is used as the selected features.
 
 
-\begin{center}
-    \begin{figure}[h]
-        \caption{Diagram of Generic Genetic Algorithm}
-        \label{fig:GA}
-        \includegraphics[scale=0.5]{genetic_algorithm.png}
-    \end{figure}
-\end{center}
+\begin{figure}[h]
+    \centering
+    \caption{Diagram of Generic Genetic Algorithm}
+    \label{fig:GA}
+    \includegraphics[scale=0.5]{genetic_algorithm.png}
+\end{figure}
+
+\par
+Feature selection was used to remove noise from the training data.
+This down sizing happened at a global scale.
+It is possible that this may affect localized predictions where a feature is a strong predictor.
+This was not tested in this work, but is a intersting question.
+Identifying locally optimum features could lead to better models.
+
 
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
 Global data is typically represented in a grid formatted where each grid represents a coverage of the Earth's surface.
 This representation is an average of the data across the coverage of that cell, but is not guaranteed.
-The data used in this work has been organized into a grid for this purpose.
+The data used in this work has been organized into a grid for ease of use and human readability.
 Each grid represents a cell centered data point and they are organized into a EPSG:3857 \ac{CRS}.
 
 \par
@@ -100,16 +107,24 @@ See table \ref{table:FEATURE_LIST} for a complete list of all features.
 
 \par
 Figure \ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
-There is a direct relationship that trends toward less biomass as the ocean gets deeper.
-Naturally, this relationship can be explained by the decreased availability of food and light at such lower depths.
-This intuition supports that estimated biomass can be used as a effective feature.
+It can be conjectured that this relationship is more corelation that causality.
+For example, biomass increases are not caused by shallow depths.
+The shallow depth has more available light which allows for vegatation and energy supplies for more species.
+This could explain the relationship show in the graph in figure \ref{fig:bathyxfish}
 
 
 \par
 Figure \ref{fig:bathyxdensity} shows an example of a inverse relationship to bathymetry.
-The dense crust will be at lower depths.
-Therefore, this relationship shows that having accurate measurements could result in better predictions.
-This ,and other features, are important for the performance of the resulting models.
+This relationship may be more of a causality relationship than correlation.
+Denser crust is caused by many different factors that are seperate from bathymetry.
+It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
+
+\par
+In general, the features used in this project were a grab bag of potential predictors.
+Features such as estimated oxygen, nitrogen, salinity, etc make sense for being related to bathymetry.
+Where other features such as crust density may not naturally be explained.
+The feature selection was used to identify the best preforming features.
+Future study in the relationship of these features and how they benefit predicting bathymetry will be nessassary.
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
 %The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
@@ -167,6 +182,5 @@ This is applied to the data before training to ensure that land data is not used
 \par
 The classification performed in this work used binned bathymetry from \ac{ETOPO}.
 These classes were partitioned on a interval of 150 meters.
-This partitioning scheme was chosen to improve upon the results from a similar project \cite{jena2012prediction}.
-The binning is performed to leverage the unique advantages inherent to classification problems.
-Classification models are easier to fit and can perform better than regression models for some domains.
+This partitioning scheme was chosen to compare to the results from a similar project \cite{jena2012prediction}.
+The binning is performed to test the viability of converting bathymetry prediction into a classification problem.

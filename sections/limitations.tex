@@ -1,15 +1,28 @@
-\section{Limitations}
+\section{Future Work}
 \setlength{\parindent}{10ex}
-All datasets used in this project were aggregated from external studies.
-These studies may have accuracy deficencies, and many were incomplete.
-The accuracy can not be addressed, and the incomplete values were either interpolated or filled with defaults.
-This is an important limitation, but is also good to highlight that better data will only improve the results from this work.
+There are many interesting avenues to explore from the research performed in this work.
+A first avenue will be to perform the experiments in this work at a higher spatial resolution.
+This work used a 2 minute spatial grid for representing all features and bathymetry.
+A 2 minute grid was used for the memory and size advantages.
+Allowing the computations and models to be fit on a pedestrian work station.
+Modern datasets for bathymetry are often represented in higher resolution grids.
+Naturally, the results will scale to the higher resolution, but testing and reporting the results will be nessassary.
 
 \par
-This work used spatial grids at ~2 minute resolution.
-This was done because of time and resource limitations.
-High resolution spatial grids are very large datasets.
-The computing resources needed to process the required grids at higher resolutions went outside the feasable scope of this work.
-However, grids at a higher resolution are more desired than 2 minute resolution.
-Specifically, 30, 15, and 5 second resolution grids.
-The work performed at 2 minute will scale to the higher resolution grids with sufficent computing resources.
+Another interesting avenue will be to explore selecting features based on geophysical location.
+This could be tested by performing feature selection on the models across different coverages of the globe.
+A simple genetic algorithm could be run for each model.
+The resulting features will then be used to for trianing and the best perfomring model will be selected with the optimum features.
+This experiment will eliminate features that do not locally support the model while highlighting the locally important features.
+
+\par
+The same approach to feature selection could be taken to parameter tuning.
+Runnning a similar genetic algorithm to tune optimum parameters could potentially yield better results.
+Searching for optimal coverages is also a great avenue to explore.
+
+\par
+Finally, this work was preformed using predicted bathymetry from the ETOPO dataset.
+As already stated, this was done in order to prove the viability of the models.
+Not to prove the accuracy could be greater than a \ac{EGM}.
+However, this is a experiment that can be executed.
+Training these models against true bathymetry and comparing the metrics to existing \ac{EGM}s will give a indication of ability to predict bathymetry.
