@@ -5,6 +5,46 @@ The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of a \ac{EGM}.
 I also discuss echo sounders for precise measurements of bathymetry \cite{farr1980multibeam}.
 
+\subsection{Machine Learning}
+Machine Learning can be defined as the process of fitting a model to data with a algorithm \cite{bishop2006pattern}.
+Predictions can then be produced from the models by supplying new data.
+To validate the predictions, the supplied data's result is known.
+For example, a model is trained to predict if a image contains a car.
+Data from the images are extracted and used to train the model.
+Images with cars can be considered positive images.
+Images with out cars can be considered negative images.
+New images that are labeled as positive or negative are given to the model for validation.
+If the model successfully predicts the labels it will have a high accuracy and be a "valid" model.
+The two main types of models in Machine Learning is classification and regression models.
+There are several high level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
+
+\par
+Classification models are models that predict a discrete value.
+For example, the car model mentioned earlier.
+The model predicts a discrete value of either positive or negative.
+These types of models are effective at predicting values that can be grouped into "labeled" data.
+Examples of classification models used in this project include: Artifical Neural Networks, Decision Trees, 
+
+\par
+Regression models predict a continous value.
+For example, predicting water depth as a number is a continous value.
+Where the range of predicted values is from sea level to the known depth of the ocean.
+Essentially, this model represents a mathematical function where the input data is the function parameters.
+This method is best when the desired result can not be grouped into discrete "labeled" data.
+
+\par
+Unsupervised learning describes a model that is trained without labels.
+Meaning that the data does not have corresponding "ground-truth" values for predictions \cite{bishop2006pattern}.
+Training a model without "ground-truth" is used for grouping similar values together programatically.
+Ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
+
+\par
+Supervised learning describes a model that is trained with labels \cite{bishop2006pattern}.
+Training is guided or supervised by comparing results to labeled data.
+This method of training is effective at fitting accurate models, and is used in this project for predicting bathymetry.
+
+
+
 \subsection{Echo Sounders (\ac{MBES})(\ac{SBES}) }
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for the ship to avoid running aground.
