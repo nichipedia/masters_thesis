@@ -5,47 +5,127 @@
 Bathymetry is the measure of depth in a body of water.
 The forefront in global bathymetry mappings are aggregations of predicted and measured sources. 
 These \ac{EGM}s are the standard for measuring global bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
-While sonar platforms such as the Multi Beam Echo Sonar (MBES) \cite{farr1980multibeam} are the most accurate measurements of seafloor depth.
-It is not cost and time effective to collect large swaths of \ac{MBES} bathymetry measurements.
-\ac{EGM}s use satellite altimeter data to create gravitational models for predicting bathymetry at a fraction of the cost and time.
-In general, these models predict bathymetry with a error of 190 meters \cite{jena2012prediction}.
+They predict bathymetry by modeling the relationship between the vertical gravity gradient of a geoid and the depth of a water column.
+This relationship is modeled by measuring the altimetry of the sea surface to a constalation of satellites.
+Measuring the altimetry can lead to identifying swells which are caused by gravity gradients origination from geoids.
+Modeling the resulting bathymetry as a function of the approximated gravity is excellent at coarse resolutions, but at finer resolutions the error of predictions becomes an issue.
+Modern \ac{EGM} predictions have a error of approx. 180 meters.
+On the other hand, sonar platforms such as the \ac{MBES} \cite{farr1980multibeam} provide extremely accurate measurements of depth. 
+They operate using the simple physics of sound traveling through the medium of water.
+The time a sonar ping takes to a sensor anchored under a vessel will provide the distance it traveled.
+Survey and many commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor \cite{becker2009global}.
+This is because \ac{MBES} only measure a limited swath of ocean, and often vessels need to sail slower for high resolution mappings.
+Leading to the issue that global coverage using \ac{MBES} is time and cost prohibitive.
+\ac{SDB} is a method that measures the attenuation of light in a water column which correlates to the bathymetry.
+This method has a average error of 2 meters, but is only effective in shallow water.
+Leaving it unable to measure the vast majority of the worlds deep oceans.
+The lack of accurate techniques for measuring bathymetry globaly creates a need for innovative prediction methods.
+A team of researchers in India \cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
+They found performance increases of 20 meters, but their effort was used to optimize existing models.
+\ac{ML} models can be effective at identifying decision boundaries and relationships that are difficult to identify in human created models.
+Specifically, using \ac{ML} to create models from ocean features to predict bathymetry provides a possible solution to accuratly predicting global bathymetry.
 
 \par
-There has been much work using satellite altimeter derived gravity to predict bathymetry.
-However, this work focuses on demonstrating the potential applications of \ac{ML} for predicting bathymetry.
-The goal is to identify new potential approaches to predicting bathymetry.
-I contribute to this domain by experimenting with regression and classification models fit to ocean feature data.
-These experiments leading to a novel prototype model and a set of future experiments for predicting bathymetry.
-
-
-
-
-Sea floor topography is critically important for Earth's natural processes and mankind.
-It influences ocean circulation, helps moderate Earth's climate, and effects the biological diversity of the sea \cite{kunze2004role}.
-Accurate mapping of sea floor topography is also of great interest to national defense \cite{goodman1982defence}.
-With applications in \ac{ASW}, \ac{MIW}, and the general Naval Fleet, along with being important to the shipping and commercial maritime industries.
-
-\par
-Despite the importance of sea floor topography to all, mankind has produced much better maps of other planets, moons, and asteroids than Earth's sea floor \cite{becker2009global}.
-Earth's oceans are vast and deep which makes accurate bathymetry measurement techniques like \ac{SDB} impossible for the majority of the ocean.
-Unknown sediment composition and other environmental features limit the global accuracy of gravitational regression models to \~{}200 meters.
-As of 2009, it is estimated that \~{}90 percent of Earth's oceans remains inaccurately mapped at a high resolution \cite{becker2009global}.
-
-\par
-Therefore, improving existing bathymetry prediction techniques is of great interest to many domains.
-Coastal predictions can be performed at very high accuracies, but are unable predict depths greater than ~50 meters.
-Previous works as described in the Literature Review chapter have improved existing physics models using aggregation, optimization, and \ac{ML}.
-Each work is based upon improving the existing physics model.
-These models have not been historically accurate enough to predict bathymetry at a fine resolution.
+\ac{ML} is the use of trained models to predict a value.
+These predicted values can be continous numbers known as regression or discrete labels known as classification.
+Multi class classification is used for predicting many different class labels.
+For example, if a model trains to predict bathymetry, then a collection of ocean features and their related bathymetry is the test data.
+The bathymetry can be placed into classes that represent a range of depth.
+For example, a class could represent depth values from -2000 to -1850.
+This "binning" of bathymetry allows it to be used in a classification model.
+During training, some of the features will exemplify a particular range of bathymetry.
+That range will be given a correponding label and the process will repeat for the rest of the training data.
+Training the model to correctly identify depth ranges will require features that relate to them.
+Identifying these features is known as feature selection.
+Feature selection can be used to optimize the data that is used during training.
+Some data will be noise and unnessassary for the final prediction.
+Using feature selection to remove unnessassary training data will improve the final prediction.
+In this project, a genetic algorithm is used to select optimal features \cite{yang1998feature}.
+The genetic algorithm approach for feature selection will select optimum features in a reasonable time frame.
+After selecting the features the resulting model can be evaluated for performance and validated against known labels.
+The more predicted labels that compare accuractly to known data the higher the accuracy of the model.
+Models where predictions do not match known data will have poor accuracy.
+The known data used in this project is bathymetry from existing \ac{EGM}s.
+This data is inheriently predicted and validated to the best of human knowledge.
+Each predicted point has a estimated error of 180 meters \cite{becker2009global}, therefore, it is only sufficent for creating theorectical models.
 
 \par
-In this work, I contribute to this domain by experimenting with fitting \ac{ML} models for predicting global bathymetry.
-My experimentation uses a set of ocean features for training.
-These experiments are performed to identify new approachs for predicting bathymetry that contrast to the current physics based models.
-Initially,  my work focused on fitting a regression model for predictions.
-However, poor results and analysis indicated other approaches to be worth attempting.
-This lead to a conversion to a classification problem.
-Analysis of the classification results indicated that model decision surfaces differed across geophysical locations, environmental factors, and depth.
-These results were tested with a experiment to test model success across different areas of the Earth.
-Using these results, I constructed a novel classifier by injecting the most accurate model before prediction.
-The \textit{Grid Optimized Model Injector Classifier} increases the accuracy of the resulting model and suggests that localized selections can be made to achieve accurate predictions.
+Predicting bathymetry is a complicated problem that involves many unknowns.
+There are potential models and approaches that have not been explored because of this unfamiliarity.
+The vast nature of the Earths oceans contribute to these unknowns.
+Humanity has realativly little information about the ocean.
+Requiring that if there is to be data it must need to be interpolated or predicted in some way.
+This is true of many ocean features.
+Naturally, it is impossible to precicly measure all of the elements in the ocean.
+For example, oxygen levels, silicate levels, sediment thickness, sediment type, etc all must be predicted or interpolated.
+On the other hand, it is trivial to globally measure sea surface to satellite altimetry.
+These measurements are accuracte which is why \ac{EGM}s use gravity as the main feature.
+However, using estimated features to predict estimated bathymetry could identify new approaches and models for building real models.
+
+\par
+This thesis is concerned with experimenting with machine learning for predicting global bathymetry.
+The goal of which to glean new approaches or identify interesting behavior.
+Regression and classification appraoches are compared for effectiveness.
+Models used in this project are all from Python's ScikitLearn library and include: Linear Regression Models, Decision Trees and related ensembles, Voting ensembles, K Nearest Neighbors classifier, neural networks, and bagging models.
+A genetic algorithm was introduced for initial feature selection.
+A modified grid search was used to identify trends in model performance.
+
+\par
+Scikit Learn is an open source library developed by the Python community \cite{scikit-learn}.
+It exposes a intuitive framework for creating \ac{ML} models.
+It also provides frameworks for key components of the \ac{ML} pipeline such as feature selection and model selection.
+This framework is implemented for many existing models.
+New models and components can be implemented that will likewise interface with other peices of the library.
+For example, a genetic algorithm for feature selection was implemented in this project using the sklearn \ac{API}.
+This component was then able to be used seamlessly with all existing models and other sklearn components.
+
+\par
+Grid search is a algorithm for feature selection that exhaustivly compares a set of options for the best performing item.
+The world was split into grids and the set of options were classification models.
+The model that performed best in that grid was selected for predicting in that area.
+This selection is important for identifying optimal models.
+
+
+\par
+Using classification for bathymetry is not a instinctive idea.
+Bathymetry is a continuos value that at the surface trends toward regression models.
+In reality, the ranged nature of bathymetry makes classification trivial for bathymetry.
+There is a consistent known minimum and maximum for bathymetry.
+For example, the maximum for bathymetry is 0 and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
+This range allows for simple labels to be placed on a number of ranges.
+These number of ranges is arbitrary and can be adjusted to test error.
+The principal is that selecting a range will infer the maximum error for the prediction.
+For example, a range of 150 meters infers a error of 150 meters for a point predicted in a class.
+
+
+
+
+% Sea floor topography is critically important for Earth's natural processes and mankind.
+% It influences ocean circulation, helps moderate Earth's climate, and effects the biological diversity of the sea \cite{kunze2004role}.
+% Accurate mapping of sea floor topography is also of great interest to national defense \cite{goodman1982defence}.
+% With applications in \ac{ASW}, \ac{MIW}, and the general Naval Fleet, along with being important to the shipping and commercial maritime industries.
+
+% \par
+% Despite the importance of sea floor topography to all, mankind has produced much better maps of other planets, moons, and asteroids than Earth's sea floor \cite{becker2009global}.
+% Earth's oceans are vast and deep which makes accurate bathymetry measurement techniques like \ac{SDB} impossible for the majority of the ocean.
+% Unknown sediment composition and other environmental features limit the global accuracy of gravitational regression models to \~{}200 meters.
+% As of 2009, it is estimated that \~{}90 percent of Earth's oceans remains inaccurately mapped at a high resolution \cite{becker2009global}.
+
+% \par
+% Therefore, improving existing bathymetry prediction techniques is of great interest to many domains.
+% Coastal predictions can be performed at very high accuracies, but are unable predict depths greater than ~50 meters.
+% Previous works as described in the Literature Review chapter have improved existing physics models using aggregation, optimization, and \ac{ML}.
+% Each work is based upon improving the existing physics model.
+% These models have not been historically accurate enough to predict bathymetry at a fine resolution.
+
+% \par
+% In this work, I contribute to this domain by experimenting with fitting \ac{ML} models for predicting global bathymetry.
+% My experimentation uses a set of ocean features for training.
+% These experiments are performed to identify new approachs for predicting bathymetry that contrast to the current physics based models.
+% Initially,  my work focused on fitting a regression model for predictions.
+% However, poor results and analysis indicated other approaches to be worth attempting.
+% This lead to a conversion to a classification problem.
+% Analysis of the classification results indicated that model decision surfaces differed across geophysical locations, environmental factors, and depth.
+% These results were tested with a experiment to test model success across different areas of the Earth.
+% Using these results, I constructed a novel classifier by injecting the most accurate model before prediction.
+% The \textit{Grid Optimized Model Injector Classifier} increases the accuracy of the resulting model and suggests that localized selections can be made to achieve accurate predictions.

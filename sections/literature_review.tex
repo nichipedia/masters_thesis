@@ -23,7 +23,11 @@ Classification models are models that predict a discrete value.
 For example, the car model mentioned earlier.
 The model predicts a discrete value of either positive or negative.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
-Examples of classification models used in this project include: Artifical Neural Networks, Decision Trees, 
+Classification models can also be combined to form ensemble models.
+A ensemble is a combination of "weaker" predictors to form a strong predictor.
+%Include citations BELOW!!!!!
+Examples of classification models used in this project include: Decision Trees, Naive Bayes, MLP Classifier, Quadratic Discriminant Analysis Classifier, and K Nearest Neighbors Classifier.
+Examples of ensemble classifieres used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
 
 \par
 Regression models predict a continous value.
@@ -42,7 +46,130 @@ Ideal for identifying correlations in data that is otherwise unrelated and unlab
 Supervised learning describes a model that is trained with labels \cite{bishop2006pattern}.
 Training is guided or supervised by comparing results to labeled data.
 This method of training is effective at fitting accurate models, and is used in this project for predicting bathymetry.
+All models trained in this project use supervised learning.
+Each model used will be discussed in subsequent sections.
 
+\subsubsection{Bias and Variance}
+%Describe the Bias and Variance relationship!
+The generalized error of a model can be expressed in terms of bias and variance.
+Bias is the average error of a model for different training sets.
+Variance describes the sensitivity of the model to data.
+These two terms are nessassary to understand the bias-variance problem.
+This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
+The relationship being the minimization of bias often causing high variance, and minimizing variance often causing high bias.
+Optimally, accuracte models should have a low bias and variance.
+
+%Include image showing bias and variance here!!
+\begin{figure}[]
+    \centering
+    \includegraphics{sphx_glr_plot_underfitting_overfitting_001.png}
+    \caption{}
+    \label{}
+\end{figure}
+
+\subsubsection{Decision Trees}
+%Talk about decision trees here
+Decision trees are supervised models that are used for classification or regression \cite{breiman2017classification}.
+They are simple to understand and interpret due to their simple decision structure. 
+They are suseptable to over fiiting and can create overly complex trees that do not generalize well.
+Over fitting is where a model will fit to closely to a training set \cite{cawley2010over}. 
+Making it unable to make accurate predictions on data outside of what was used in training.
+
+\begin{figure}[]
+    \centering
+    \includegraphics{dtreesepal.png}
+    \caption{}
+    \label{}
+\end{figure}
+
+%Talk about random forest here
+\par
+The Random Forest Classifier is a ensemble of many decision trees \cite{breiman2001random}.
+It fits a number of decision trees on various sub samples of the dataset.
+This also helps to control over fitting because each tree is fit to a sub sample of the dataset.
+It averages the prediction of each tree to make a more accurate prediction than any single tree.
+
+
+\subsubsection{Boosting}
+%Talk about Ada Boost here
+Boosting describes a type of ensemble that is concerned with reducing bias.
+The idea being to build base estimators sequentially and then use the results of each to train a different estimator with the intention of reducing bias.
+Adaboost is an example of one such model \cite{freund1995desicion}.
+Its core principle being the fitting of weak learners on many random samples of the training data.
+This learners are then combined with a majority weighted vote. 
+This process is iterated for the training phase.
+
+
+
+%Talk about Gradient Boosting Here
+%Need to finish this paragraph....
+\par
+The gradient boosting classifier is an ensemble of trees similar to a random forest classifier.
+In gradient boosting, decision trees are used as "weak" learners.
+They are gradually added to the model in order to reduce the error.
+This "gradient decent" approach is effective at building a successful classifier.
+These types of boosting algorithms tend to overfit the model.
+This can be solved by enforcing tree constraints and random sampling of data.
+
+
+\subsubsection{Averaging}
+Averaging ensembles operate by aggregating the predictions of many models trained on random sub sets of the training data.
+Introducing randomization into the training will often reduce the variance of the resulting ensemble.
+Bagging is a example of a averaging ensemble and has several implementations.
+The Bagging ensemble uses a single classifier and fits instances of it to random samples of the training data.
+The predictions are then aggregated and averaged for a final prediction.
+
+%Talk about voting here
+The voting classifier works by using the predictions of a set of conceptually different predictors as votes.
+The majority vote (hard voting) or averaged vote (soft voting) is selected as the prediction.
+This classifier is good for combining equally performing models in order to balance out individual weaknesses.
+
+\subsubsection{K Nearest Neighbors}
+%Talk about KNN for classification
+The K Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
+K Nearest Neighbors for classification stores the instances of the training data and associated labels.
+Predictions are made by computing the distance of new instances to the training set.
+
+\subsubsection{Multi Layer Perceptron}
+%Talk about MLP Classifier here!!!
+% Include MLP picture here I guess
+The Multi Layer Perceptron is a model that fits a function iterativly through a process called back propogation.
+The MLP classifier is a neural network model that is based on the structure of the human brain.
+It consists of many layers beginning with an input layer.
+The middle layers are called the "hidden layers" and are each assigned a weight.
+Back propogation is used during training to adjust the weights in the hidden layers.
+These adjustments are made to in order to reach a more accurate prediction.
+There can be many hidden layers of differnt depths.
+% Probably need to say more about the MLP Classifier...
+% Maybe some graphics and other bull jive. Maybe a algorithm???
+
+\begin{figure}[]
+    \centering
+    \includegraphics{multilayerperceptron_network.png}
+    \caption{}
+    \label{}
+\end{figure}
+
+
+\subsubsection{Naive Bayes}
+%Talk about Naive Bayes classifier here!!
+The naive bayes classifier is based on applying the naive bayes theroem \cite{zhang2004optimality}.
+The naive assumption of Naive Bayes is the conditional independence between pairs of features given the label.
+Bayes theorem states the following relationship given class y and feature vector x.
+
+% Put bayes theorem right here!!! Math mode I guess...
+
+
+\subsubsection{Regression Models}
+%Talk about Regression models used here...
+Regression models are utilized for predicting continous values.
+Specifically, regession is for approximating a function given a set of inputs to yield a output.
+Linear regression is the simplest type and is concerned with fitting a linear combination of all training features.
+
+% Put linear regression equation right here for the world to see YO
+
+This project utilizes three regression models from sci kit.
+The naive bayes\cite{sklearn_api}, logitic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utlized for regression.
 
 
 \subsection{Echo Sounders (\ac{MBES})(\ac{SBES}) }
