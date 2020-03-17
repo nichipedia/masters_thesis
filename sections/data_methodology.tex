@@ -1,14 +1,74 @@
 \section{Data Methodology}
 \setlength{\parindent}{10ex}
-The following chapter describes the data used in this project and how it was used to train models.
-Data ussed in this project encompasses extracted features from reputable ocean studies and bathymetry extracted from predicted \ac{EGM} datasets.
+The following chapter describes the data used in this project and how it was used for training.
+Bathymetry data was extracted from the \ac{ETOPO}2v2 and used as truth value to train against a set of ocean features.
+These ocean features were selected from a large set of aggregated features.
+The selection was driven by a genetic algorithm that was used for speed as ooposed to accuracy.
+The trained models are then used to make predictions for the spatial resolution that was used in training.
 
+\subsection{Bathymetry Data}
+Data derived from predicted \ac{EGM} datasets represents the actual value of bathymetry at that point.
+For example, predicted bathymetry datasets will have a coverage.
+These coverages vary in size by the resolution of the imagery.
+A higher resolution imagery will have smaller coverages, and lower resolution will have larger coverages.
+The predicted values used in this project represent a average of bathymetry across a coverage. 
+These predicted datasets are used as the truth values for training, but it is important to note that they are, themselves, predicted values.
+Using this data is not intended to build accurate predictors, but to show that a accurate predictor can be built.
 
+\par
+The \ac{ETOPO} dataset is used in this project for bathymetry data.
+This dataset is a aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from a \ac{EGM}.
+It is an updated version of the original ETOPO2 dataset and was chosen because of the two minute resolution it offers.
+\ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
-All feature data used in this work was aggregated from existing studies.
+\par
+Land topography is included in the \ac{ETOPO} dataset.
+This proved to be problematic in making ocean predictions.
+Therefore, a mask was created to remove the land topography in all training datasets.
+This is applied to the data before training to ensure that land data is not used in training.
+
+%There is a better was to describe why the features were binned like this
+%I want to describe the value that was added by binning my data into classes!
+\par
+Classification requires discrete class labels to predict.
+To accomodate this requirement the \ac{ETOPO} dataset was binned into discrete classes.
+This binning was performed on 150 meter intervals.
+This partitioning scheme was chosen to compare to the results from a similar work \cite{jena2012prediction}.
+
+\subsection{Training Data}
+All feature data was aggregated from ocean and earth studies then normalized and formatted for this project.
+This aggregation was performed to gather a large set of testing samples regardless of whether the data is relevant.
+For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as a useful feature.
+This approach is fundamentally differnt to building a physics model.
+For example, the mass of a geoid causes a vertical gravity gradient which create ocean swells that can be measured by satellite altimetry.
+Larger geoids will naturally effect the bathymetry of the sea floor.
+This relationship is obvious and correlated in a measurable way.
+On the other hand, machine learning can potentially identify relations in the data that otherwise will be difficult for a human to identify and model.
+
 All features and their origin datasets can be seen in the table \ref{table:FEATURE_LIST}. %Insert point to figure yadaydada
-The ETOPO dataset was used for bathymetry values.
-This dataset contains predicted bathymetry with sparsely populated \ac{MBES} soundings.
+Absent data points were either interpolated, or filled with default values.
+See table \ref{table:FEATURE_LIST} for a complete list of all features.
+
+\par
+Figure \ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
+It can be conjectured that this relationship is more corelation that causality.
+For example, biomass increases are not caused by shallow depths.
+The shallow depth has more available light which allows for vegatation and energy supplies for more species.
+This could explain the relationship shown in figure \ref{fig:bathyxfish}
+
+\par
+Figure \ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
+This relationship may be more of a causality relationship than correlation.
+Denser crust is caused by many different factors that are seperate from bathymetry.
+It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
+
+\par
+In general, the features used in this project were a grab bag of potential predictors.
+Features such as estimated oxygen, nitrogen, salinity, etc make sense for being related to bathymetry.
+Where other features such as crust density may not naturally be explained.
+The feature selection was used to identify the best preforming features.
+Future study in the relationship of these features and how they benefit predicting bathymetry will be nessassary.
+
 
 %This section is for defining the data being used in the experiment
 %It should define where the data came from and its format
@@ -79,15 +139,15 @@ Identifying locally optimum features could lead to better models.
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
-Global data is typically represented in a grid formatted where each grid represents a coverage of the Earth's surface.
-This representation is an average of the data across the coverage of that cell, but is not guaranteed.
-The data used in this work has been organized into a grid for ease of use and human readability.
-Each grid represents a cell centered data point and they are organized into a EPSG:3857 \ac{CRS}.
+It is standard to represent data on a globe in a grid formatted where each grid represents a area of that globe.
+For this project the Earth is such a globe and a map is a excellent example of how lattitude and longitude lines for a grid pattern.
+The data in the grid is a representation of the average value across an area.
+This grid representation allows for ease of reading both by computers and humans.
 
 \par
 The spatial resolution of a grid defines its coverage.
-This spatial resolution can be described as the height and width of a grid.
-This height and width is not physically constant.
+It can be described as the height and width of a grid.
+This height and width is not spatially constant.
 For example, a cell at the equator is larger and covers more physical area than a cell at the poles.
 However, this is the best way to represent the data in a consistent and structured manner.
 
@@ -95,40 +155,11 @@ However, this is the best way to represent the data in a consistent and structur
 All data in this project has been organized into two minute bathymetry grids.
 A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell, which is approximately 3 kilometers of spatial coverage.
 The grids have a column length of 5400 and a row width of 10800.
-
-\par
 This resolution was chosen for experiments to conserve memory and time.
 Larger grids have a exponentially larger memory and computational footprint.
 I used the \ac{ETOPO}2v2 \cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
 Finer resolution datasets exist, such as the SRMT30 \cite{becker2009global} at 30 second resolution.
 In any event, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
-
-\subsection{Ocean Features}
-Similar to bathymetry values, all extracted ocean features for this project were organized into a two minute bathymetry grid.
-They were aggregated from several projects.
-Absent data points were either interpolated, or filled with default values.
-See table \ref{table:FEATURE_LIST} for a complete list of all features.
-
-\par
-Figure \ref{fig:bathyxfish} shows the relationship between estimated fish biomass and bathymetry.
-It can be conjectured that this relationship is more corelation that causality.
-For example, biomass increases are not caused by shallow depths.
-The shallow depth has more available light which allows for vegatation and energy supplies for more species.
-This could explain the relationship show in the graph in figure \ref{fig:bathyxfish}
-
-
-\par
-Figure \ref{fig:bathyxdensity} shows an example of a inverse relationship to bathymetry.
-This relationship may be more of a causality relationship than correlation.
-Denser crust is caused by many different factors that are seperate from bathymetry.
-It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
-
-\par
-In general, the features used in this project were a grab bag of potential predictors.
-Features such as estimated oxygen, nitrogen, salinity, etc make sense for being related to bathymetry.
-Where other features such as crust density may not naturally be explained.
-The feature selection was used to identify the best preforming features.
-Future study in the relationship of these features and how they benefit predicting bathymetry will be nessassary.
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
 %The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
@@ -157,6 +188,8 @@ Future study in the relationship of these features and how they benefit predicti
     \label{fig:bathyxdensity}
 \end{figure}
 
+
+
 %\begin{figure}[h]
 %    \centering
 %    \includegraphics[scale=0.5]{pairplot.png}
@@ -168,23 +201,3 @@ Future study in the relationship of these features and how they benefit predicti
 %Maybe talk about the PCC???
 %Possibly need to talk about the breadth of features here....
 
-\subsection{Bathymetry Values}
-ETOPO2v2 is used for the bathymetry soundings \cite{national20062}.
-This extension of the ETOPO2 dataset \cite{national1988etopo} is a more accurate and updated version of the ETOPO2 dataset.
-Specifically, this version eliminates a westward bias present in the original version.
-The two minute \ac{ETOPO} dataset was used to match the chosen resolution for this work.
-\ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
-
-\par
-Land topography is included in the \ac{ETOPO} dataset.
-This proved to be problematic in making ocean predictions.
-Therefore, a mask was created to remove the land topography in all training datasets.
-This is applied to the data before training to ensure that land data is not used in training.
-
-%There is a better was to describe why the features were binned like this
-%I want to describe the value that was added by binning my data into classes!
-\par
-The classification performed in this work used binned bathymetry from \ac{ETOPO}.
-These classes were partitioned on a interval of 150 meters.
-This partitioning scheme was chosen to compare to the results from a similar project \cite{jena2012prediction}.
-The binning is performed to test the viability of converting bathymetry prediction into a classification problem.

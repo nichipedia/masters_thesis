@@ -9,3 +9,6 @@
 *.gz
 *.fdb_latexmk
 *.pdf
+*.iml
+.idea
+.vscode
