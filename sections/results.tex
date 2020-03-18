@@ -143,25 +143,23 @@ The performance of a set of models for each coverage was recorded.
 The best performing model in that coverage was then exported and saved to a map of best fit models to a geospatial bounding box.
 The results of this experiment are displayed in figure \ref{fig:coveragegrid}.
 
+\par
+Figure \ref{fig:coveragegrid} shows several interesting things.
+Figure \ref{fig:pie_best_fit} shows the percentage that each model was a best fit.
+The random forest classifier was the best fit model for a large portion of the oceans.
+On the other hand, the Bagging classifier consistently performed well along the coast lines.
+The reasons for why these classifiers may have performed so well in those areas will be touched upon in the discussions section.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{grid_opt_results.png}
-    \caption{Bar chart showing Grid Optimized Model results}
-    \label{fig:grid_opt_barplot}
+    \includegraphics{best_fit_percentage.png}
+    \caption{Pie plot showing the percentage of coverages where a model was "best fit"}
+    \label{fig:pie_best_fit}
 \end{figure}
-
-\par
-Clearly, figure \ref{fig:coveragegrid} provides evidence that model decision boundaries are sensitive to the features based on location.
-Leading to the conclusion that there is not a single best fit model for predicting global bathymetry.
-Analysis of figure \ref{fig:coveragegrid} shows interesting consistencies that raise questions about the underlying features.
-For example, the decision tree classifier preformed poorly as configured in the classification section when used for global predictions.
-When predicting near fault lines it preformed the best out of other models.
-Bagging seemed to dominate on coast lines while \ac{RFC} performed best in open waters.
 
 %In this section I am defining what the Grid optimization is and why it matters.
 %There may be a better name for this?? Who knows really...
-\subsubsection{Grid Optimizing}
-The results of the experiment were then used for model selection.
+\subsubsection{Grid Optimizing Results}
 Using the successful model for each coverage as a \textit{optimum} selection.
 A trivial geospatial query is used to query the best model by location.
 This selection is implemented in a novel model I call the \textit{Grid Optimized Model Injector Classifier}.
@@ -173,4 +171,11 @@ In theory, this injection will allow each model to perform to its optimum.
 Each coverage highlights distinct characteristics that will produce a better decision boundary.
 These coverages are simple partitions of the world, but could be extended in future work to optimize the selection.
 % Reconsider this sentence....
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{grid_opt_results.png}
+    \caption{Bar chart showing Grid Optimized Model results}
+    \label{fig:grid_opt_barplot}
+\end{figure}
 
