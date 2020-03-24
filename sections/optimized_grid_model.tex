@@ -5,8 +5,8 @@
 %I need to consider rewording this and restructuring to manage the correctness for example etc.
 Further analysis of figure \ref{fig:rfc_report} shows that models are sensitive to potentially local characteristics.
 In an attempt to test this notion and increase the accuracy of these models a novel model selection method was employed.
-The objective being to identify if a model will predict more accuractly based on geospatial location.
-The hypothysis being that decision boundaries across different models will respond to features based on location.
+The objective being to identify if a model will predict more accurately based on geospatial location.
+The hypothesis being that decision boundaries across different models will respond to features based on location.
 
 The Grid Optimized Model Injector Classifier was created to test this theory.
 This model is built upon the idea that there is not a optimal single model for predicting all of the worlds bathymetry.
@@ -15,9 +15,9 @@ This allows the model to use the optimal model for predicting bathymetry.
 
 %Give the background for the idea in this section!
 \subsection{Analysis of Global Model Optimization}
-Testing this hypothysis was performed by splitting the world into coverages.
+Testing this hypothesis was performed by splitting the world into coverages.
 Each coverage represented a exclusive area of the Earth's ocean.
-A set of models were trained on each coverage and their prediction accuracies were compared.
+A set of models were trained on each coverage and their prediction accuracy's were compared.
 The most accurate model was then saved for each coverage and stored in a map.
 The results of this script are displayed in figure \ref{fig:coveragegrid}.
 
@@ -90,11 +90,11 @@ It is possible that the characteristics related to being in proximity to a fault
 
 \par
 In any event, there is evidence to support geophysical location drives the factors that help predict bathymetry.
-Things to optimize may include investigating the appropriate feature sets, coverage boundaries, depth boundaires, parameters, and metrics based on geophysical location.
+Things to optimize may include investigating the appropriate feature sets, coverage boundaries, depth boundaries, parameters, and metrics based on geophysical location.
 For example, volcanic activity creates new land.
-This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipotle point.
+This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipodal point.
 Another example being that the coverage boundaries are potentially a naive selection choice.
-It is possible that chossing models by preformance across depth boundaries proves to be a better selector.
+It is possible that choosing models by performance across depth boundaries proves to be a better selector.
 %Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
 
 %Maybe here I can have a table show casing the preformance of models or possibly statistics about the coverages??

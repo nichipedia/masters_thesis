@@ -1,9 +1,9 @@
 \section{Literature Review}
 \setlength{\parindent}{10ex}
-In this review I cover the different approaches for predicting bathymetry.
+In this review different approaches for predicting bathymetry are discussed.
 The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of a \ac{EGM}.
-I also discuss echo sounders for precise measurements of bathymetry \cite{farr1980multibeam}.
+\ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
 
 \subsection{Machine Learning}
 Machine Learning can be defined as the process of fitting a model to data with a algorithm \cite{bishop2006pattern}.
@@ -27,11 +27,11 @@ Classification models can also be combined to form ensemble models.
 A ensemble is a combination of "weaker" predictors to form a strong predictor.
 %Include citations BELOW!!!!!
 Examples of classification models used in this project include: Decision Trees, Naive Bayes, MLP Classifier, Quadratic Discriminant Analysis Classifier, and K Nearest Neighbors Classifier.
-Examples of ensemble classifieres used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
+Examples of ensemble classifiers used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
 
 \par
-Regression models predict a continous value.
-For example, predicting water depth as a number is a continous value.
+Regression models predict a continuous value.
+For example, predicting water depth as a number is a continuous value.
 Where the range of predicted values is from sea level to the known depth of the ocean.
 Essentially, this model represents a mathematical function where the input data is the function parameters.
 This method is best when the desired result can not be grouped into discrete "labeled" data.
@@ -39,7 +39,7 @@ This method is best when the desired result can not be grouped into discrete "la
 \par
 Unsupervised learning describes a model that is trained without labels.
 Meaning that the data does not have corresponding "ground-truth" values for predictions \cite{bishop2006pattern}.
-Training a model without "ground-truth" is used for grouping similar values together programatically.
+Training a model without "ground-truth" is used for grouping similar values together pragmatically.
 Ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
 
 \par
@@ -54,10 +54,10 @@ Each model used will be discussed in subsequent sections.
 The generalized error of a model can be expressed in terms of bias and variance.
 Bias is the average error of a model for different training sets.
 Variance describes the sensitivity of the model to data.
-These two terms are nessassary to understand the bias-variance problem.
+These two terms are necessary to understand the bias-variance problem.
 This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
 The relationship being the minimization of bias often causing high variance, and minimizing variance often causing high bias.
-Optimally, accuracte models should have a low bias and variance.
+Optimally, accurate models should have a low bias and variance.
 
 %Include image showing bias and variance here!!
 \begin{figure}[h]
@@ -71,7 +71,7 @@ Optimally, accuracte models should have a low bias and variance.
 %Talk about decision trees here
 Decision trees are supervised models that are used for classification or regression \cite{breiman2017classification}.
 They are simple to understand and interpret due to their simple decision structure. 
-They are suseptable to over fiiting and can create overly complex trees that do not generalize well.
+They are susceptible to over fitting and can create overly complex trees that do not generalize well.
 Over fitting is where a model will fit to closely to a training set \cite{cawley2010over}. 
 Making it unable to make accurate predictions on data outside of what was used in training.
 
@@ -108,7 +108,7 @@ The gradient boosting classifier is an ensemble of trees similar to a random for
 In gradient boosting, decision trees are used as "weak" learners.
 They are gradually added to the model in order to reduce the error.
 This "gradient decent" approach is effective at building a successful classifier.
-These types of boosting algorithms tend to overfit the model.
+These types of boosting algorithms tend to overfed the model.
 This can be solved by enforcing tree constraints and random sampling of data.
 
 
@@ -130,16 +130,16 @@ The K Nearest Neighbors algorithm is a non-parametric algorithm for classificati
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
 
-\subsubsection{Multi Layer Perceptron}
+\subsubsection{Multi Layer Perception}
 %Talk about MLP Classifier here!!!
 % Include MLP picture here I guess
-The Multi Layer Perceptron is a model that fits a function iterativly through a process called back propogation.
+The Multi Layer Perceptron is a model that fits a function iterative through a process called back propagation.
 The MLP classifier is a neural network model that is based on the structure of the human brain.
 It consists of many layers beginning with an input layer.
 The middle layers are called the "hidden layers" and are each assigned a weight.
-Back propogation is used during training to adjust the weights in the hidden layers.
+Back propagation is used during training to adjust the weights in the hidden layers.
 These adjustments are made to in order to reach a more accurate prediction.
-There can be many hidden layers of differnt depths.
+There can be many hidden layers of different depths.
 % Probably need to say more about the MLP Classifier...
 % Maybe some graphics and other bull jive. Maybe a algorithm???
 
@@ -155,7 +155,7 @@ There can be many hidden layers of differnt depths.
 
 \subsubsection{Naive Bayes}
 %Talk about Naive Bayes classifier here!!
-The naive bayes classifier is based on applying the naive bayes theroem \cite{zhang2004optimality}.
+The naive Bayes classifier is based on applying the naive Bayes theorem \cite{zhang2004optimality}.
 The naive assumption of Naive Bayes is the conditional independence between pairs of features given the label.
 Bayes theorem states the following relationship given class y and feature vector x.
 
@@ -164,18 +164,18 @@ Bayes theorem states the following relationship given class y and feature vector
 
 \subsubsection{Regression Models}
 %Talk about Regression models used here...
-Regression models are utilized for predicting continous values.
-Specifically, regession is for approximating a function given a set of inputs to yield a output.
+Regression models are utilized for predicting continuous values.
+Specifically, regression is for approximating a function given a set of inputs to yield a output.
 Linear regression is the simplest type and is concerned with fitting a linear combination of all training features.
 
 % Put linear regression equation right here for the world to see YO
 
 This project utilizes three regression models from sci kit.
-The naive bayes\cite{sklearn_api}, logitic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utlized for regression.
+The naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
 
-\subsection{Echo Sounders (\ac{MBES})(\ac{SBES}) }
+\subsection{Echo Sounders (\ac{MBES})(\ac{SB'S}) }
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for the ship to avoid running aground.
 However, survey vessels have utilized \ac{MBES} systems to reliably create bathymetry charts \cite{farr1980multibeam}.
@@ -199,6 +199,13 @@ For example, the marsh lands of Louisiana where water depth is only deep enough 
 This method also has use in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
 These changes can be caused by sediments or man made objects. 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{CBYK292WkAAIkzH.jpg}
+    \caption{Graphic demonstrating Satellite Derived Bathymetry}
+    \label{fig:sdb}
+\end{figure}
+
 \par
 The limitations of the \ac{SDB} method are based on water depth and clarity.
 As depth increases light is unable to pass through the water column to the bottom.
@@ -221,13 +228,13 @@ Areas with large seamounts found the correlation to be strongest, while areas of
 They named this technique the "Inverse Nettleton Procedure" and used a simple linear regression model to exploit this correlation and improve existing aggregated datasets.
 
 \begin{equation}
-    b(x) = D(x) + s(x)g(x)
+    b(x) = D(x) + s(x)g(x) \label{eq:egm}
 \end{equation}
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based Multi Beam Echo Sounding sonar data.
 The sonar data is sparse, but provides accurate readings of the ocean's bathymetry.
-This aggregation yielded global coverage up to 81 degrees.
+This aggregation yielded global coverage up to 81 degrees latitude.
 The aggregation yielded prediction accuracy within ~100 meters in coastal waters, and ~200 meters in the global ocean space.
 
 %Discuss the STRM Global Dataset here in detail....
@@ -244,7 +251,7 @@ The limitations of aggregated \ac{EGM}s is based on correlation uncertainty and 
 Sediment density drives the correlation between sea surface gravity and bathymetry.
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
-This is all controlled by the scaling factor described in \cite{smith1994bathymetric} and shown in equation 1. 
+This is all controlled by the scaling factor described in \cite{smith1994bathymetric} and shown in equation \ref{eq:egm}. 
 However, there is not a optimal scaling factor for the entire world.
 Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
 

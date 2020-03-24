@@ -3,7 +3,7 @@
 The following chapter describes the data used in this project and how it was used for training.
 Bathymetry data was extracted from the \ac{ETOPO}2v2 and used as truth value to train against a set of ocean features.
 These ocean features were selected from a large set of aggregated features.
-The selection was driven by a genetic algorithm that was used for speed as ooposed to accuracy.
+The selection was driven by a genetic algorithm that was used for speed as opposed to accuracy.
 The trained models are then used to make predictions for the spatial resolution that was used in training.
 
 \subsection{Bathymetry Data}
@@ -31,7 +31,7 @@ This is applied to the data before training to ensure that land data is not used
 %I want to describe the value that was added by binning my data into classes!
 \par
 Classification requires discrete class labels to predict.
-To accomodate this requirement the \ac{ETOPO} dataset was binned into discrete classes.
+To accommodate this requirement the \ac{ETOPO} dataset was binned into discrete classes.
 This binning was performed on 150 meter intervals.
 This partitioning scheme was chosen to compare to the results from a similar work \cite{jena2012prediction}.
 
@@ -39,7 +39,7 @@ This partitioning scheme was chosen to compare to the results from a similar wor
 All feature data was aggregated from ocean and earth studies then normalized and formatted for this project.
 This aggregation was performed to gather a large set of testing samples regardless of whether the data is relevant.
 For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as a useful feature.
-This approach is fundamentally differnt to building a physics model.
+This approach is fundamentally different to building a physics model.
 For example, the mass of a geoid causes a vertical gravity gradient which create ocean swells that can be measured by satellite altimetry.
 Larger geoids will naturally effect the bathymetry of the sea floor.
 This relationship is obvious and correlated in a measurable way.
@@ -51,15 +51,15 @@ See table \ref{table:FEATURE_LIST} for a complete list of all features.
 
 \par
 Figure \ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
-It can be conjectured that this relationship is more corelation that causality.
+It can be conjectured that this relationship is more correlation that causality.
 For example, biomass increases are not caused by shallow depths.
-The shallow depth has more available light which allows for vegatation and energy supplies for more species.
+The shallow depth has more available light which allows for vegetation and energy supplies for more species.
 This could explain the relationship shown in figure \ref{fig:bathyxfish}
 
 \par
 Figure \ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
 This relationship may be more of a causality relationship than correlation.
-Denser crust is caused by many different factors that are seperate from bathymetry.
+Denser crust is caused by many different factors that are separate from bathymetry.
 It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
 
 \par
@@ -67,7 +67,7 @@ In general, the features used in this project were a grab bag of potential predi
 Features such as estimated oxygen, nitrogen, salinity, etc make sense for being related to bathymetry.
 Where other features such as crust density may not naturally be explained.
 The feature selection was used to identify the best preforming features.
-Future study in the relationship of these features and how they benefit predicting bathymetry will be nessassary.
+Future study in the relationship of these features and how they benefit predicting bathymetry will be necessary.
 
 
 %This section is for defining the data being used in the experiment
@@ -132,7 +132,7 @@ Upon termination the resulting fittest string is used as the selected features.
 Feature selection was used to remove noise from the training data.
 This down sizing happened at a global scale.
 It is possible that this may affect localized predictions where a feature is a strong predictor.
-This was not tested in this work, but is a intersting question.
+This was not tested in this work, but is a interesting question.
 Identifying locally optimum features could lead to better models.
 
 
@@ -140,7 +140,7 @@ Identifying locally optimum features could lead to better models.
 %They are essentially binary files...
 \subsection{Data Representation}
 It is standard to represent data on a globe in a grid formatted where each grid represents a area of that globe.
-For this project the Earth is such a globe and a map is a excellent example of how lattitude and longitude lines for a grid pattern.
+For this project the Earth is such a globe and a map is a excellent example of how latitude and longitude lines for a grid pattern.
 The data in the grid is a representation of the average value across an area.
 This grid representation allows for ease of reading both by computers and humans.
 

@@ -1,41 +1,22 @@
 \subsection{Discussion}
 \setlength{\parindent}{10ex}
-This chapter delves into the intersting concepts and emergent ideas that stem from this work.
+This chapter delves into the interesting concepts and emergent ideas that stem from this work.
 It is divided into discussing the three core experiments performed in this work.
 Specifically, discussing concepts from the regression, classification, and novel grid optimization experiments.
 
 \subsubsection{Regression Discussion}
 \cite{jena2012prediction} achieved a \ac{RMSE} of \~{}175m in their optimized model.
-The linear regression model I fit is 100 meters less accurate than the optimized model used in \cite{jena2012prediction}.
-However, the purpose of the test is not to achieve accurate predictions, but to identify if \ac{ML} models can be viable.
+The linear regression model fit in this project is 100 meters less accurate than the optimized model used in \cite{jena2012prediction}.
+The purpose of the test is not to achieve accurate predictions, but to identify if \ac{ML} models can be viable.
 Therefore, the accuracy of these models is less important than identifying the viability of the models.
-The training data used is essentially predicted bathymetry, but shows that fitting a model to true bathymetry will yield a similar result.
-Analyizing the \(R^2\) score gives evidence of the viability of the model.
-This score suggests that there are underlying relationships in the model that can be used to train a successful model.
+The training data used is predicted bathymetry, but shows that fitting a model to true bathymetry will yield a similar result.
+In any event, the accuracy of these regression models is not viable for true models.
 
 \subsubsection{Classification Results Discussion}
 The Random Forest model performed excellently with a balanced accuracy of 82\%.
 Breaking down the results by class, the classifier predicted some classes with greater precision than others.
 This is indicative that the decision boundary responded to certain trends in the data.
-
-\par
-The Bagging classifier performed on par with the Random Forest Classifier with a balanced accuracy of 79\%.
-As seen with \ac{RFC}, bagging performed better at predicting some classes than others.
-Again indicating that the decision boundary responded to certain trends in the data.
-
-\par
-The Decision Tree classifier performed significantly worse than the other models.
-The 47\% balanced accuracy is not useable for predictions.
-Potentially, parameter tuning, and maybe feature selection could improve this model.
-
-\par
-Classification shows that labeling bathymetry can improve the performance of the models.
-However, what is more interesting to analyize is the behavior of the models.
-The data used in training comes from aggregated external datasets and a predicted bathymetry dataset.
-The predictions of these models is being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
-Meaning that the accuracy in these models is not indicative of truly predicting global bathymetry.
-It does show that a \ac{ML} model can be fit to data and used to predict bathymetry, and if actual measured bathymetry and ocean features were used in training the results would be comparable.
-Furthermore, parameter tuning, model selection, and dynamic feature selection could be used the increase the accuracy beyond current results.
+This can be seen in figure \ref{rfc_report}.
 
 \begin{figure}[h]
     \centering
@@ -45,11 +26,30 @@ Furthermore, parameter tuning, model selection, and dynamic feature selection co
 \end{figure}
 
 \par
-Figure \ref{fig:rfc_report} displays the classification report for the Random Forest Classifier along a reduced selection of classes.
-Precision and recall are excellent measurements to show the performance of a classifier.
-What is intersting in figure \ref{fig:rfc_report} is that the precision and recall differs drastically between classes.
-This suggests that a classifier will perform different based on the depth.
-It also suggests that other localized factors could impact the decision boundaries as the depths are tied to a physical location.
+The Bagging classifier performed on par with the Random Forest Classifier with a balanced accuracy of 79\%.
+However, figure \ref{fig:coveragegrid} shows that the bagging classifier performed best around coast lines.
+This suggests the the model responds well to shallow waters.
+Shoreline data will also be consistently more accurate because of proximity to land.
+Most of the world high resolution bathymetry is shoreline, and it is possible that the model responded to the quality data.
+
+
+\par
+Classification shows that labeling bathymetry can improve the performance of the models.
+Being that a random forest model can predict 82\% of the world's predicted bathymetry within 150 meters of accuracy. 
+However, what is more interesting to analyze is the behavior of the models.
+The data used in training comes from aggregated external datasets and a predicted bathymetry dataset.
+The predictions of these models is being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
+Meaning that the accuracy in these models is not indicative of truly predicting global bathymetry.
+It does show that a \ac{ML} model can be fit to data and used to predict bathymetry, and if actual measured bathymetry and ocean features were used in training the results would be comparable.
+Furthermore, parameter tuning, model selection, and dynamic feature selection could be used the increase the accuracy beyond current results.
+
+\par
+Interestingly, some models perform extremely well along fault lines.
+For example, the decision tree classifier in figure \ref{fig:coveragegrid} performs extremely well along fault lines.
+However, when making predictions in the global scope the classifier is very inaccurate.
+This suggestions that a classifiers can be optimized by geopatial position.
+
+
 
 \subsection{Grid Optimized Model Discussion}
 %The world wide ETOPO bathymetry dataset \cite{national1988etopo} at two minute resolution is used for valadation and metrics.
@@ -66,7 +66,7 @@ It also suggests that other localized factors could impact the decision boundari
 %These metrics are important for identifying where the models preform well. 
 \par
 The Grid Optimized Model Injector improved the accuracy of predictions by \~{}5\%.
-These results are displayed in table \ref{table:GRID_OPT_RESULTS}.
+These results are displayed in figure \ref{fig:grid_opt_graph}.
 Obviously, the model selection and subsequent injection improved the results of this classifier.
 Creating a ensemble of many models and selecting them on demand.
 This could be caused by geophysical characteristics that benefit one classifier.
@@ -77,10 +77,23 @@ It is possible that the characteristics related to being in proximity to a fault
 Clearly, figure \ref{fig:coveragegrid} provides evidence that model decision boundaries are sensitive to the features based on location.
 Leading to the conclusion that there is not a single best fit model for predicting global bathymetry.
 Analysis of figure \ref{fig:coveragegrid} shows interesting consistencies that raise questions about the underlying features.
-For example, the decision tree classifier preformed poorly as configured in the classification section when used for global predictions.
-When predicting near fault lines it preformed the best out of other models.
-Bagging seemed to dominate on coast lines while \ac{RFC} performed best in open waters.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{opt_grid_bar.png}
+    \caption{Graph representing the average prediction accuracy of coverages where a model performed well}
+    \label{fig:grid_opt_graph}
+\end{figure}
+
+\par
+Figure \ref{fig:grid_opt_graph} represents the average prediction accuracy across all coverages where a model was "best fit".
+What this graph shows is that the Random Forest Classifier had a average prediction rate of 51\% across coverages.
+This is fairly consistent with what was expected. 
+The models only trained on data contained within a coverage which limited the training and fitting for models. 
+However, other models did not suffer from this on average.
+This suggestions that some coverages can be larger than others.
+For example, coverages where the random forest classifier performed well may yield a higher accuracy if they are decreased or reformed.
+Other coverages can be increased in size and potentially yield similar results.
 
 % \begin{table}[htb]
 %     \centering
@@ -97,16 +110,28 @@ Bagging seemed to dominate on coast lines while \ac{RFC} performed best in open 
 
 \par
 In any event, there is evidence to support geophysical location drives the factors that help predict bathymetry.
-Things to optimize may include investigating the appropriate feature sets, coverage boundaries, depth boundaires, parameters, and metrics based on geophysical location.
+Things to optimize may include investigating the appropriate feature sets, coverage boundaries, depth boundaries, parameters, and metrics based on geophysical location.
 For example, volcanic activity creates new land.
-This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipotle point.
+This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipodal point.
 Another example being that the coverage boundaries are potentially a naive selection choice.
-It is possible that chossing models by preformance across depth boundaries proves to be a better selector.
+It is possible that choosing models by performance across depth boundaries proves to be a better selector.
 %Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
+%This is where I define what happens after the appropriate coverages have been found.
+\par
+In theory, this injection will allow each model to perform to its optimum.
+Each coverage highlights distinct characteristics that will produce a better decision boundary.
+These coverages are simple partitions of the world, but could be extended in future work to optimize the selection.
+% Reconsider this sentence....
+
+
 
 %Maybe here I can have a table show casing the preformance of models or possibly statistics about the coverages??
 %It will be intersting to see what has preformed better across the globe
 %Also is intersting to see which models have preformed best overall.
 
 \subsection{General Discussion}
-Talk about some bull jive here brooooo
+The predictions made in this work are based on predicted bathymetry.
+Even with a 85\% prediction rate these models are not able to compete with physics models.
+The experiments in this work do show that there are accuracy gains to be achieved with model selection.
+Figure \ref{fig:coveragegrid} gives incidence that there is not a best fit model for predicting bathymetry globally.
+Meaning that a ensemble of some kind combining models based on geospatial location, feature sets, or any other unknown parameter will likely yield better results.

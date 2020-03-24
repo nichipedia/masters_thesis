@@ -5,10 +5,10 @@ In order to iterate on the results displayed in the previous chapter this proble
 Conversion was executed by mapping the bathymetry values into discrete classes.
 This conversion proved to be trivial because of the ordered nature of bathymetry.
 Classification models are simpler and easier to fit than regression models.
-Idealy, the decision surfaces will benefit from the conversion and yield better results.
+Ideally, the decision surfaces will benefit from the conversion and yield better results.
 Classification models predict labels and not continuous values.
 This makes it difficult to compare directly to the error reported in existing physics models.
-A set of metrics including: precision, recall, f1 score, and balanced accuracy were used to analyize the viability of the models.
+A set of metrics including: precision, recall, f1 score, and balanced accuracy were used to analyze the viability of the models.
 
 \par
 The ordinal classes were binned on a interval of 150 meters.
@@ -42,12 +42,12 @@ Again indicating that the decision boundary responded to certain trends in the d
 
 \par
 The Decision Tree classifier performed significantly worse than the other models.
-The 47\% balanced accuracy is not useable for predictions.
+The 47\% balanced accuracy is not usable for predictions.
 Potentially, parameter tuning, and maybe feature selection could improve this model.
 
 \par
 Classification shows that labeling bathymetry can improve the performance of the models.
-However, what is more interesting to analyize is the behavior of the models.
+However, what is more interesting to analyze is the behavior of the models.
 The data used in training comes from aggregated external datasets and a predicted bathymetry dataset.
 The predictions of these models is being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
 Meaning that the accuracy in these models is not indicative of truly predicting global bathymetry.
@@ -64,6 +64,6 @@ Furthermore, parameter tuning, model selection, and dynamic feature selection co
 \par
 Figure \ref{fig:rfc_report} displays the classification report for the Random Forest Classifier along a reduced selection of classes.
 Precision and recall are excellent measurements to show the performance of a classifier.
-What is intersting in figure \ref{fig:rfc_report} is that the precision and recall differs drastically between classes.
+What is interesting in figure \ref{fig:rfc_report} is that the precision and recall differs drastically between classes.
 This suggests that a classifier will perform different based on the depth.
 It also suggests that other localized factors could impact the decision boundaries as the depths are tied to a physical location.
