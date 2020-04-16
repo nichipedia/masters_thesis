@@ -3,33 +3,33 @@
 \section{Introduction}
 \setlength{\parindent}{10ex}
 Bathymetry is the measure of depth in a body of water.
-The forefront in global bathymetry mappings are aggregations of predicted and measured sources. 
+The forefront in global bathymetry mappings is aggregations of predicted and measured sources. 
 These \ac{EGM}s are the standard for measuring global bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
 They predict bathymetry by modeling the relationship between the vertical gravity gradient of a geoid and the depth of a water column.
 This relationship is modeled by measuring the altimetry of the sea surface to a constellation of satellites.
-Measuring the altimetry can lead to identifying swells which are caused by gravity gradients that originate from geoids.
-Modeling the resulting bathymetry as a function of the approximated gravity is an excellent approach at coarse resolutions, but at finer resolutions the error of predictions becomes an issue.
+Measuring the altimetry can lead to identifying swells that are caused by gravity gradients that originate from geoids.
+Modeling the resulting bathymetry as a function of the approximated gravity is an excellent approach at coarse resolutions, but at finer resolutions, the error of predictions becomes an issue.
 Modern \ac{EGM} predictions have a error of approx. 180 meters.
 On the other hand, sonar platforms such as the \ac{MBES} \cite{farr1980multibeam} provide extremely accurate measurements of depth. 
 They operate using the simple physics of sound traveling through the medium of water.
-Measuring the time a sonar ping requires to travel to the bottom and back to a hull mounted sensor will provide the bathymetry.
+Measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor will provide the bathymetry.
 Survey and many commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor \cite{becker2009global}.
-This is because \ac{MBES} only measure a limited swath of ocean, and often vessels need to sail slower for high resolution mappings.
-Leading to the issue that global coverage using \ac{MBES} is time and cost prohibitive.
+This is because \ac{MBES} only measure a limited swath of ocean, and often vessels need to sail slower for high-resolution mappings.
+Leading to the issue that global coverage using \ac{MBES} is time and cost-prohibitive.
 \ac{SDB} is a method that measures the attenuation of light in a water column which correlates to the bathymetry.
 This method has a average error of 2 meters, but is only effective in shallow water.
 Leaving it unable to measure the vast majority of the worlds deep oceans.
 The lack of accurate techniques for measuring bathymetry globally creates a need for innovative prediction methods.
 A team of researchers in India \cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
 They found performance increases of 20 meters, but their effort was used to optimize existing models.
-\ac{ML} models can be effective at identifying decision boundaries and relationships that are difficult to identify in human created models.
+\ac{ML} models can be effective at identifying decision boundaries and relationships that are difficult to identify in human-created models.
 Specifically, using \ac{ML} to create models from ocean features to predict bathymetry provides a possible solution to accurately predicting global bathymetry.
 
 \par
 \ac{ML} is the use of trained models to predict a value.
 These predicted values can be continuous numbers known as regression or discrete labels known as classification.
-Multi class classification is used for predicting many different class labels.
-For example, if a model trains to predict bathymetry, then a collection of ocean features and their related bathymetry is the test data.
+Multi-class classification is used for predicting many different class labels.
+For example, if a model is trained to predict bathymetry, then a collection of ocean features and their related bathymetry is the test data.
 The bathymetry can be placed into classes that represent a range of depth.
 For example, a class could represent depth values from -2000 to -1850.
 This "binning" of bathymetry allows it to be used in a classification model.
@@ -42,24 +42,25 @@ Some data will be noise and unnecessary for the final prediction.
 Using feature selection to remove unnecessary training data will improve the final prediction.
 In this project, a genetic algorithm is used to select optimal features \cite{yang1998feature}.
 The genetic algorithm approach for feature selection will select optimum features in a reasonable time frame.
-After selecting the features the resulting model can be evaluated for performance and validated against known labels.
-The more predicted labels that compare accurately to known data the higher the accuracy of the model.
+After selecting the features, the resulting model can be evaluated for performance and validated against known labels.
+The more predicted labels that compare accurately to known data, the higher the accuracy of the model.
 Models where predictions do not match known data will have poor accuracy.
 The known data used in this project is bathymetry from existing \ac{EGM}s.
 This data is inherently predicted and validated to the best of human knowledge.
-Each predicted point has a estimated error of 180 meters \cite{becker2009global}, therefore, it is only sufficient for creating theoretical models.
+Each predicted point has an estimated error of 180 meters \cite{becker2009global}. 
+Therefore, it is only sufficient for creating theoretical models.
 
 \par
 Predicting bathymetry is a complicated problem that involves many unknowns.
 There are potential models and approaches that have not been explored because of this unfamiliarity.
-The vast nature of the Earths oceans contribute to these unknowns.
+The vast nature of the Earths oceans contributes to these unknowns.
 Humanity has relatively little information about the ocean.
-Requiring that if there is to be data it must need to be interpolated or predicted in some way.
+Requiring that if there is to be data, it must need to be interpolated or predicted in some way.
 This is true of many ocean features.
 Naturally, it is impossible to precisely measure all of the elements in the ocean.
-For example, oxygen levels, silicate levels, sediment thickness, sediment type, etc all must be predicted or interpolated.
+For example, oxygen levels, silicate levels, sediment thickness, sediment type, etc. all must be predicted or interpolated.
 On the other hand, it is trivial to globally measure sea surface to satellite altimetry.
-These measurements are accurate which is why \ac{EGM}s use gravity as the main feature.
+These measurements are accurate, which is why \ac{EGM}s use gravity as the main feature.
 However, using estimated features to predict estimated bathymetry could identify new approaches and models for building real models.
 
 \par
@@ -71,9 +72,9 @@ A genetic algorithm was introduced for initial feature selection.
 A modified grid search was used to identify trends in model performance.
 
 \par
-Scikit Learn is an open source library developed by the Python community \cite{scikit-learn}.
-It exposes a intuitive framework for creating \ac{ML} models.
-It also provides frameworks for key components of the \ac{ML} pipeline such as feature selection and model selection.
+Scikit Learn is an open-source library developed by the Python community \cite{scikit-learn}.
+It exposes an intuitive framework for creating \ac{ML} models.
+It also provides frameworks for key components of the \ac{ML} pipeline, such as feature selection and model selection.
 This framework is implemented for many existing models.
 New models and components can be implemented that will likewise interface with other pieces of the library.
 For example, a genetic algorithm for feature selection was implemented in this project using the sklearn \ac{API}.
@@ -81,21 +82,21 @@ This component was then able to be used seamlessly with all existing models and 
 
 \par
 Grid search is a algorithm for feature selection that exhaustively compares a set of options for the best performing item.
-The world was split into grids and the set of options were classification models.
+The world was split into grids, and the set of options were classification models.
 The model that performed best in that grid was selected for predicting in that area.
 This selection is important for identifying optimal models.
 
 
 \par
-Using classification for bathymetry is not a instinctive idea.
+Using classification for bathymetry is not an instinctive idea.
 Bathymetry is a continuous value that at the surface trends toward regression models.
 In reality, the ranged nature of bathymetry makes classification trivial for bathymetry.
 There is a consistent known minimum and maximum for bathymetry.
-For example, the maximum for bathymetry is 0 and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
+For example, the maximum for bathymetry is 0, and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
 This range allows for simple labels to be placed on a number of ranges.
 These number of ranges is arbitrary and can be adjusted to test error.
 The principal is that selecting a range will infer the maximum error for the prediction.
-For example, a range of 150 meters infers a error of 150 meters for a point predicted in a class.
+For example, a range of 150 meters infers an error of 150 meters for a point predicted in a class.
 
 
 

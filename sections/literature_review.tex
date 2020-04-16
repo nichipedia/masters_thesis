@@ -1,8 +1,8 @@
 \section{Literature Review}
 \setlength{\parindent}{10ex}
-In this review different approaches for predicting bathymetry are discussed.
+In this review, different approaches for predicting bathymetry are discussed.
 The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
-There is also a third approach discussed that improves upon the idea of a \ac{EGM}.
+There is also a third approach discussed that improves upon the idea of an \ac{EGM}.
 \ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
 
 \subsection{Machine Learning}
@@ -12,11 +12,11 @@ To validate the predictions, the supplied data's result is known.
 For example, a model is trained to predict if a image contains a car.
 Data from the images are extracted and used to train the model.
 Images with cars can be considered positive images.
-Images with out cars can be considered negative images.
+Images with-out cars can be considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
-If the model successfully predicts the labels it will have a high accuracy and be a "valid" model.
+If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
 The two main types of models in Machine Learning is classification and regression models.
-There are several high level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
+There are several high-level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
 
 \par
 Classification models are models that predict a discrete value.
@@ -24,7 +24,7 @@ For example, the car model mentioned earlier.
 The model predicts a discrete value of either positive or negative.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
 Classification models can also be combined to form ensemble models.
-A ensemble is a combination of "weaker" predictors to form a strong predictor.
+An ensemble is a combination of "weaker" predictors to form a strong predictor.
 %Include citations BELOW!!!!!
 Examples of classification models used in this project include: Decision Trees, Naive Bayes, MLP Classifier, Quadratic Discriminant Analysis Classifier, and K Nearest Neighbors Classifier.
 Examples of ensemble classifiers used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
@@ -56,14 +56,19 @@ Bias is the average error of a model for different training sets.
 Variance describes the sensitivity of the model to data.
 These two terms are necessary to understand the bias-variance problem.
 This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
-The relationship being the minimization of bias often causing high variance, and minimizing variance often causing high bias.
-Optimally, accurate models should have a low bias and variance.
+The relationship being the minimization of bias, often causing high variance, and minimizing variance, often causing high bias.
+Optimally, accurate models should have low bias and variance.
 
 %Include image showing bias and variance here!!
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{sphx_glr_plot_underfitting_overfitting_001.png}
-    \caption{Figure showing Bias and Variance examples}
+    \includegraphics[width=\textwidth]{sphx_glr_plot_underfitting_overfitting_001.png}
+    \caption{This figure shows three plots of the function \( f(x) = cos(\frac{3}{2} \pi x)\) with noisy samples along the graph. 
+    A linear regression model is fit to the samples with orders of 1, 4 and 15.
+    The model fit with order 1 does not respond well to changes in the samples and is a great example of high bias.
+    The model fit with order 4 fits the function very well and is a example of balanced bias and variance.
+    The model fit with order 15 fits the samples two well, but flucuates wildly. 
+    It is a excellent example of high variance.}
     \label{}
 \end{figure}
 
@@ -71,14 +76,15 @@ Optimally, accurate models should have a low bias and variance.
 %Talk about decision trees here
 Decision trees are supervised models that are used for classification or regression \cite{breiman2017classification}.
 They are simple to understand and interpret due to their simple decision structure. 
-They are susceptible to over fitting and can create overly complex trees that do not generalize well.
-Over fitting is where a model will fit to closely to a training set \cite{cawley2010over}. 
+They are susceptible to over-fitting and can create overly complex trees that do not generalize well.
+Over fitting is where a model will fit too closely to a training set \cite{cawley2010over}. 
 Making it unable to make accurate predictions on data outside of what was used in training.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{dtreesepal.png}
-    \caption{Figure showing example of Decision Tree}
+    \includegraphics[width=\textwidth]{dtreesepal.png}
+    \caption{The above figure is an example of a decision tree. Decision trees work by making binary decisions across a deicision boundary.
+    Each leaf node represents a classification label and the binary decisions that selected that label.}
     \label{}
 \end{figure}
 
@@ -96,7 +102,7 @@ Boosting describes a type of ensemble that is concerned with reducing bias.
 The idea being to build base estimators sequentially and then use the results of each to train a different estimator with the intention of reducing bias.
 Adaboost is an example of one such model \cite{freund1995desicion}.
 Its core principle being the fitting of weak learners on many random samples of the training data.
-This learners are then combined with a majority weighted vote. 
+These learners are then combined with a weighted majority vote. 
 This process is iterated for the training phase.
 
 
@@ -107,7 +113,7 @@ This process is iterated for the training phase.
 The gradient boosting classifier is an ensemble of trees similar to a random forest classifier.
 In gradient boosting, decision trees are used as "weak" learners.
 They are gradually added to the model in order to reduce the error.
-This "gradient decent" approach is effective at building a successful classifier.
+This "gradient descent" approach is effective at building a successful classifier.
 These types of boosting algorithms tend to overfed the model.
 This can be solved by enforcing tree constraints and random sampling of data.
 
@@ -115,7 +121,7 @@ This can be solved by enforcing tree constraints and random sampling of data.
 \subsubsection{Averaging}
 Averaging ensembles operate by aggregating the predictions of many models trained on random sub sets of the training data.
 Introducing randomization into the training will often reduce the variance of the resulting ensemble.
-Bagging is a example of a averaging ensemble and has several implementations.
+Bagging is an example of an averaging ensemble and has several implementations.
 The Bagging ensemble uses a single classifier and fits instances of it to random samples of the training data.
 The predictions are then aggregated and averaged for a final prediction.
 
@@ -130,10 +136,10 @@ The K Nearest Neighbors algorithm is a non-parametric algorithm for classificati
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
 
-\subsubsection{Multi Layer Perception}
+\subsubsection{Multi-Layer Perception}
 %Talk about MLP Classifier here!!!
 % Include MLP picture here I guess
-The Multi Layer Perceptron is a model that fits a function iterative through a process called back propagation.
+The Multi-Layer Perceptron is a model that fits a function iterative through a process called back-propagation.
 The MLP classifier is a neural network model that is based on the structure of the human brain.
 It consists of many layers beginning with an input layer.
 The middle layers are called the "hidden layers" and are each assigned a weight.
@@ -143,10 +149,11 @@ There can be many hidden layers of different depths.
 % Probably need to say more about the MLP Classifier...
 % Maybe some graphics and other bull jive. Maybe a algorithm???
 
-\begin{figure}[h]
+\begin{figure}[h]:
     \centering
     \includegraphics[scale=0.5]{multilayerperceptron_network.png}
-    \caption{Figure showing Neural Network Model}
+    \caption{Figure showing A Multi-Layer Perceptron. The middle or hidden layers are assigned weights that effect the selected class in classification.
+    This model effectivly models a function.}
     \label{}
 \end{figure}
 
@@ -165,7 +172,7 @@ Bayes theorem states the following relationship given class y and feature vector
 \subsubsection{Regression Models}
 %Talk about Regression models used here...
 Regression models are utilized for predicting continuous values.
-Specifically, regression is for approximating a function given a set of inputs to yield a output.
+Specifically, regression is for approximating a function given a set of inputs to yield output.
 Linear regression is the simplest type and is concerned with fitting a linear combination of all training features.
 
 % Put linear regression equation right here for the world to see YO
@@ -174,13 +181,17 @@ This project utilizes three regression models from sci kit.
 The naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
+The Ocean's of the Earth are the last frontiers.
+Ironically, humanity knows very little about the bathymetry of these frontiers \cite{becker2009global}.
+This is due to several factors including but not limited to: the vast size of oceans, measurement techniques, sediment migration, and tectonic activity.
+This section is concerned with explaining the many measurement techniques for bathymetry and how they are used for creating global bathymetry grids.
 
 \subsection{Echo Sounders (\ac{MBES})(\ac{SB'S}) }
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for the ship to avoid running aground.
 However, survey vessels have utilized \ac{MBES} systems to reliably create bathymetry charts \cite{farr1980multibeam}.
-This can give a accurate measurement of bathymetry in all water depths.
-This methods downside is the cost and time required to map global coverage.
+This can give an accurate measurement of bathymetry in all water depths.
+This method's downside is the cost and time required to map global coverage.
 A vessel must transport these sensors, and potentially take decades of expensive surveys to gain full global coverage.
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
@@ -190,19 +201,20 @@ This method relies on the phenomena of light passing through a water column at a
 Sunlight passes through the water column and is reflected by the sediment at the bottom.
 Satellites measure the attenuated light that is reflected from the bottom and uses the wavelength to estimate the depth of the column.
 The technique accounts for atmospheric light absorption, water surface reflection, attenuation through and out of the column, and reflectance from the bottom sediment.
-Clear waters are the best environment for this method which has the potential to predict bathymetry with a small RMSE \cite{chybicki2018three}.
+Clear waters are the best environment for this method, which has the potential to predict bathymetry with a small RMSE \cite{chybicki2018three}.
 
 \par
 This method is important for its ability to predict swaths of bathymetry in shallow water.
-Shallow waters where larger vessels can not sail, and large swaths of coastal waters are measured by \ac{SDB} in a cost and time effective processs.
-For example, the marsh lands of Louisiana where water depth is only deep enough for flat bed vessels.
-This method also has use in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
-These changes can be caused by sediments or man made objects. 
+Shallow waters where larger vessels can not sail and large swaths of coastal waters are measured by \ac{SDB} in a cost and time-effective process.
+For example, the marsh-lands of Louisiana where water depth is only deep enough for flat-bed vessels.
+This method also has used in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
+These changes can be caused by sediments or man-made objects. 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{CBYK292WkAAIkzH.jpg}
-    \caption{Graphic demonstrating Satellite Derived Bathymetry}
+    \includegraphics[scale=0.40]{CBYK292WkAAIkzH.jpg}
+    \caption{The above graphic demonstrates \ac{SBD}.
+    Specifically, it illustrates how light will penetrate the water column and reflect back intro space where it is monitored by a satellite.}
     \label{fig:sdb}
 \end{figure}
 
@@ -210,14 +222,14 @@ These changes can be caused by sediments or man made objects.
 The limitations of the \ac{SDB} method are based on water depth and clarity.
 As depth increases light is unable to pass through the water column to the bottom.
 The depth that light can penetrate is determined by the characteristics of the water.
-Clear water will allow for much deeper depths to be predicted, where as murky, cluttered water limits the maximum depth.
+Clear water will allow for much deeper depths to be predicted, where-as murky, cluttered water limits the maximum depth.
 Environmental characteristics such as sediment composition and weather affect the clarity of water \cite{vinayaraj2016satellite}.
 
 \par
-Current \ac{SDB} models can predict bathymetry with a \ac{RMSE} of less that 2.5 meters at a maximum depth of 50 meters.
-Work performed by \cite{vinayaraj2016satellite} has improved the depth by using blue light sensing techniques.
+Current \ac{SDB} models can predict bathymetry with a \ac{RMSE} of less than 2.5 meters at a maximum depth of 50 meters.
+Work performed by \cite{vinayaraj2016satellite} has improved the depth by using blue light-sensing techniques.
 Work performed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
-\ac{SDB} models are ideal for coastal areas with a high water visibility.
+\ac{SDB} models are ideal for coastal areas with high water visibility.
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
 Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
@@ -232,10 +244,10 @@ They named this technique the "Inverse Nettleton Procedure" and used a simple li
 \end{equation}
 
 \par
-Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based Multi Beam Echo Sounding sonar data.
+Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based \ac{MBES} Sounding sonar data.
 The sonar data is sparse, but provides accurate readings of the ocean's bathymetry.
 This aggregation yielded global coverage up to 81 degrees latitude.
-The aggregation yielded prediction accuracy within ~100 meters in coastal waters, and ~200 meters in the global ocean space.
+The aggregation yielded prediction accuracy within ~100 meters in coastal waters and ~200 meters in the global ocean space.
 
 %Discuss the STRM Global Dataset here in detail....
 \par 
@@ -243,7 +255,7 @@ This work was later improved in \cite{becker2009global}.
 The model was substantially improved by increasing the number of ship soundings and increasing the aggregation sources.
 Ten external datasets were aggregated for the SRTM30 grid.
 Agencies in these sources include \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and \ac{JAMSTEC}.
-These datasets include high resolution coastal bathymetry from around the world and greatly increased the global accuracy.
+These datasets include high-resolution coastal bathymetry from around the world and greatly increased the global accuracy.
 
 %Spelling check big time bruh
 \par
@@ -252,26 +264,26 @@ Sediment density drives the correlation between sea surface gravity and bathymet
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
 This is all controlled by the scaling factor described in \cite{smith1994bathymetric} and shown in equation \ref{eq:egm}. 
-However, there is not a optimal scaling factor for the entire world.
+However, there is not an optimal scaling factor for the entire world.
 Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
 
 
 \subsection{Machine Learning Optimized \ac{EGM}}
-The aggregated \ac{EGM} is a physics based model that wants the relationship between gravity and bathymetry to be directly correlated.
+The aggregated \ac{EGM} is a physics-based model that wants the relationship between gravity and bathymetry to be directly correlated.
 This correlation is often non-trivial to define due to environmental factors.
 The nondeterministic behavior is compensated by the scaling factor mentioned in the previous section.
 Attempts to optimize this scaling factor have been made, and \ac{ML} has shown much promise in this regard.
 
 \par
-The work preformed by \cite{jena2012prediction} used \ac{ML} to optimize their gravitational regression models.
+The work performed by \cite{jena2012prediction} used \ac{ML} to optimize their gravitational regresion models.
 Instead of identifying an optimal scaling factor deterministically, they used an \ac{ANN} to optimize the scaling factor.
 This was done using precise \ac{MBES} data as truth data and satellite altimeter data.
-This method was tested on a localized swatch of ocean in the Arabian Sea.
+This method was tested on a localized swath of ocean in the Arabian Sea.
 
 \par
 This optimization improved upon the current physics models.
-Their model could predict bathymetry within a \ac{RMSE} of ~129 meters for flat sea floor.
-Geoids resulted in a \ac{RMSE} of ~179 meters.
-Both of these results are globally similar with aggregated models, while boasting increased accuracy in their localized training area of the Arabian Sea.
+Their model could predict bathymetry within an \ac{RMSE} of ~129 meters for a section of flat sea-floor.
+Geoids resulted in an \ac{RMSE} of ~179 meters.
+Both of these results are globally similar to aggregated models, while boasting increased accuracy in their localized training area of the Arabian Sea.
 
 %\subsection{Machine Learning Models}

@@ -7,23 +7,23 @@ The selection was driven by a genetic algorithm that was used for speed as oppos
 The trained models are then used to make predictions for the spatial resolution that was used in training.
 
 \subsection{Bathymetry Data}
-Data derived from predicted \ac{EGM} datasets represents the actual value of bathymetry at that point.
-For example, predicted bathymetry datasets will have a coverage.
+Data derived from predicted \ac{EGM} datasets represent the actual value of bathymetry at that point.
+For example, predicted bathymetry datasets have a geospatial coverage.
 These coverages vary in size by the resolution of the imagery.
-A higher resolution imagery will have smaller coverages, and lower resolution will have larger coverages.
-The predicted values used in this project represent a average of bathymetry across a coverage. 
+Higher resolution imagery will have smaller coverages, and lower resolution will have more extensive coverages.
+The predicted values used in this project represent a average of bathymetry across coverage. 
 These predicted datasets are used as the truth values for training, but it is important to note that they are, themselves, predicted values.
-Using this data is not intended to build accurate predictors, but to show that a accurate predictor can be built.
+Using this data is not intended to build accurate predictors, but to show that an accurate predictor can be built.
 
 \par
 The \ac{ETOPO} dataset is used in this project for bathymetry data.
-This dataset is a aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from a \ac{EGM}.
+This dataset is an aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from a \ac{EGM}.
 It is an updated version of the original ETOPO2 dataset and was chosen because of the two minute resolution it offers.
 \ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
 \par
 Land topography is included in the \ac{ETOPO} dataset.
-This proved to be problematic in making ocean predictions.
+This proved to be problematic in creating accurate bathymetry predictions.
 Therefore, a mask was created to remove the land topography in all training datasets.
 This is applied to the data before training to ensure that land data is not used in training.
 
@@ -36,7 +36,8 @@ This binning was performed on 150 meter intervals.
 This partitioning scheme was chosen to compare to the results from a similar work \cite{jena2012prediction}.
 
 \subsection{Training Data}
-All feature data was aggregated from ocean and earth studies then normalized and formatted for this project.
+All feature data was aggregated from ocean and earth studies.
+This data was then normalized and formatted for this project.
 This aggregation was performed to gather a large set of testing samples regardless of whether the data is relevant.
 For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as a useful feature.
 This approach is fundamentally different to building a physics model.
@@ -169,8 +170,8 @@ In any event, the two minute resolution offered a good balance of memory, accura
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
-    \caption{Graph of Bathymetry and Estimated Fish BIOMASS}
+    \includegraphics[width=\textwidth]{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
+    \caption{Graph of Bathymetry and Estimated Fish BIOMASS. Bathymetry is measured in meters and Fish Biomass is measured }
     \label{fig:bathyxfish}
 \end{figure}
 
@@ -183,8 +184,8 @@ In any event, the two minute resolution offered a good balance of memory, accura
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
-    \caption{Graph of Bathymetry and Estimated Crust Density}
+    \includegraphics[width=\textwidth]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
+    \caption{Graph of Bathymetry and Estimated Crust Density. Bathymetry is measured in meters and Crust Density is measured is miligrams per squared centimeter.}
     \label{fig:bathyxdensity}
 \end{figure}
 
