@@ -1,7 +1,7 @@
 \section{Results}
 \setlength{\parindent}{10ex}
 
-This section contains the results for the experiments performed by this work.
+This section contains the results for each model observed by this work.
 Including results for the regression, classification, and novel grid optimized model.
 Each section includes figures representing the metric scores.
 
@@ -9,7 +9,7 @@ Each section includes figures representing the metric scores.
 Regression \ac{ML} models were fit in order to compare to existing physics models.
 Three models were fit to the data: 
 an SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
-These models were trained against a reduced set of data shown in figure \ref{fig:trainset}, and validated against the rest of the world.
+These models were trained against a reduced set of data shown in figure \ref{fig:trainset}, and validated against the world wide data not used in the training phase.
 Each model was fit against selected features from the Genetic Algorithm feature selector.
 The \(R^2\) score for each model can be found in figure \ref{fig:r2_barplot_regression}.
 The RMSE of each model can be found in figure \ref{fig:rmse_barplot_regression}.
@@ -19,7 +19,7 @@ The RMSE of each model can be found in figure \ref{fig:rmse_barplot_regression}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{worldtraininglocal.png}
-    \caption{Figure demonstrating initial training sets.}
+    \caption{Figure demonstrating initial training sets for regression. These sets were selected for training and testing was performed against the rest of the world.}
     \label{fig:trainset}
 \end{figure}
 
@@ -77,7 +77,7 @@ The ordinal classes were binned on a interval of 150 meters.
 This was done to easily compare accuracy to model in \cite{jena2012prediction}.
 Validation was preformed using a 10 fold cross validation using balanced accuracy as the scoring function.
 The F1 results for each model can be found in figure \ref{fig:f1_barplot_classification}.
-The Balanced Accuracy for each model can be found in figure \ref{fig:balacc_barplot_classification}
+The Balanced Accuracy for each model can be found in figure \ref{fig:balacc_barplot_classification}.
 
 \par
 The Decision Tree classifier performed significantly worse than the other models.
@@ -139,10 +139,10 @@ This novel Grid Optimized Model Injector tests this theory by implementing a mod
 %Give the background for the idea in this section!
 \subsection{Analysis of Global Model Optimization}
 This hypothesis was tested by building a model that optimizes by geospatial location.
-In order to optimize by location a cache of "best fit" models per location needed to be created.
+In order to optimize by location a cache of "best fit" models for each location needed to be created.
 This can be performed by comparing the performance of a set of models for predicting every point in a grid.
 However, this can take an extremely long time because of the size of these geospatial grids.
-To simplify this experiment, for fake of time and computing resources, the world was instead split into N coverages.
+To simplify this experiment, for sake of time and computing resources, the world was instead split into N coverages.
 These coverages represent an area of the Earth and will suffice for the experiment of comparing model performance across geospatial locations.
 The performance of a set of models for each coverage was recorded.
 The best performing model in that coverage was then exported and saved to a map of best fit models to a geospatial bounding box.
@@ -151,7 +151,8 @@ The results of this experiment are displayed in figure \ref{fig:coveragegrid}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{best_fit_percentage.png}
-    \caption{Pie plot showing the percentage of coverages where a model was "best fit"}
+    \caption{Pie plot showing the percentage of coverages where a model was "best fit". These percentages represent the number of areas where a model performed the best. 
+    The percentage will give an indication of the success of a model.}
     \label{fig:pie_best_fit}
 \end{figure}
 
@@ -172,7 +173,7 @@ The reasons for why these classifiers may have performed so well in those areas 
 %In this section I am defining what the Grid optimization is and why it matters.
 %There may be a better name for this?? Who knows really...
 \subsubsection{Grid Optimizing Results}
-Using the successful model for each coverage as a \textit{optimum} selection.
+Using the successful model for each coverage as an \textit{optimum} selection.
 The optimum selection improved the prediction accuracy of the model by several percent.
 See figure \ref{fig:grid_opt_barplot} for the results of the model.
 
