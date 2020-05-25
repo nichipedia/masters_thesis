@@ -4,6 +4,7 @@ In this review, different approaches for predicting bathymetry are discussed.
 The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of an \ac{EGM}.
 \ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
+The \ac{ML} models used for training are also explained in detail.
 
 \subsection{Machine Learning}
 Machine Learning can be defined as the process of fitting a model to data with a algorithm \cite{bishop2006pattern}.
@@ -15,7 +16,7 @@ Images with cars can be considered positive images.
 Images with-out cars can be considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
 If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
-The two main types of models in Machine Learning is classification and regression models.
+The two main types of models in Machine Learning are classification and regression models.
 There are several high-level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
 
 \par
@@ -23,6 +24,10 @@ Classification models are models that predict a discrete value.
 For example, the car model mentioned earlier.
 The model predicts a discrete value of either positive or negative.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
+Data is labeled when it is assigned a output value as a "truth" label.
+Using the example from earlier, a model to predict cars is trained.
+Data is labeled as either positive (there is a car in the image) or negative (there is not a car in the image).
+This labeling describes a "binary" classification.
 Classification models can also be combined to form ensemble models.
 An ensemble is a combination of "weaker" predictors to form a strong predictor.
 %Include citations BELOW!!!!!
@@ -38,13 +43,13 @@ This method is best when the desired result can not be grouped into discrete "la
 
 \par
 Unsupervised learning describes a model that is trained without labels.
-Meaning that the data does not have corresponding "ground-truth" values for predictions \cite{bishop2006pattern}.
-Training a model without "ground-truth" is used for grouping similar values together pragmatically.
+Meaning that the training data does not have corresponding "truth" values for predictions \cite{bishop2006pattern}.
+Training a model without "truth" is used for grouping similar values together programatically.
 Ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
 
 \par
-Supervised learning describes a model that is trained with labels \cite{bishop2006pattern}.
-Training is guided or supervised by comparing results to labeled data.
+Supervised learning describes a model that is trained with labeled truth data. \cite{bishop2006pattern}.
+Training is guided or supervised by comparing results to labeled truth data.
 This method of training is effective at fitting accurate models, and is used in this project for predicting bathymetry.
 All models trained in this project use supervised learning.
 Each model used will be discussed in subsequent sections.
@@ -57,6 +62,8 @@ Variance describes the sensitivity of the model to data.
 These two terms are necessary to understand the bias-variance problem.
 This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
 The relationship being the minimization of bias, often causing high variance, and minimizing variance, often causing high bias.
+Models with high bias will be inaccurate when predicting data not used during training.
+Models with high variance will over fit \cite{cawley2010over} the training data by modeling noise in the data as opposed to the desired outputs.
 Optimally, accurate models should have low bias and variance.
 
 %Include image showing bias and variance here!!
@@ -135,6 +142,7 @@ This classifier is good for combining equally performing models in order to bala
 The K Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
+This model is based on the nearest neighbors algorithm and is excellent for its simplicity and domain independent applications.
 
 \subsubsection{Multi-Layer Perception}
 %Talk about MLP Classifier here!!!
@@ -146,6 +154,9 @@ The middle layers are called the "hidden layers" and are each assigned a weight.
 Back propagation is used during training to adjust the weights in the hidden layers.
 These adjustments are made to in order to reach a more accurate prediction.
 There can be many hidden layers of different depths.
+The neural network is a versatile model that benefits from more training data with less risk of over fitting.
+A example of training on huge sets of data is Deep Learning.
+Deep Learning trains a neural net with many hidden layers on a large set of training data.
 % Probably need to say more about the MLP Classifier...
 % Maybe some graphics and other bull jive. Maybe a algorithm???
 
@@ -166,7 +177,12 @@ The naive Bayes classifier is based on applying the naive Bayes theorem \cite{zh
 The naive assumption of Naive Bayes is the conditional independence between pairs of features given the label.
 Bayes theorem states the following relationship given class y and feature vector x.
 
-% Put bayes theorem right here!!! Math mode I guess...
+\begin{equation}
+    \label{eq:bayes}
+    P(\theta|\textbf{D}) = P(\theta ) \frac{P(\textbf{D} |\theta)}{P(\textbf{D})} ~~~~~|| I,
+\end{equation}
+
+
 
 
 \subsubsection{Regression Models}
