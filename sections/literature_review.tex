@@ -143,6 +143,23 @@ The K Nearest Neighbors algorithm is a non-parametric algorithm for classificati
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
 This model is based on the nearest neighbors algorithm and is excellent for its simplicity and domain independent applications.
+The nearest neighbors algorithm can be explained as the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
+The K Nearest Neighbors algorithm is a generalization.
+To describe simply, instead of searching for the nearest post office the algorithm searches for the K nearest post offices.
+This can be extended for use in classification.
+For example, if the K nearest neighbors of a object are a positive class. 
+It is natural to classify the object as positive.
+See Figure \ref{fig:knn} for a illustration.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{220px-KnnClassification.svg.png}
+    \caption{The above figure is an example of the KNN algorithm for classification. There are 2 classes in this example. Blue squares and Red triangles.
+    The green circle needs to be classified. If K is 3 (the solid line), then the green circle will be classified as a red triangle. 
+    However, if K is 5 (the dotted line), then the green circle will be classified as a blue square.}
+    \label{fig:knn}
+\end{figure}
+
 
 \subsubsection{Multi-Layer Perception}
 %Talk about MLP Classifier here!!!
@@ -175,14 +192,19 @@ Deep Learning trains a neural net with many hidden layers on a large set of trai
 %Talk about Naive Bayes classifier here!!
 The naive Bayes classifier is based on applying the naive Bayes theorem \cite{zhang2004optimality}.
 The naive assumption of Naive Bayes is the conditional independence between pairs of features given the label.
-Bayes theorem states the following relationship given class y and feature vector x.
+Bayes theorem states the following relationship.
 
 \begin{equation}
     \label{eq:bayes}
     P(\theta|\textbf{D}) = P(\theta ) \frac{P(\textbf{D} |\theta)}{P(\textbf{D})} ~~~~~|| I,
 \end{equation}
 
-
+In equation \ref{eq:bayes}, \theta and \textbf{D} are events. 
+P(\theta|\textbf{D}) represents the probability of \theta occuring given event \textbf{D} is true.
+Where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
+Bayes Theorem will produce a probability of a event happening given another event using prior probabilities.
+For example, say you wanted to predict the probability of both a stock falling and the DOW being down.
+If you knew the probability of both falling you could use bayes theroem to calculate the probability of both happening together.
 
 
 \subsubsection{Regression Models}
@@ -190,6 +212,17 @@ Bayes theorem states the following relationship given class y and feature vector
 Regression models are utilized for predicting continuous values.
 Specifically, regression is for approximating a function given a set of inputs to yield output.
 Linear regression is the simplest type and is concerned with fitting a linear combination of all training features.
+Polynomial regression fits a polynomial combination to the training figures.
+This can fit a function up to order N with the cost of complexity.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{polynomialvslinearregression.png}
+    \caption{The above figure shows 3 lines fit to a set of points. A linear regression (red line) does not fit the data well.
+    As the order rises the line will better fit the data.
+    These higher order polynoial regression lines come at the cost of complexity and increasing the variance of the function.}
+    \label{}
+\end{figure}
 
 % Put linear regression equation right here for the world to see YO
 
