@@ -206,6 +206,10 @@ Bayes Theorem will produce a probability of a event happening given another even
 For example, say you wanted to predict the probability of both a stock falling and the DOW being down.
 If you knew the probability of both falling you could use bayes theroem to calculate the probability of both happening together.
 
+Naive Bayes classifiers use a assumption of conditional independence between every pair of features given the value of the class variable. 
+These over-simplified assumptions do not negatively effect the classifiers.
+In fact, Naive Bayes classifiers work well in many real-world situations because of the conditional assumptions\cite{zhang2004optimality}.
+Famously, it has performed well for document classification and spam filtering. 
 
 \subsubsection{Regression Models}
 %Talk about Regression models used here...
@@ -221,7 +225,7 @@ This can fit a function up to order N with the cost of complexity.
     \caption{The above figure shows 3 lines fit to a set of points. A linear regression (red line) does not fit the data well.
     As the order rises the line will better fit the data.
     These higher order polynoial regression lines come at the cost of complexity and increasing the variance of the function.}
-    \label{}
+    \label{fig:repressionexample}
 \end{figure}
 
 % Put linear regression equation right here for the world to see YO
@@ -230,18 +234,47 @@ This project utilizes three regression models from sci kit.
 The naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
-The Ocean's of the Earth are the last frontiers.
+The Ocean's of the Earth are humanities last frontiers.
 Ironically, humanity knows very little about the bathymetry of these frontiers \cite{becker2009global}.
 This is due to several factors including but not limited to: the vast size of oceans, measurement techniques, sediment migration, and tectonic activity.
 This section is concerned with explaining the many measurement techniques for bathymetry and how they are used for creating global bathymetry grids.
 
 \subsection{Echo Sounders (\ac{MBES})(\ac{SB'S}) }
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
-The purpose of this is often for the ship to avoid running aground.
+The purpose of this is often for a ship to avoid running aground.
 However, survey vessels have utilized \ac{MBES} systems to reliably create bathymetry charts \cite{farr1980multibeam}.
 This can give an accurate measurement of bathymetry in all water depths.
-This method's downside is the cost and time required to map global coverage.
-A vessel must transport these sensors, and potentially take decades of expensive surveys to gain full global coverage.
+The downside of this method is the cost and time required to map global coverage.
+A vessel must transport these sensors, and potentially require decades of expensive surveys to gain full global coverage.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Schematic-presentation-of-the-side-scan-sonar-and-sub-bottom-profiling-survey-conducted.png}
+    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish.
+    This image was taken from \cite{sakellariou2015preliminary}}
+    \label{fig:sidescandemo}
+\end{figure}
+
+
+There are two main categories of echo sounders.
+\ac{MBES} are large swath sonar based sensors.
+They produce several artifacts including: bathymetry, backscatter, salinity, etc.
+These sensors are used for a wide array of commercial and research applications.
+SideScan sonar are focused sonar systems.
+They produce "imagery" artifacts and will sense a smaller swath of ocean than \ac{MBES} sensors.
+They are ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
+In general, SideScan systems are only used for object detection.
+See Figure \ref{fig:sidescandemo} for a illustration of a towed SideScan sensor body.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Geophy03-01.jpg}
+    \caption{This figure illustrates a \ac{MBES} system. The illustration was taken from \cite{monacoWeb}}
+    \label{fig:MBES}
+\end{figure}
+
+
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
 \subsection{Satellite Derived Bathymetry (SDB)}
@@ -284,13 +317,20 @@ Work performed by \cite{chybicki2018three} improved the accuracy by using advanc
 Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
 They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related \cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
-They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in gaps of their predictions.
+They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in the gaps of their predictions.
 Areas with large seamounts found the correlation to be strongest, while areas of flat sediments found the correlation to be weakest.
 They named this technique the "Inverse Nettleton Procedure" and used a simple linear regression model to exploit this correlation and improve existing aggregated datasets.
 
 \begin{equation}
     b(x) = D(x) + s(x)g(x) \label{eq:egm}
 \end{equation}
+
+\par
+Equation \ref{eq:egm} represents the model created by \cite{smith1994bathymetric}.
+Where b represents the predicted bathymetry.
+D represents a function of regional estimated depth via satellite.
+s representing a regional scaling factor based on known sediments.
+Finally, g representing infered gravity from sattelite imaging.
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based \ac{MBES} Sounding sonar data.
