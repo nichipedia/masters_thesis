@@ -4,18 +4,19 @@ In this review, different approaches for predicting bathymetry are discussed.
 The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of an \ac{EGM}.
 \ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
-The \ac{ML} models used for training are also explained in detail.
+The \ac{ML} models used for training are explained in detail as well.
 
 \subsection{Machine Learning}
-Machine Learning can be defined as the process of fitting a model to data with a algorithm \cite{bishop2006pattern}.
-Predictions can then be produced from the models by supplying new data.
+Machine Learning can be defined as the process of fitting a model to data with an algorithm \cite{bishop2006pattern}.
+Predictions can then be produced from the models by inputing new data.
 To validate the predictions, the supplied data's result is known.
-For example, a model is trained to predict if a image contains a car.
-Data from the images are extracted and used to train the model.
-Images with cars can be considered positive images.
-Images with-out cars can be considered negative images.
+For example, when a model is trained to predict if an image contains a car, data from the images is extracted and used to train the model.
+Images with cars are considered positive images.
+Images without cars are considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
 If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
+
+\par
 The two main types of models in Machine Learning are classification and regression models.
 There are several high-level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
 
@@ -295,7 +296,7 @@ These changes can be caused by sediments or man-made objects.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.40]{CBYK292WkAAIkzH.jpg}
-    \caption{The above graphic demonstrates \ac{SBD}.
+    \caption{The above graphic demonstrates \ac{SDB}.
     Specifically, it illustrates how light will penetrate the water column and reflect back intro space where it is monitored by a satellite.}
     \label{fig:sdb}
 \end{figure}
