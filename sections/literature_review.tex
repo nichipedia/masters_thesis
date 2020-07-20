@@ -7,13 +7,13 @@ There is also a third approach discussed that improves upon the idea of an \ac{E
 The \ac{ML} models used for training are also explained in detail.
 
 \subsection{Machine Learning}
-Machine Learning can be defined as the process of fitting a model to data with a algorithm \cite{bishop2006pattern}.
+Machine Learning can be defined as the process of fitting a model to data with an algorithm \cite{bishop2006pattern}.
 Predictions can then be produced from the models by supplying new data.
 To validate the predictions, the supplied data's result is known.
-For example, a model is trained to predict if a image contains a car.
+For example, a model is trained to predict if an image contains a car.
 Data from the images are extracted and used to train the model.
 Images with cars can be considered positive images.
-Images with-out cars can be considered negative images.
+Images without cars can be considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
 If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
 The two main types of models in Machine Learning are classification and regression models.
@@ -24,20 +24,20 @@ Classification models are models that predict a discrete value.
 For example, the car model mentioned earlier.
 The model predicts a discrete value of either positive or negative.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
-Data is labeled when it is assigned a output value as a "truth" label.
+Data is labeled when it is assigned an output value as a "truth" label.
 Using the example from earlier, a model to predict cars is trained.
 Data is labeled as either positive (there is a car in the image) or negative (there is not a car in the image).
-This labeling describes a "binary" classification.
+This labeling describes a "binary" classification, meaning there are two options from which to choose.
 Classification models can also be combined to form ensemble models.
-An ensemble is a combination of "weaker" predictors to form a strong predictor.
+An ensemble uses a combination of "weaker" predictors to form a strong predictor.
 %Include citations BELOW!!!!!
 Examples of classification models used in this project include: Decision Trees, Naive Bayes, MLP Classifier, Quadratic Discriminant Analysis Classifier, and K Nearest Neighbors Classifier.
 Examples of ensemble classifiers used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
 
 \par
 Regression models predict a continuous value.
-For example, predicting water depth as a number is a continuous value.
-Where the range of predicted values is from sea level to the known depth of the ocean.
+A good example of a continous value is the predicition of water depth, where the range of predicted values is from sea level to the deppest known depth of the ocean.
+Consider sea level to be 0 and the minimum depth to be the marianas trench.
 Essentially, this model represents a mathematical function where the input data is the function parameters.
 This method is best when the desired result can not be grouped into discrete "labeled" data.
 

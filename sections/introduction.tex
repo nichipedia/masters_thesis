@@ -1,12 +1,13 @@
-
 %Here is what I am about to tell you in this paper. Fairly informal and loose.
 \section{Introduction}
 \setlength{\parindent}{10ex}
-Bathymetry is the measure of depth in a body of water.
+Bathymetry is defined as the measure of depth in a body of water.
 The forefront in global bathymetry mapping is aggregations of predicted and measured sources. 
 These \ac{EGM}s are the standard for measuring global bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
 They predict bathymetry by modeling the relationship between the vertical gravity gradient of a geoid and the depth of a water column.
 This relationship is modeled by measuring the altimetry of the sea surface to a constellation of satellites.
+Altimetry is the measurement of height or altitude. 
+Specifically, this paper is refering to the altimetry of the sea surface using the distance to a sattelite.
 Measuring the altimetry can lead to identifying swells that are caused by gravity gradients that originate from geoids.
 Modeling the resulting bathymetry as a function of the approximated gravity is an excellent approach at coarse resolutions, but at finer resolutions, the error of predictions becomes an issue.
 Modern \ac{EGM} predictions have a error of approx. 180 meters.
@@ -15,15 +16,14 @@ They operate using the simple physics of sound traveling through the medium of w
 Measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor will provide the bathymetry.
 Survey and many commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor \cite{becker2009global}.
 This is because \ac{MBES} only measure a limited swath of ocean, and often vessels need to sail slower for high-resolution mappings.
-Leading to the issue that global coverage using \ac{MBES} is time and cost-prohibitive.
+Thus, global coverage using \ac{MBES} is time and cost-prohibitive.
 \ac{SDB} is a method that measures the attenuation of light in a water column which correlates to the bathymetry.
-This method has a average error of 2 meters, but is only effective in shallow water.
-Leaving it unable to measure the vast majority of the worlds deep oceans.
+This method has an average error of 2 meters, but is only effective in shallow water, leaving it unable to measure the vast majority of the world's deep oceans.
 The lack of accurate techniques for measuring bathymetry globally creates a need for innovative prediction methods.
 A team of researchers in India \cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
 They found performance increases of 20 meters, but their effort was used to optimize existing models.
 \ac{ML} models can be effective at identifying decision boundaries and relationships that are difficult to identify in human-created models.
-Specifically, using \ac{ML} to create models from ocean features to predict bathymetry provides a possible solution to accurately predicting global bathymetry.
+Specifically, using \ac{ML} to create models from ocean features provides a possible solution to accurately predicting global bathymetry.
 
 \par
 \ac{ML} is the use of trained models to predict a value.
@@ -46,14 +46,14 @@ After selecting the features, the resulting model can be evaluated for performan
 The more predicted labels that compare accurately to known data, the higher the accuracy of the model.
 Models where predictions do not match known data will have poor accuracy.
 The known data used in this project is bathymetry from existing \ac{EGM}s.
-This data is inherently predicted and validated to the best of human knowledge.
+It is important to note, this data is inherently predicted and validated to the best of human knowledge.
 Each predicted point has an estimated error of 180 meters \cite{becker2009global}. 
 Therefore, it is only sufficient for creating theoretical models.
 
 \par
 Predicting bathymetry is a complicated problem that involves many unknowns.
 There are potential models and approaches that have not been explored because of this unfamiliarity.
-The vast nature of the Earths oceans contributes to these unknowns.
+The vast nature of the Earth's oceans contributes to these unknowns.
 Humanity has relatively little information about the ocean.
 Requiring that if there is to be data, it must need to be interpolated or predicted in some way.
 This is true of many ocean features.
@@ -61,11 +61,11 @@ Naturally, it is impossible to precisely measure all of the elements in the ocea
 For example, oxygen levels, silicate levels, sediment thickness, sediment type, etc. all must be predicted or interpolated.
 On the other hand, it is trivial to globally measure sea surface to satellite altimetry.
 These measurements are accurate, which is why \ac{EGM}s use gravity as the main feature.
-However, using estimated features to predict estimated bathymetry could identify new approaches and models for building real models.
+However, using estimated features to predict estimated bathymetry could identify new approaches and models for building viable models.
 
 \par
 This thesis is concerned with experimenting with machine learning for predicting global bathymetry.
-The goal of which to glean new approaches or identify interesting behavior.
+The goal of this thesis is to glean new approaches or identify interesting behavior.
 Regression and classification approaches are compared for effectiveness.
 Models used in this project are all from Python's ScikitLearn library and include: Linear Regression Models, Decision Trees and related ensembles, Voting ensembles, K Nearest Neighbors classifier, neural networks, and bagging models.
 A genetic algorithm was introduced for initial feature selection.
@@ -81,7 +81,7 @@ For example, a genetic algorithm for feature selection was implemented in this p
 This component was then able to be used seamlessly with all existing models and other sklearn components.
 
 \par
-Grid search is a algorithm for feature selection that exhaustively compares a set of options for the best performing item.
+Grid search is an algorithm for feature selection that exhaustively compares a set of options for the best performing item.
 The world was split into grids, and the set of options were classification models.
 The model that performed best in that grid was selected for predicting in that area.
 This selection is important for identifying optimal models.
@@ -94,7 +94,7 @@ In reality, the ranged nature of bathymetry makes classification trivial for bat
 There is a consistent known minimum and maximum for bathymetry.
 For example, the maximum for bathymetry is 0, and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
 This range allows for simple labels to be placed on a number of ranges.
-These number of ranges is arbitrary and can be adjusted to test error.
+These number of ranges are arbitrary and can be adjusted to test error.
 The principal is that selecting a range will infer the maximum error for the prediction.
 For example, a range of 150 meters infers an error of 150 meters for a point predicted in a class.
 
