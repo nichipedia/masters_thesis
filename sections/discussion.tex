@@ -1,24 +1,25 @@
-\subsection{Discussion}
+\section{Discussion}
 \setlength{\parindent}{10ex}
 This chapter explores the interesting concepts and emergent ideas that stem from this work.
 It is divided into discussing the three core experiments performed.
 Specifically, discussing concepts from the regression, classification, and novel grid optimization experiments.
 
-\subsubsection{Regression Discussion}
+\subsection{Regression Discussion}
 \cite{jena2012prediction} achieved a \ac{RMSE} of \~{}175m in their optimized model.
+Their model used \ac{ML} to predict a optimum scaling factor S.
 The linear regression model fit in this project is 100 meters less accurate than the optimized model used in \cite{jena2012prediction}.
-The purpose of the test is not to achieve accurate predictions, but to identify if \ac{ML} models can be viable.
+The purpose of the test is not to achieve accurate predictions, but to identify if \ac{ML} models can be viable for predictin bathymetry.
 Therefore, the accuracy of these models is less important than identifying the viability of the models.
 The training data used is predicted bathymetry, but shows that fitting a model to true bathymetry will yield a similar result.
 In any event, the accuracy of these regression models is not viable for true models.
 
-\subsubsection{Classification Results Discussion}
+\subsection{Classification Results Discussion}
 The Random Forest model performed excellently with a balanced accuracy of 82\%.
 Breaking down the results by class, the classifier predicted some classes with greater precision than others.
 This is indicative that the decision boundary responded to certain trends in the data.
-This can be seen in figure \ref{rfc_report}.
+This can be seen in figure \ref{fig:rfc_report}.
 
-\begin{figure}[h]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{rfc_class_report.png}
     \caption{Figure displaying the heat map classification report of the Random Forest Classifier}
@@ -27,7 +28,7 @@ This can be seen in figure \ref{rfc_report}.
 
 \par
 The Bagging classifier performed on par with the Random Forest Classifier with a balanced accuracy of 79\%.
-However, figure \ref{fig:coveragegrid} shows that the bagging classifier performed best around coast lines.
+However, Figure \ref{fig:coveragegrid} shows that the bagging classifier performed best around coastlines.
 This suggests the the model responds well to shallow waters.
 Shoreline data will also be consistently more accurate because of proximity to land.
 Most of the world high resolution bathymetry is shoreline, and it is possible that the model responded to the quality data.

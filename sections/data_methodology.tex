@@ -11,13 +11,13 @@ Data derived from predicted \ac{EGM} datasets represent the actual value of bath
 For example, predicted bathymetry datasets have a geospatial coverage.
 These coverages vary in size by the resolution of the imagery.
 Higher resolution imagery will have smaller coverages, and lower resolution will have more extensive coverages.
-The predicted values used in this project represent a average of bathymetry across coverage. 
+The predicted values used in this project represent an average of bathymetry across coverage. 
 These predicted datasets are used as the truth values for training, but it is important to note that they are, themselves, predicted values.
 Using this data is not intended to build accurate predictors, but to show that an accurate predictor can be built.
 
 \par
 The \ac{ETOPO} dataset is used in this project for bathymetry data.
-This dataset is an aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from a \ac{EGM}.
+This dataset is an aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from an \ac{EGM}.
 It is an updated version of the original ETOPO2 dataset and was chosen because of the two minute resolution it offers.
 \ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
@@ -41,14 +41,14 @@ This data was then normalized and formatted for this project.
 This aggregation was performed to gather a large set of testing samples regardless of whether the data is relevant.
 For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as a useful feature.
 This approach is fundamentally different to building a physics model.
-For example, the mass of a geoid causes a vertical gravity gradient which create ocean swells that can be measured by satellite altimetry.
-Larger geoids will naturally effect the bathymetry of the sea floor.
+For example, the mass of a geoid causes a vertical gravity gradient which creates ocean swells that can be measured by satellite altimetry.
+Larger geoids will naturally affect the bathymetry of the sea floor.
 This relationship is obvious and correlated in a measurable way.
 On the other hand, machine learning can potentially identify relations in the data that otherwise will be difficult for a human to identify and model.
 
-All features and their origin datasets can be seen in the table \ref{table:FEATURE_LIST}. %Insert point to figure yadaydada
+All features and their origin datasets can be seen in table 1. %Insert point to figure yadaydada
 Absent data points were either interpolated, or filled with default values.
-See table \ref{table:FEATURE_LIST} for a complete list of all features.
+See table 1 for a complete list of all features.
 
 \par
 Figure \ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
@@ -64,12 +64,25 @@ Denser crust is caused by many different factors that are separate from bathymet
 It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
 
 \par
-In general, the features used in this project were a grab bag of potential predictors.
-Features such as estimated oxygen, nitrogen, salinity, etc make sense for being related to bathymetry.
-Where other features such as crust density may not naturally be explained.
-The feature selection was used to identify the best preforming features.
+In general, the features used in this project were a collection of potential predictors.
+Features such as estimated oxygen, nitrogen, and salinity make sense for being related to bathymetry.
+Other features such as crust density may not naturally be explained.
+The feature selection was used to identify the best performing features.
 Future study in the relationship of these features and how they benefit predicting bathymetry will be necessary.
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
+    \caption{Graph of Bathymetry and Estimated Fish BIOMASS. Bathymetry is measured in meters and Fish Biomass is measured }
+    \label{fig:bathyxfish}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
+    \caption{Graph of Bathymetry and Estimated Crust Density. Bathymetry is measured in meters and Crust Density is measured is miligrams per squared centimeter.}
+    \label{fig:bathyxdensity}
+\end{figure}
 
 %This section is for defining the data being used in the experiment
 %It should define where the data came from and its format
@@ -107,14 +120,14 @@ This important step in the \ac{ML} pipeline removes noise from irrelevant data.
 This work used a genetic algorithm approach for feature selection \cite{yang1998feature}.
 Other approaches that were considered included a grid search, dimensional analysis, and simple variable correlations.
 These approaches were found to either take too long or simply not offer enough improvement to the model.
-Where as the genetic algorithm approach gave relatively quick model improvements with little effort.
-See figure \ref{fig:GA} for an illustration of a generic genetic algorithm.
+The genetic algorithm approach gave relatively quick model improvements with little effort.
+See Figure \ref{fig:GA} for an illustration of a generic genetic algorithm.
 
 \par
 Using a genetic algorithm for feature selection is a simple application of the original process.
 The initialized population is a set of random binary strings.
 Each string has a character length equal to the number of features in our feature space.
-The binary characters represent whither a feature is active or inactive.
+The binary characters represent whether a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
 The fitness of that string is represented by the resulting model's accuracy.
 Selection is performed by choosing the most accurate models and their characteristics are passed to the next generation.
@@ -122,7 +135,7 @@ A simple crossover mutation of the strings is used along with a modest 5\% mutat
 Upon termination the resulting fittest string is used as the selected features.
 
 
-\begin{figure}[h]
+\begin{figure}[htb]
     \centering
     \caption{Diagram of Generic Genetic Algorithm}
     \label{fig:GA}
@@ -133,7 +146,7 @@ Upon termination the resulting fittest string is used as the selected features.
 Feature selection was used to remove noise from the training data.
 This down sizing happened at a global scale.
 It is possible that this may affect localized predictions where a feature is a strong predictor.
-This was not tested in this work, but is a interesting question.
+This was not tested in this work, but is an interesting question.
 Identifying locally optimum features could lead to better models.
 
 
@@ -141,7 +154,7 @@ Identifying locally optimum features could lead to better models.
 %They are essentially binary files...
 \subsection{Data Representation}
 It is standard to represent data on a globe in a grid formatted where each grid represents a area of that globe.
-For this project the Earth is such a globe and a map is a excellent example of how latitude and longitude lines for a grid pattern.
+For this project the Earth is such a globe and a map is a excellent example of how latitude and longitude lines form a grid pattern.
 The data in the grid is a representation of the average value across an area.
 This grid representation allows for ease of reading both by computers and humans.
 
@@ -168,12 +181,6 @@ In any event, the two minute resolution offered a good balance of memory, accura
 %This was done as a isolated demonstration of the data.
 %Talk about the plots here and include them once seaborn has decided to stop being dumb...
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{Bathymetry_X_SS_BIOMASS_FISH_LOG10_MGCM2_Wei2010x.png}
-    \caption{Graph of Bathymetry and Estimated Fish BIOMASS. Bathymetry is measured in meters and Fish Biomass is measured }
-    \label{fig:bathyxfish}
-\end{figure}
 
 %\begin{figure}[h]
 %    \centering
@@ -182,12 +189,7 @@ In any event, the two minute resolution offered a good balance of memory, accura
 %    \label{fig:bathyxfauna}
 %\end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
-    \caption{Graph of Bathymetry and Estimated Crust Density. Bathymetry is measured in meters and Crust Density is measured is miligrams per squared centimeter.}
-    \label{fig:bathyxdensity}
-\end{figure}
+
 
 
 

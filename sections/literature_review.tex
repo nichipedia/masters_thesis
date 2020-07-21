@@ -42,10 +42,9 @@ Essentially, this model represents a mathematical function where the input data 
 This method is best when the desired result can not be grouped into discrete "labeled" data.
 
 \par
-Unsupervised learning describes a model that is trained without labels.
-Meaning that the training data does not have corresponding "truth" values for predictions \cite{bishop2006pattern}.
+Unsupervised learning describes a model that is trained without labels, meaning that the training data does not have corresponding "truth" values for predictions \cite{bishop2006pattern}.
 Training a model without "truth" is used for grouping similar values together programatically.
-Ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
+This is ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
 
 \par
 Supervised learning describes a model that is trained with labeled truth data. \cite{bishop2006pattern}.
@@ -57,8 +56,7 @@ Each model used will be discussed in subsequent sections.
 \subsubsection{Bias and Variance}
 %Describe the Bias and Variance relationship!
 The generalized error of a model can be expressed in terms of bias and variance.
-Bias is the average error of a model for different training sets.
-Variance describes the sensitivity of the model to data.
+Bias is the average error of a model for different training sets, while Variance describes the sensitivity of the model to data.
 These two terms are necessary to understand the bias-variance problem.
 This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
 The relationship being the minimization of bias, often causing high variance, and minimizing variance, often causing high bias.
@@ -82,10 +80,9 @@ Optimally, accurate models should have low bias and variance.
 \subsubsection{Decision Trees}
 %Talk about decision trees here
 Decision trees are supervised models that are used for classification or regression \cite{breiman2017classification}.
-They are simple to understand and interpret due to their simple decision structure. 
+However, they are simple to understand and interpret due to their simple decision structure. 
 They are susceptible to over-fitting and can create overly complex trees that do not generalize well.
-Over fitting is where a model will fit too closely to a training set \cite{cawley2010over}. 
-Making it unable to make accurate predictions on data outside of what was used in training.
+Over fitting is where a model will fit too closely to a training set \cite{cawley2010over}, making it unable to make accurate predictions on data outside of what was used in training.
 
 \begin{figure}[h]
     \centering
@@ -97,7 +94,7 @@ Making it unable to make accurate predictions on data outside of what was used i
 
 %Talk about random forest here
 \par
-The Random Forest Classifier is a ensemble of many decision trees \cite{breiman2001random}.
+The Random Forest Classifier is an ensemble of many decision trees \cite{breiman2001random}.
 It fits a number of decision trees on various sub samples of the dataset.
 This also helps to control over fitting because each tree is fit to a sub sample of the dataset.
 It averages the prediction of each tree to make a more accurate prediction than any single tree.
@@ -108,7 +105,7 @@ It averages the prediction of each tree to make a more accurate prediction than 
 Boosting describes a type of ensemble that is concerned with reducing bias.
 The idea being to build base estimators sequentially and then use the results of each to train a different estimator with the intention of reducing bias.
 Adaboost is an example of one such model \cite{freund1995desicion}.
-Its core principle being the fitting of weak learners on many random samples of the training data.
+Its core principle is the fitting of weak learners on many random samples of the training data.
 These learners are then combined with a weighted majority vote. 
 This process is iterated for the training phase.
 
@@ -121,7 +118,7 @@ The gradient boosting classifier is an ensemble of trees similar to a random for
 In gradient boosting, decision trees are used as "weak" learners.
 They are gradually added to the model in order to reduce the error.
 This "gradient descent" approach is effective at building a successful classifier.
-These types of boosting algorithms tend to overfed the model.
+These types of boosting algorithms tend to overfit the model.
 This can be solved by enforcing tree constraints and random sampling of data.
 
 
@@ -142,37 +139,36 @@ This classifier is good for combining equally performing models in order to bala
 The K Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
-This model is based on the nearest neighbors algorithm and is excellent for its simplicity and domain independent applications.
+This model is based on the nearest neighbor algorithm and is excellent for its simplicity and domain independent applications.
 The nearest neighbors algorithm can be explained as the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
 The K Nearest Neighbors algorithm is a generalization.
-To describe simply, instead of searching for the nearest post office the algorithm searches for the K nearest post offices.
+To describe simply, instead of searching for the nearest post office, the algorithm searches for the K nearest post offices.
 This can be extended for use in classification.
-For example, if the K nearest neighbors of a object are a positive class. 
-It is natural to classify the object as positive.
-See Figure \ref{fig:knn} for a illustration.
+For example, if the K nearest neighbors of an object are a positive class, it is natural to classify the object as positive.
+See Figure \ref{fig:knn} for an illustration of the K Nearest Neighbors algorithm.
 
 \begin{figure}[h]
     \centering
     \includegraphics[]{220px-KnnClassification.png}
-    \caption{The above figure is an example of the KNN algorithm for classification. There are 2 classes in this example. Blue squares and Red triangles.
+    \caption{The above figure is an example of the KNN algorithm for classification. There are 2 classes in this example: Blue squares and Red triangles.
     The green circle needs to be classified. If K is 3 (the solid line), then the green circle will be classified as a red triangle. 
     However, if K is 5 (the dotted line), then the green circle will be classified as a blue square.}
     \label{fig:knn}
 \end{figure}
 
 
-\subsubsection{Multi-Layer Perception}
+\subsubsection{Multi-Layer Perceptron}
 %Talk about MLP Classifier here!!!
 % Include MLP picture here I guess
-The Multi-Layer Perceptron is a model that fits a function iterative through a process called back-propagation.
+The Multi-Layer Perceptron is a model that fits a function iteratively through a process called back-propagation.
 The MLP classifier is a neural network model that is based on the structure of the human brain.
 It consists of many layers beginning with an input layer.
 The middle layers are called the "hidden layers" and are each assigned a weight.
 Back propagation is used during training to adjust the weights in the hidden layers.
-These adjustments are made to in order to reach a more accurate prediction.
+These adjustments are made in order to reach a more accurate prediction.
 There can be many hidden layers of different depths.
-The neural network is a versatile model that benefits from more training data with less risk of over fitting.
-A example of training on huge sets of data is Deep Learning.
+The neural network is a versatile model that benefits from more training data with less risk of overfitting.
+An example of training on huge sets of data is Deep Learning.
 Deep Learning trains a neural net with many hidden layers on a large set of training data.
 % Probably need to say more about the MLP Classifier...
 % Maybe some graphics and other bull jive. Maybe a algorithm???
@@ -180,8 +176,8 @@ Deep Learning trains a neural net with many hidden layers on a large set of trai
 \begin{figure}[h]:
     \centering
     \includegraphics[scale=0.5]{multilayerperceptron_network.png}
-    \caption{Figure showing A Multi-Layer Perceptron. The middle or hidden layers are assigned weights that effect the selected class in classification.
-    This model effectivly models a function.}
+    \caption{Figure showing A Multi-Layer Perceptron. The middle or hidden layers are assigned weights that affect the selected class in classification.
+    This model effectively models a function.}
     \label{}
 \end{figure}
 
@@ -190,9 +186,9 @@ Deep Learning trains a neural net with many hidden layers on a large set of trai
 
 \subsubsection{Naive Bayes}
 %Talk about Naive Bayes classifier here!!
-The naive Bayes classifier is based on applying the naive Bayes theorem \cite{zhang2004optimality}.
+The Naive Bayes classifier is based on applying the Naive Bayes theorem \cite{zhang2004optimality}.
 The naive assumption of Naive Bayes is the conditional independence between pairs of features given the label.
-Bayes theorem states the following relationship.
+Bayes theorem states the following relationship:
 
 \begin{equation}
     \label{eq:bayes}
@@ -200,14 +196,13 @@ Bayes theorem states the following relationship.
 \end{equation}
 
 In equation \ref{eq:bayes}, $\theta$ and \textbf{D} are events. 
-P($\theta$|\textbf{D}) represents the probability of $\theta$ occuring given event \textbf{D} is true.
-Where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
-Bayes Theorem will produce a probability of a event happening given another event using prior probabilities.
+P($\theta$|\textbf{D}) represents the probability of $\theta$ occuring given event \textbf{D} is true, where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
+Bayes Theorem will produce a probability of an event happening given another event using prior probabilities.
 For example, say you wanted to predict the probability of both a stock falling and the DOW being down.
-If you knew the probability of both falling you could use bayes theroem to calculate the probability of both happening together.
+If you knew the probability of both falling you could use Bayes theroem to calculate the probability of both happening together.
 
-Naive Bayes classifiers use a assumption of conditional independence between every pair of features given the value of the class variable. 
-These over-simplified assumptions do not negatively effect the classifiers.
+Naive Bayes classifiers use an assumption of conditional independence between every pair of features given the value of the class variable. 
+These over-simplified assumptions do not negatively affect the classifiers.
 In fact, Naive Bayes classifiers work well in many real-world situations because of the conditional assumptions\cite{zhang2004optimality}.
 Famously, it has performed well for document classification and spam filtering. 
 
@@ -230,8 +225,8 @@ This can fit a function up to order N with the cost of complexity.
 
 % Put linear regression equation right here for the world to see YO
 
-This project utilizes three regression models from sci kit.
-The naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
+This project utilizes three regression models from Python's sci kit library.
+The Naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
 The Ocean's of the Earth are humanities last frontiers.
@@ -239,40 +234,44 @@ Ironically, humanity knows very little about the bathymetry of these frontiers \
 This is due to several factors including but not limited to: the vast size of oceans, measurement techniques, sediment migration, and tectonic activity.
 This section is concerned with explaining the many measurement techniques for bathymetry and how they are used for creating global bathymetry grids.
 
-\subsection{Echo Sounders (\ac{MBES})(\ac{SBES}) }
+\subsection{Echo Sounders (Multi Beam Echo Sounders)(Single Beam Echo Sounders) }
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Geophy03-01.jpg}
+    \caption{This figure illustrates an \ac{MBES} system. The illustration was taken from \cite{monacoWeb}}
+    \label{fig:MBES}
+\end{figure}
+
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for a ship to avoid running aground.
-However, survey vessels have utilized \ac{MBES} systems to reliably create bathymetry charts \cite{farr1980multibeam}.
-This can give an accurate measurement of bathymetry in all water depths.
+This is where a ship strikes ground in a shallow area of water.
+Survey vessels have utilized \ac{MBES} systems to create reliable bathymetry charts \cite{farr1980multibeam}.
+These charts give an accurate measurement of bathymetry in all water depths.
 The downside of this method is the cost and time required to map global coverage.
 A vessel must transport these sensors, and potentially require decades of expensive surveys to gain full global coverage.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Schematic-presentation-of-the-side-scan-sonar-and-sub-bottom-profiling-survey-conducted.png}
-    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish.
+    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish. SideScan sonar is a type of \ac{SBES}. 
+    A tow fish is a sensor enclosing that is attached to a tow line from the stern of the vessel.
     This image was taken from \cite{sakellariou2015preliminary}}
     \label{fig:sidescandemo}
 \end{figure}
 
 
-There are two main categories of echo sounders.
+There are two main categories of echo sounders: \ac{MBES} and \ac{SBES}.
 \ac{MBES} are large swath sonar based sensors.
 They produce several artifacts including: bathymetry, backscatter, salinity, etc.
 These sensors are used for a wide array of commercial and research applications.
+See Figure \ref{fig:MBES} for a illustration of \ac{MBES}.
 SideScan sonar are focused sonar systems.
 They produce "imagery" artifacts and will sense a smaller swath of ocean than \ac{MBES} sensors.
-They are ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
+SideScan sonar is ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
 In general, SideScan systems are only used for object detection.
-See Figure \ref{fig:sidescandemo} for a illustration of a towed SideScan sensor body.
+See Figure \ref{fig:sidescandemo} for an illustration of a towed SideScan sensor body.
 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{Geophy03-01.jpg}
-    \caption{This figure illustrates a \ac{MBES} system. The illustration was taken from \cite{monacoWeb}}
-    \label{fig:MBES}
-\end{figure}
 
 
 
@@ -288,23 +287,23 @@ Clear waters are the best environment for this method, which has the potential t
 \par
 This method is important for its ability to predict swaths of bathymetry in shallow water.
 Shallow waters where larger vessels can not sail and large swaths of coastal waters are measured by \ac{SDB} in a cost and time-effective process.
-For example, the marsh-lands of Louisiana where water depth is only deep enough for flat-bed vessels.
-This method also has used in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
+An example where \ac{SDB} is useful is the marshlands of Louisiana where water depth is only deep enough for flat-bed vessels.
+This method also has been used in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
 These changes can be caused by sediments or man-made objects. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.40]{CBYK292WkAAIkzH.jpg}
     \caption{The above graphic demonstrates \ac{SBD}.
-    Specifically, it illustrates how light will penetrate the water column and reflect back intro space where it is monitored by a satellite.}
+    Specifically, it illustrates how light will penetrate the water column and reflect back into space where it is monitored by a satellite.}
     \label{fig:sdb}
 \end{figure}
 
 \par
 The limitations of the \ac{SDB} method are based on water depth and clarity.
-As depth increases light is unable to pass through the water column to the bottom.
+As depth increases, light is unable to pass through the water column to the bottom.
 The depth that light can penetrate is determined by the characteristics of the water.
-Clear water will allow for much deeper depths to be predicted, where-as murky, cluttered water limits the maximum depth.
+Clear water will allow for much deeper depths to be predicted, whereas murky, cluttered water limits the maximum depth.
 Environmental characteristics such as sediment composition and weather affect the clarity of water \cite{vinayaraj2016satellite}.
 
 \par
@@ -314,7 +313,7 @@ Work performed by \cite{chybicki2018three} improved the accuracy by using advanc
 \ac{SDB} models are ideal for coastal areas with high water visibility.
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
-Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM).
+Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM) for predicting bathymetry.
 They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related \cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
 They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in the gaps of their predictions.
@@ -326,11 +325,10 @@ They named this technique the "Inverse Nettleton Procedure" and used a simple li
 \end{equation}
 
 \par
-Equation \ref{eq:egm} represents the model created by \cite{smith1994bathymetric}.
-Where b represents the predicted bathymetry.
+Equation \ref{eq:egm} represents the model created by \cite{smith1994bathymetric}, where b represents the predicted bathymetry.
 D represents a function of regional estimated depth via satellite.
 s representing a regional scaling factor based on known sediments.
-Finally, g representing infered gravity from sattelite imaging.
+Finally, g represents infered gravity from satellite imaging.
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based \ac{MBES} Sounding sonar data.
@@ -348,7 +346,7 @@ These datasets include high-resolution coastal bathymetry from around the world 
 
 %Spelling check big time bruh
 \par
-The limitations of aggregated \ac{EGM}s is based on correlation uncertainty and unknown ocean features.
+The limitations of aggregated \ac{EGM}s are based on "correlation uncertaint" and unknown ocean features.
 Sediment density drives the correlation between sea surface gravity and bathymetry.
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
