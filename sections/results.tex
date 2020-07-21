@@ -16,14 +16,14 @@ The RMSE of each model can be found in Figure \ref{fig:rmse_barplot_regression}.
 
 
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{worldtraininglocal.png}
     \caption{Figure demonstrating initial training sets for regression. These sets were selected for training and testing was performed against the rest of the world.}
     \label{fig:trainset}
 \end{figure}
 
-% \begin{table}[htb]
+% \begin{table}[htp]
 %     \centering
 %     \begin{tabular}{|c c c|}
 %         \hline
@@ -38,14 +38,14 @@ The RMSE of each model can be found in Figure \ref{fig:rmse_barplot_regression}.
 %     \caption{Regression Results}
 % \end{table}
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{rsquared_barplot_regression.png}
     \caption{Bar chart showing \(R^2\) score for each model}
     \label{fig:r2_barplot_regression}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{rmse_bar_regression.png} 
     \caption{Bar chart showing RMSE for each model}
@@ -84,7 +84,7 @@ The Decision Tree classifier performed significantly worse than the other models
 The 47\% balanced accuracy is not usable for predictions.
 Potentially, parameter tuning, and feature selection could improve this model.
 
-% \begin{table}[htb]
+% \begin{table}[htp]
 %     \centering
 %     \begin{tabular}{|c c c|}
 %         \hline
@@ -99,14 +99,14 @@ Potentially, parameter tuning, and feature selection could improve this model.
 %     \caption{Classification Results}
 % \end{table}
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{f1_bar_classification.png}
     \caption{Bar chart showing F1 score for each classifier}
     \label{fig:f1_barplot_classification}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{balacc_bar_classification.png}
     \caption{Bar chart showing balanced accuracy for each classifier}
@@ -129,7 +129,7 @@ For example, a model may be excellent at predicting shallow bathymetry where the
 Where as, another model may be excellent at predicting bathymetry in deep water scenarios.
 This novel Grid Optimized Model Injector tests this theory by implementing a model that optimizes by geospatial location.
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{optgriddraft.png}
     \caption{Graphic Showing the World Coverages and Successful Models.
@@ -150,7 +150,7 @@ The performance of a set of models for each coverage was recorded.
 The best performing model in that coverage was then exported and saved to a map of best fit models to a geospatial bounding box.
 The results of this experiment are displayed in figure \ref{fig:coveragegrid}.
 
-\begin{figure}[htb]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{best_fit_percentage.png}
     \caption{Pie plot showing the percentage of coverages where a model was "best fit". These percentages represent the number of areas where a model performed the best. 
@@ -166,7 +166,7 @@ On the other hand, the Bagging classifier consistently performed well along the 
 The reasons for why these classifiers may have performed so well in those areas will be touched upon in the discussions section.
 
 
-\begin{figure}[h]
+\begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{grid_opt_results.png}
     \caption{Bar chart showing Grid Optimized Model results}

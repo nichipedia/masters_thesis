@@ -3,8 +3,7 @@
 There are many interesting avenues to explore from the research performed in this work.
 A first avenue will be to perform the experiments in this work at a higher spatial resolution.
 This work used a 2 minute spatial grid for representing all features and bathymetry.
-A 2 minute grid was used for the memory and size advantages.
-Allowing the computations and models to be fit on a pedestrian work station.
+A 2 minute grid was used for the memory and size advantages, allowing the computations and models to be fit on a pedestrian work station.
 Modern datasets for bathymetry are often represented in higher resolution grids.
 Naturally, the results will scale to the higher resolution, but testing and reporting the results will be necessary.
 
@@ -12,7 +11,7 @@ Naturally, the results will scale to the higher resolution, but testing and repo
 Another interesting avenue will be to explore selecting features based on geophysical location.
 This could be tested by performing feature selection on the models across different coverages of the globe.
 A simple genetic algorithm could be run for each model.
-The resulting features will then be used to for training and the best performing model will be selected with the optimum features.
+The resulting features will then be used for training and the best performing model will be selected with the optimum features.
 This experiment will eliminate features that do not locally support the model while highlighting the locally important features.
 
 \par
@@ -27,8 +26,7 @@ However, it is possible that geographic features were primary contributors to mo
 Identifying several model selection functions and finding a optimal function will allow for conclusions to be drawn in regards to model success.
 
 \par
-Finally, this work was preformed using predicted bathymetry from the ETOPO dataset.
-As already stated, this was done in order to prove the viability of the models.
-Not to prove the accuracy could be greater than a \ac{EGM}.
-However, this is a experiment that can be executed.
-Training these models against true bathymetry and comparing the metrics to existing \ac{EGM}s will give a indication of ability to predict bathymetry.
+Finally, this work was performed using predicted bathymetry from the ETOPO dataset.
+As already stated, this was done in order to prove the viability of the models, not to prove the accuracy could be greater than an \ac{EGM}.
+However, this is an experiment that can be executed.
+Training these models against true bathymetry and comparing the metrics to existing \ac{EGM}s will give an indication of ability to predict bathymetry.

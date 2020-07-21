@@ -15,7 +15,7 @@ The ordinal classes were binned on a interval of 150 meters.
 This was done to easily compare accuracy to model in \cite{jena2012prediction}.
 Validation was preformed using a 10 fold cross validation using balanced accuracy as the scoring function.
 
-\begin{table}[htb]
+\begin{table}[htp]
     \centering
     \begin{tabular}{|c c c|}
         \hline
@@ -53,13 +53,6 @@ The predictions of these models is being compared to predicted bathymetry which 
 Meaning that the accuracy in these models is not indicative of truly predicting global bathymetry.
 It does show that a \ac{ML} model can be fit to data and used to predict bathymetry, and if actual measured bathymetry and ocean features were used in training the results would be comparable.
 Furthermore, parameter tuning, model selection, and dynamic feature selection could be used the increase the accuracy beyond current results.
-
-\begin{figure}[hb]
-    \centering
-    \includegraphics[width=\textwidth]{rfc_class_report.png}
-    \caption{Figure displaying the heat map classification report of the Random Forest Classifier}
-    \label{fig:rfc_report}
-\end{figure}
 
 \par
 Figure \ref{fig:rfc_report} displays the classification report for the Random Forest Classifier along a reduced selection of classes.
