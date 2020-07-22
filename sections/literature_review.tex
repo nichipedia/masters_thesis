@@ -4,47 +4,50 @@ In this review, different approaches for predicting bathymetry are discussed.
 The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
 There is also a third approach discussed that improves upon the idea of an \ac{EGM}.
 \ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
-The \ac{ML} models used for training are also explained in detail.
+The \ac{ML} models used for training are explained in detail as well.
 
 \subsection{Machine Learning}
 Machine Learning can be defined as the process of fitting a model to data with an algorithm \cite{bishop2006pattern}.
-Predictions can then be produced from the models by supplying new data.
+Predictions can then be produced from the models by inputing new data.
 To validate the predictions, the supplied data's result is known.
-For example, a model is trained to predict if an image contains a car.
-Data from the images are extracted and used to train the model.
-Images with cars can be considered positive images.
-Images without cars can be considered negative images.
+For example, when a model is trained to predict if an image contains a car, data from the images is extracted and used to train the model.
+Images with cars are considered positive images.
+Images without cars are considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
 If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
+
+\par
 The two main types of models in Machine Learning are classification and regression models.
 There are several high-level descriptions of classification and regression models including: supervised learning, unsupervised learning, and reinforcement learning.
 
 \par
 Classification models are models that predict a discrete value.
-For example, the car model mentioned earlier.
+One such example is, the car model mentioned earlier.
 The model predicts a discrete value of either positive or negative.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
 Data is labeled when it is assigned an output value as a "truth" label.
-Using the example from earlier, a model to predict cars is trained.
+In the earlier example, a model to predict cars is trained.
 Data is labeled as either positive (there is a car in the image) or negative (there is not a car in the image).
 This labeling describes a "binary" classification, meaning there are two options from which to choose.
 Classification models can also be combined to form ensemble models.
-An ensemble uses a combination of "weaker" predictors to form a strong predictor.
+An ensemble is a combination of weaker predictors to form a strong predictor.
 %Include citations BELOW!!!!!
 Examples of classification models used in this project include: Decision Trees, Naive Bayes, MLP Classifier, Quadratic Discriminant Analysis Classifier, and K Nearest Neighbors Classifier.
 Examples of ensemble classifiers used in this project include: Random Forest Classifier, Ada boost, Gradient Boosting, Bagging, and Voting.
 
 \par
 Regression models predict a continuous value.
-A good example of a continous value is the predicition of water depth, where the range of predicted values is from sea level to the deppest known depth of the ocean.
-Consider sea level to be 0 and the minimum depth to be the marianas trench.
+For example, predicting water depth as a number is considered a continuous value.
+Where the range of predicted values is from sea level to the known depth of the ocean.
 Essentially, this model represents a mathematical function where the input data is the function parameters.
-This method is best when the desired result can not be grouped into discrete "labeled" data.
+This method is best when the desired result cannot be grouped into discrete "labeled" data.
+This is because classification cannot easily be performed on a infinite set of continuous values.
 
 \par
-Unsupervised learning describes a model that is trained without labels, meaning that the training data does not have corresponding "truth" values for predictions \cite{bishop2006pattern}.
+Unsupervised learning describes a model that is trained without labels.
+This means that the training data does not have corresponding truth values for predictions \cite{bishop2006pattern}.
 Training a model without "truth" is used for grouping similar values together programatically.
-This is ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
+This approach is ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
 
 \par
 Supervised learning describes a model that is trained with labeled truth data. \cite{bishop2006pattern}.
@@ -59,9 +62,10 @@ The generalized error of a model can be expressed in terms of bias and variance.
 Bias is the average error of a model for different training sets, while Variance describes the sensitivity of the model to data.
 These two terms are necessary to understand the bias-variance problem.
 This problem applies to all forms of supervised learning \cite{geman1992neural} and describes the indirect relationship of bias and variance.
-The relationship being the minimization of bias, often causing high variance, and minimizing variance, often causing high bias.
+The relationship being the minimization of bias often causes variance to increase.
+While minimizing variance often causes bias to increase.
 Models with high bias will be inaccurate when predicting data not used during training.
-Models with high variance will over fit \cite{cawley2010over} the training data by modeling noise in the data as opposed to the desired outputs.
+Models with high variance will overfit \cite{cawley2010over} the training data by modeling noise in the data as opposed to the desired outputs.
 Optimally, accurate models should have low bias and variance.
 
 %Include image showing bias and variance here!!
@@ -72,7 +76,7 @@ Optimally, accurate models should have low bias and variance.
     A linear regression model is fit to the samples with orders of 1, 4 and 15.
     The model fit with order 1 does not respond well to changes in the samples and is a great example of high bias.
     The model fit with order 4 fits the function very well and is a example of balanced bias and variance.
-    The model fit with order 15 fits the samples two well, but flucuates wildly. 
+    The model fit with order 15 fits the samples too well, but flucuates wildly. 
     It is a excellent example of high variance.}
     \label{}
 \end{figure}
@@ -123,7 +127,7 @@ This can be solved by enforcing tree constraints and random sampling of data.
 
 
 \subsubsection{Averaging}
-Averaging ensembles operate by aggregating the predictions of many models trained on random sub sets of the training data.
+Averaging ensembles operate by aggregating the predictions of many models trained on random subsets of the training data.
 Introducing randomization into the training will often reduce the variance of the resulting ensemble.
 Bagging is an example of an averaging ensemble and has several implementations.
 The Bagging ensemble uses a single classifier and fits instances of it to random samples of the training data.
@@ -134,18 +138,19 @@ The voting classifier works by using the predictions of a set of conceptually di
 The majority vote (hard voting) or averaged vote (soft voting) is selected as the prediction.
 This classifier is good for combining equally performing models in order to balance out individual weaknesses.
 
-\subsubsection{K Nearest Neighbors}
+\subsubsection{K-Nearest Neighbors}
 %Talk about KNN for classification
-The K Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
+The K-Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
 K Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
 This model is based on the nearest neighbor algorithm and is excellent for its simplicity and domain independent applications.
-The nearest neighbors algorithm can be explained as the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
+The nearest neighbors algorithm can be explained using the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
 The K Nearest Neighbors algorithm is a generalization.
 To describe simply, instead of searching for the nearest post office, the algorithm searches for the K nearest post offices.
 This can be extended for use in classification.
-For example, if the K nearest neighbors of an object are a positive class, it is natural to classify the object as positive.
-See Figure \ref{fig:knn} for an illustration of the K Nearest Neighbors algorithm.
+For example, if the K nearest neighbors of an object are a positive class. 
+It is natural to classify the object as positive.
+See Figure \ref{fig:knn} for a illustration.
 
 \begin{figure}[htp]
     \centering
