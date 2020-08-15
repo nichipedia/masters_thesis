@@ -8,7 +8,7 @@ The \ac{ML} models used for training are explained in detail as well.
 
 \subsection{Machine Learning}
 Machine Learning can be defined as the process of fitting a model to data with an algorithm \cite{bishop2006pattern}.
-Predictions can then be produced from the models by inputing new data.
+Predictions can then be produced from the models by inputting new data.
 To validate the predictions, the supplied data's result is known.
 For example, when a model is trained to predict if an image contains a car, data from the images is extracted and used to train the model.
 Images with cars are considered positive images.
@@ -46,7 +46,7 @@ This is because classification cannot easily be performed on a infinite set of c
 \par
 Unsupervised learning describes a model that is trained without labels.
 This means that the training data does not have corresponding truth values for predictions \cite{bishop2006pattern}.
-Training a model without "truth" is used for grouping similar values together programatically.
+Training a model without "truth" is used for grouping similar values together programmatically.
 This approach is ideal for identifying correlations in data that is otherwise unrelated and unlabeled.
 
 \par
@@ -91,7 +91,8 @@ Over fitting is where a model will fit too closely to a training set \cite{cawle
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{dtreesepal.png}
-    \caption{The above figure is an example of a decision tree. Decision trees work by making binary decisions across a deicision boundary.
+    \caption{The above figure is an example of a decision tree.
+    Decision trees work by making binary decisions across a decision boundary.
     Each leaf node represents a classification label and the binary decisions that selected that label.}
     \label{}
 \end{figure}
@@ -155,8 +156,10 @@ See Figure \ref{fig:knn} for a illustration.
 \begin{figure}[htp]
     \centering
     \includegraphics[]{220px-KnnClassification.png}
-    \caption{The above figure is an example of the KNN algorithm for classification. There are 2 classes in this example: Blue squares and Red triangles.
-    The green circle needs to be classified. If K is 3 (the solid line), then the green circle will be classified as a red triangle. 
+    \caption{The above figure is an example of the KNN algorithm for classification.
+    There are 2 classes in this example: Blue squares and Red triangles.
+    The green circle needs to be classified.
+    If K is 3 (the solid line), then the green circle will be classified as a red triangle.
     However, if K is 5 (the dotted line), then the green circle will be classified as a blue square.}
     \label{fig:knn}
 \end{figure}
@@ -181,7 +184,8 @@ Deep Learning trains a neural net with many hidden layers on a large set of trai
 \begin{figure}[htp]:
     \centering
     \includegraphics[scale=0.5]{multilayerperceptron_network.png}
-    \caption{Figure showing A Multi-Layer Perceptron. The middle or hidden layers are assigned weights that affect the selected class in classification.
+    \caption{Figure showing A Multi-Layer Perceptron.
+    The middle or hidden layers are assigned weights that affect the selected class in classification.
     This model effectively models a function.}
     \label{}
 \end{figure}
@@ -201,10 +205,10 @@ Bayes theorem states the following relationship:
 \end{equation}
 
 In equation \ref{eq:bayes}, $\theta$ and \textbf{D} are events. 
-P($\theta$|\textbf{D}) represents the probability of $\theta$ occuring given event \textbf{D} is true, where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
+P($\theta$|\textbf{D}) represents the probability of $\theta$ occurring given event \textbf{D} is true, where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
 Bayes Theorem will produce a probability of an event happening given another event using prior probabilities.
 For example, say you wanted to predict the probability of both a stock falling and the DOW being down.
-If you knew the probability of both falling you could use Bayes theroem to calculate the probability of both happening together.
+If you knew the probability of both falling you could use Bayes theorem to calculate the probability of both happening together.
 
 Naive Bayes classifiers use an assumption of conditional independence between every pair of features given the value of the class variable. 
 These over-simplified assumptions do not negatively affect the classifiers.
@@ -222,9 +226,10 @@ This can fit a function up to order N with the cost of complexity.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{polynomialvslinearregression.png}
-    \caption{The above figure shows 3 lines fit to a set of points. A linear regression (red line) does not fit the data well.
+    \caption{The above figure shows 3 lines fit to a set of points.
+    A linear regression (red line) does not fit the data well.
     As the order rises the line will better fit the data.
-    These higher order polynoial regression lines come at the cost of complexity and increasing the variance of the function.}
+    These higher order polynomial regression lines come at the cost of complexity and increasing the variance of the function.}
     \label{fig:repressionexample}
 \end{figure}
 
@@ -259,7 +264,8 @@ A vessel must transport these sensors, and potentially require decades of expens
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Schematic-presentation-of-the-side-scan-sonar-and-sub-bottom-profiling-survey-conducted.png}
-    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish. SideScan sonar is a type of \ac{SBES}. 
+    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish.
+    SideScan sonar is a type of \ac{SBES}.
     A tow fish is a sensor enclosing that is attached to a tow line from the stern of the vessel.
     This image was taken from \cite{sakellariou2015preliminary}}
     \label{fig:sidescandemo}
@@ -270,7 +276,7 @@ There are two main categories of echo sounders: \ac{MBES} and \ac{SBES}.
 \ac{MBES} are large swath sonar based sensors.
 They produce several artifacts including: bathymetry, backscatter, salinity, etc.
 These sensors are used for a wide array of commercial and research applications.
-See Figure \ref{fig:MBES} for a illustration of \ac{MBES}.
+See Figure~\ref{fig:MBES} for a illustration of \ac{MBES}.
 SideScan sonar are focused sonar systems.
 They produce "imagery" artifacts and will sense a smaller swath of ocean than \ac{MBES} sensors.
 SideScan sonar is ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
@@ -313,13 +319,13 @@ Environmental characteristics such as sediment composition and weather affect th
 
 \par
 Current \ac{SDB} models can predict bathymetry with a \ac{RMSE} of less than 2.5 meters at a maximum depth of 50 meters.
-Work performed by \cite{vinayaraj2016satellite} has improved the depth by using blue light-sensing techniques.
-Work performed by \cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
+Work performed by~\cite{vinayaraj2016satellite} has improved the depth by using blue light-sensing techniques.
+Work performed by~\cite{chybicki2018three} improved the accuracy by using advanced regression models when measuring the wavelengths.
 \ac{SDB} models are ideal for coastal areas with high water visibility.
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
-Work performed by Smith and Sandwell \cite{smith1994bathymetric}\cite{smith1997global} pioneered the use of Earth Gravitational Models (EGM) for predicting bathymetry.
-They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related \cite{smith1994bathymetric}.
+Work performed by Smith and Sandwell~\cite{smith1994bathymetric,smith1997global} pioneered the use of Earth Gravitational Models (EGM) for predicting bathymetry.
+They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related~\cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
 They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in the gaps of their predictions.
 Areas with large seamounts found the correlation to be strongest, while areas of flat sediments found the correlation to be weakest.
@@ -330,10 +336,10 @@ They named this technique the "Inverse Nettleton Procedure" and used a simple li
 \end{equation}
 
 \par
-Equation \ref{eq:egm} represents the model created by \cite{smith1994bathymetric}, where b represents the predicted bathymetry.
+Equation~\ref{eq:egm} represents the model created by~\cite{smith1994bathymetric}, where b represents the predicted bathymetry.
 D represents a function of regional estimated depth via satellite.
 s representing a regional scaling factor based on known sediments.
-Finally, g represents infered gravity from satellite imaging.
+Finally, g represents inferred gravity from satellite imaging.
 
 \par
 Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based \ac{MBES} Sounding sonar data.
@@ -343,7 +349,7 @@ The aggregation yielded prediction accuracy within ~100 meters in coastal waters
 
 %Discuss the STRM Global Dataset here in detail....
 \par 
-This work was later improved in \cite{becker2009global}.
+This work was later improved in~\cite{becker2009global}.
 The model was substantially improved by increasing the number of ship soundings and increasing the aggregation sources.
 Ten external datasets were aggregated for the SRTM30 grid.
 Agencies in these sources include \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and \ac{JAMSTEC}.
@@ -351,23 +357,23 @@ These datasets include high-resolution coastal bathymetry from around the world 
 
 %Spelling check big time bruh
 \par
-The limitations of aggregated \ac{EGM}s are based on "correlation uncertaint" and unknown ocean features.
+The limitations of aggregated \ac{EGM}s are based on "correlation uncertainty" and unknown ocean features.
 Sediment density drives the correlation between sea surface gravity and bathymetry.
 A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
-This is all controlled by the scaling factor described in \cite{smith1994bathymetric} and shown in equation \ref{eq:egm}. 
+This is all controlled by the scaling factor described in~\cite{smith1994bathymetric} and shown in equation~\ref{eq:egm}.
 However, there is not an optimal scaling factor for the entire world.
 Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
 
 
-\subsection{Machine Learning Optimized \ac{EGM}}
+\subsection{Machine Learning Optimized \ac{EGM}}\label{subsec:machine-learning-optimizedac}
 The aggregated \ac{EGM} is a physics-based model that wants the relationship between gravity and bathymetry to be directly correlated.
 This correlation is often non-trivial to define due to environmental factors.
 The nondeterministic behavior is compensated by the scaling factor mentioned in the previous section.
 Attempts to optimize this scaling factor have been made, and \ac{ML} has shown much promise in this regard.
 
 \par
-The work performed by \cite{jena2012prediction} used \ac{ML} to optimize their gravitational regresion models.
+The work performed by~\cite{jena2012prediction} used \ac{ML} to optimize their gravitational regression models.
 Instead of identifying an optimal scaling factor deterministically, they used an \ac{ANN} to optimize the scaling factor.
 This was done using precise \ac{MBES} data as truth data and satellite altimeter data.
 This method was tested on a localized swath of ocean in the Arabian Sea.

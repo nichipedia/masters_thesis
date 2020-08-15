@@ -9,10 +9,10 @@ Each section includes figures representing the metric scores.
 Regression \ac{ML} models were fit in order to compare to existing physics models.
 Three models were fit to the data: 
 an SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
-These models were trained against a reduced set of data shown in Figure \ref{fig:trainset}, and validated against the world wide data not used in the training phase.
+These models were trained against a reduced set of data shown in Figure~\ref{fig:trainset}, and validated against the world wide data not used in the training phase.
 Each model was fit against selected features from the Genetic Algorithm feature selector.
-The \(R^2\) score for each model can be found in Figure \ref{fig:r2_barplot_regression}.
-The RMSE of each model can be found in Figure \ref{fig:rmse_barplot_regression}.
+The \(R^2\) score for each model can be found in Figure~\ref{fig:r2_barplot_regression}.
+The RMSE of each model can be found in Figure~\ref{fig:rmse_barplot_regression}.
 
 
 
@@ -74,10 +74,10 @@ A set of metrics including: precision, recall, f1 score, and balanced accuracy w
 
 \par
 The ordinal classes were binned on an interval of 150 meters.
-This was done to easily compare accuracy to model in \cite{jena2012prediction}.
+This was done to easily compare accuracy to model in~\cite{jena2012prediction}.
 Validation was performed using a 10 fold cross validation using balanced accuracy as the scoring function.
-The F1 results for each model can be found in Figure \ref{fig:f1_barplot_classification}.
-The Balanced Accuracy for each model can be found in Figure \ref{fig:balacc_barplot_classification}.
+The F1 results for each model can be found in Figure~\ref{fig:f1_barplot_classification}.
+The Balanced Accuracy for each model can be found in Figure~\ref{fig:balacc_barplot_classification}.
 
 \par
 The Decision Tree classifier performed significantly worse than the other models.
@@ -148,19 +148,20 @@ To simplify this experiment, for sake of time and computing resources, the world
 These coverages represent an area of the Earth and will suffice for the experiment of comparing model performance across geospatial locations.
 The performance of a set of models for each coverage was recorded.
 The best performing model in that coverage was then exported and saved to a map of best fit models to a geospatial bounding box.
-The results of this experiment are displayed in figure \ref{fig:coveragegrid}.
+The results of this experiment are displayed in Figure~\ref{fig:coveragegrid}.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{best_fit_percentage.png}
-    \caption{Pie plot showing the percentage of coverages where a model was "best fit". These percentages represent the number of areas where a model performed the best. 
+    \caption{Pie plot showing the percentage of coverages where a model was "best fit".
+    These percentages represent the number of areas where a model performed the best.
     The percentage will give an indication of the success of a model.}
     \label{fig:pie_best_fit}
 \end{figure}
 
 \par
-Figure \ref{fig:coveragegrid} illustrates the coverages where each model performed best.
-Figure \ref{fig:pie_best_fit} shows the percentage that each model was a best fit.
+Figure~\ref{fig:coveragegrid} illustrates the coverages where each model performed best.
+Figure~\ref{fig:pie_best_fit} shows the percentage that each model was a best fit.
 The random forest classifier was the best fit model for a large portion of the oceans.
 On the other hand, the Bagging classifier consistently performed well along the coast lines.
 The reasons for why these classifiers may have performed so well in those areas will be touched upon in the discussions section.
@@ -175,10 +176,10 @@ The reasons for why these classifiers may have performed so well in those areas 
 %In this section I am defining what the Grid optimization is and why it matters.
 %There may be a better name for this?? Who knows really...
 \subsubsection{Grid Optimizing Results}
-The Grid Optimizing Classifier used the results from Figure \ref{fig:coveragegrid} to select an \textit{optimum} model.
-Simply, the classifier checks the location of the prediction for its corresponding grid in Figure \ref{fig:coveragegrid}.
+The Grid Optimizing Classifier used the results from Figure~\ref{fig:coveragegrid} to select an \textit{optimum} model.
+Simply, the classifier checks the location of the prediction for its corresponding grid in Figure~\ref{fig:coveragegrid}.
 The model that performed best in that coverage is then used for classification.
 This optimum model selection improved the prediction accuracy of the model by several percent.
-See figure \ref{fig:grid_opt_barplot} for the results of the model.
+See Figure~\ref{fig:grid_opt_barplot} for the results of the model.
 
 

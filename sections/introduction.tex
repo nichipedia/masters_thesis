@@ -3,24 +3,24 @@
 \setlength{\parindent}{10ex}
 Bathymetry is defined as the measure of depth in a body of water.
 The forefront in global bathymetry mapping is aggregations of predicted and measured sources. 
-These \ac{EGM}s are the standard for measuring global bathymetry \cite{becker2009global}\cite{smith1994bathymetric}\cite{smith1997global}\cite{smith2010planning}.
+These \ac{EGM}s are the standard for measuring global bathymetry~\cite{becker2009global,smith1994bathymetric,smith1997global,smith2010planning}.
 They predict bathymetry by modeling the relationship between the vertical gravity gradient of a geoid and the depth of a water column.
 This relationship is modeled by measuring the altimetry of the sea surface to a constellation of satellites.
 Altimetry is the measurement of height or altitude. 
-Specifically, this paper is refering to the altimetry of the sea surface using the distance to a sattelite.
+Specifically, this paper is referring to the altimetry of the sea surface using the distance to a sattelite.
 Measuring the altimetry can lead to identifying swells that are caused by gravity gradients that originate from geoids.
 Modeling the resulting bathymetry as a function of the approximated gravity is an excellent approach at coarse resolutions, but at finer resolutions, the error of predictions becomes an issue.
 Modern \ac{EGM} predictions have a error of approximately 180 meters.
-On the other hand, sonar platforms such as the \ac{MBES} \cite{farr1980multibeam} provide extremely accurate measurements of depth. 
+On the other hand, sonar platforms such as the \ac{MBES}~\cite{farr1980multibeam} provide extremely accurate measurements of depth.
 They operate using the simple physics of sound traveling through the medium of water.
 Measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor will provide the bathymetry.
-Many survey and commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor \cite{becker2009global}.
+Many survey and commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor~\cite{becker2009global}.
 This is because \ac{MBES} only measure a limited swath of ocean, and often vessels need to sail slower for high-resolution mappings.
 Thus, global coverage using \ac{MBES} is time and cost-prohibitive.
 \ac{SDB} is a method that measures the attenuation of light in a water column which correlates to the bathymetry.
 This method has an average error of two meters but is only effective in shallow water, leaving it unable to measure the vast majority of the world's deep oceans.
 The lack of accurate techniques for measuring bathymetry at a global scale creates a need for innovative prediction methods.
-A team of researchers in India \cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
+A team of researchers in India~\cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
 The researchers found performance increases of 20 meters, and their effort was used to optimize existing models.
 \ac{ML} models can be effective at identifying decision boundaries and relationships that are difficult to identify in human-created models.
 Specifically, using \ac{ML} to create models from ocean features provides a possible solution to accurately predicting global bathymetry.
@@ -34,20 +34,20 @@ The bathymetry can be placed into classes that represent a range of depth.
 A class could represent depth values from -2000 to -1850.
 This "binning" of bathymetry allows it to be used in a classification model.
 During training, some of the features will exemplify a particular range of bathymetry.
-That range recieves a corresponding label, and the process will repeat for the rest of the training data.
+That range receives a corresponding label, and the process will repeat for the rest of the training data.
 Training the model to correctly identify depth ranges will require features that relate to the bathymetry.
 Identifying these features is known as feature selection.
 Feature selection can be used to optimize the data that is used during training.
 Some data will be noise and unnecessary for the final prediction.
 Using feature selection to remove unnecessary training data will improve the final prediction.
-In this project, a genetic algorithm is used to select optimal features \cite{yang1998feature}.
+In this project, a genetic algorithm is used to select optimal features~\cite{yang1998feature}.
 The genetic algorithm approach for feature selection will select optimum features in a reasonable time frame.
 After selecting the features, the resulting model can be evaluated for performance and validated against known labels.
 The more predicted labels that compare accurately to known data, the higher the accuracy of the model.
 Models where predictions do not match known data will have poor accuracy.
 The known data used in this project is bathymetry from existing \ac{EGM}s.
 It is important to note, this data is inherently predicted and validated to the best of human knowledge.
-Each predicted point has an estimated error of 180 meters \cite{becker2009global}. 
+Each predicted point has an estimated error of 180 meters~\cite{becker2009global}.
 Therefore, the data from \ac{EGM}s is only sufficient for creating theoretical models.
 
 \par
@@ -58,7 +58,7 @@ Currently, only ten percent of the Earth's oceans have been surveyed and little 
 This leads to the requirement that if there is to be data characterizing the oceans, it must need to be interpolated or predicted in some way.
 Naturally, it is impossible to precisely measure all of the elements in the ocean.
 Elements such as: oxygen levels, silicate levels, sediment thickness, and sediment type all must be predicted or interpolated.
-On the other hand, sattelite measurements of altimetry from the sea surface as readily available.
+On the other hand, satellite measurements of altimetry from the sea surface as readily available.
 These measurements are accurate, which is why \ac{EGM}s use gravity as the main feature.
 However, using estimated features to predict estimated bathymetry could identify new approaches and models for building viable models.
 
@@ -71,7 +71,7 @@ A genetic algorithm was introduced for initial feature selection, and a modified
 Finally, the behaviors of the models were recorded and discussed.
 
 \par
-Scikit Learn is an open-source library developed by the Python community \cite{scikit-learn}.
+Scikit Learn is an open-source library developed by the Python community~\cite{scikit-learn}.
 It exposes an intuitive framework for creating \ac{ML} models.
 It also provides frameworks for key components of the \ac{ML} pipeline, such as feature selection and model selection.
 This framework is implemented for many existing models.

@@ -33,7 +33,7 @@ This is applied to the data before training to ensure that land data is not used
 Classification requires discrete class labels to predict.
 To accommodate this requirement the \ac{ETOPO} dataset was binned into discrete classes.
 This binning was performed on 150 meter intervals.
-This partitioning scheme was chosen to compare to the results from a similar work \cite{jena2012prediction}.
+This partitioning scheme was chosen to compare to the results from a similar work~\cite{jena2012prediction}.
 
 \subsection{Training Data}
 All feature data was aggregated from ocean and earth studies.
@@ -51,14 +51,14 @@ Absent data points were either interpolated, or filled with default values.
 See table 1 for a complete list of all features.
 
 \par
-Figure \ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
+Figure~\ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
 It can be conjectured that this relationship is more correlation that causality.
 For example, biomass increases are not caused by shallow depths.
 The shallow depth has more available light which allows for vegetation and energy supplies for more species.
-This could explain the relationship shown in figure \ref{fig:bathyxfish}
+This could explain the relationship shown in Figure~\ref{fig:bathyxfish}
 
 \par
-Figure \ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
+Figure~\ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
 This relationship may be more of a causality relationship than correlation.
 Denser crust is caused by many different factors that are separate from bathymetry.
 It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
@@ -80,7 +80,8 @@ Future study in the relationship of these features and how they benefit predicti
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
-    \caption{Graph of Bathymetry and Estimated Crust Density. Bathymetry is measured in meters and Crust Density is measured is miligrams per squared centimeter.}
+    \caption{Graph of Bathymetry and Estimated Crust Density.
+    Bathymetry is measured in meters and Crust Density is measured is milligrams per squared centimeter.}
     \label{fig:bathyxdensity}
 \end{figure}
 
@@ -95,17 +96,17 @@ Future study in the relationship of these features and how they benefit predicti
         \hline
             \textbf{Feature} & \textbf{Origin Study} \\
             \hline
-            Mantle Density & CRUST1 \cite{laske2013update} \\
-            LAND One Hot & ETOPO \cite{national1988etopo} \\
-            Crust Thickness & CRUST1 \cite{laske2013update} \\
-            Low, Mid, High Crust Density & CRUST1 \cite{laske2013update} \\
-            Estimated Current East, North, Mag & HYCOM \cite{chassignet2009us} \\
-            Sea Nitrate, Phosphate, Salinity Measurements & NASA Studies \cite{meissner2018salinity} \cite{parekh2005decoupling}  \\
+            Mantle Density & CRUST1~\cite{laske2013update} \\
+            LAND One Hot & ETOPO~\cite{national1988etopo} \\
+            Crust Thickness & CRUST1~\cite{laske2013update} \\
+            Low, Mid, High Crust Density & CRUST1~\cite{laske2013update} \\
+            Estimated Current East, North, Mag & HYCOM~\cite{chassignet2009us} \\
+            Sea Nitrate, Phosphate, Salinity Measurements & NASA Studies~\cite{meissner2018salinity,parekh2005decoupling}  \\
             Sea Temperature, Silicate Measurements & NASA Studies \\
-            Sediment Thickness & CRUST1 \cite{laske2013update} \\
-            BioMass Features & \cite{wei2010global} \\
-            Geoid Features & EGM \cite{pavlis2008earth} \\
-            Wave height, period & WAVEWATCH \cite{tolman20072007} \\
+            Sediment Thickness & CRUST1~\cite{laske2013update} \\
+            BioMass Features &~\cite{wei2010global} \\
+            Geoid Features & EGM~\cite{pavlis2008earth} \\
+            Wave height, period & WAVEWATCH~\cite{tolman20072007} \\
         \hline
     \end{tabular}
     \label{table:FEATURE_LIST}
@@ -117,11 +118,11 @@ Future study in the relationship of these features and how they benefit predicti
 \subsection{Feature Selection}
 Feature selection was used to identify the most relevant features for classification.
 This important step in the \ac{ML} pipeline removes noise from irrelevant data.
-This work used a genetic algorithm approach for feature selection \cite{yang1998feature}.
+This work used a genetic algorithm approach for feature selection~\cite{yang1998feature}.
 Other approaches that were considered included a grid search, dimensional analysis, and simple variable correlations.
 These approaches were found to either take too long or simply not offer enough improvement to the model.
 The genetic algorithm approach gave relatively quick model improvements with little effort.
-See Figure \ref{fig:GA} for an illustration of a generic genetic algorithm.
+See Figure~\ref{fig:GA} for an illustration of a generic genetic algorithm.
 
 \par
 Using a genetic algorithm for feature selection is a simple application of the original process.
@@ -137,7 +138,15 @@ Upon termination the resulting fittest string is used as the selected features.
 
 \begin{figure}[htp]
     \centering
-    \caption{Diagram of Generic Genetic Algorithm}
+    \caption{State Diagram of Generic Genetic Algorithm.
+    The algorithm begins at an initialization state where the population is created.
+    It then assigns a fitness attribute to each member of the population.
+    This is the Fitness Assignment State.
+    Then in the Selection State a selection is performed where the highest ranking members are selected for crossover and mutation.
+    These states are designed to replenish the population.
+    These actions are performed in the Crossover and Mutation States respectively.
+    Finally, a stopping criterion is evaluated.
+    If the population meets this criterion the algorithm exits, else, it goes to the Fitness Assignment State and repeats the previous steps.}
     \label{fig:GA}
     \includegraphics[scale=0.5]{genetic_algorithm.png}
 \end{figure}
@@ -171,8 +180,8 @@ A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell,
 The grids have a column length of 5400 and a row width of 10800.
 This resolution was chosen for experiments to conserve memory and time.
 Larger grids have a exponentially larger memory and computational footprint.
-I used the \ac{ETOPO}2v2 \cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
-Finer resolution datasets exist, such as the SRMT30 \cite{becker2009global} at 30 second resolution.
+I used the \ac{ETOPO}2v2~\cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
+Finer resolution datasets exist, such as the SRMT30~\cite{becker2009global} at 30 second resolution.
 In any event, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
