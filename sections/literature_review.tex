@@ -234,9 +234,9 @@ This project utilizes three regression models from Python's sci kit library.
 The Naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
-The Ocean's of the Earth are humanities last frontiers.
-Ironically, humanity knows very little about the bathymetry of these frontiers \cite{becker2009global}.
-This is due to several factors including but not limited to: the vast size of oceans, measurement techniques, sediment migration, and tectonic activity.
+The oceans of the Earth are humanities last frontiers.
+Ironically, we knows very little about the bathymetry of these frontiers \cite{becker2009global}.
+This is due to several factors including but not limited to: measurement techniques, sediment migration, tectonic activity, and the vast size of oceans.
 This section is concerned with explaining the many measurement techniques for bathymetry and how they are used for creating global bathymetry grids.
 
 \subsection{Echo Sounders (Multi Beam Echo Sounders)(Single Beam Echo Sounders) }
@@ -244,13 +244,16 @@ This section is concerned with explaining the many measurement techniques for ba
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Geophy03-01.jpg}
-    \caption{This figure illustrates an \ac{MBES} system. The illustration was taken from \cite{monacoWeb}}
+    \caption{An \ac{MBES} system illustrated by a hull mounted sensor.
+    The sensor ensonifies the sea floor and listens for the echo of the sound.
+    The time the echo takes to return is used to measure the depth. 
+    The illustration was taken from \cite{monacoWeb}.}
     \label{fig:MBES}
 \end{figure}
 
 Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
 The purpose of this is often for a ship to avoid running aground.
-This is where a ship strikes ground in a shallow area of water.
+This is where a ship strikes ground in a body of water.
 Survey vessels have utilized \ac{MBES} systems to create reliable bathymetry charts \cite{farr1980multibeam}.
 These charts give an accurate measurement of bathymetry in all water depths.
 The downside of this method is the cost and time required to map global coverage.
@@ -259,24 +262,24 @@ A vessel must transport these sensors, and potentially require decades of expens
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Schematic-presentation-of-the-side-scan-sonar-and-sub-bottom-profiling-survey-conducted.png}
-    \caption{Graphic demonstrates a sidescan sensor used by a survey ship via a tow fish.
+    \caption{Sidescan sensor used by a survey ship via a tow fish.
     SideScan sonar is a type of \ac{SBES}.
     A tow fish is a sensor enclosing that is attached to a tow line from the stern of the vessel.
-    This image was taken from \cite{sakellariou2015preliminary}}
+    This image was taken from \cite{sakellariou2015preliminary}.}
     \label{fig:sidescandemo}
 \end{figure}
 
 
 There are two main categories of echo sounders: \ac{MBES} and \ac{SBES}.
 \ac{MBES} are large swath sonar based sensors.
-They produce several artifacts including: bathymetry, backscatter, salinity, etc.
+They produce several artifacts including: bathymetry, backscatter, and salinity.
 These sensors are used for a wide array of commercial and research applications.
 See Figure~\ref{fig:MBES} for a illustration of \ac{MBES}.
-SideScan sonar are focused sonar systems.
+Side-Scan sonar is a focused sonar system.
 They produce "imagery" artifacts and will sense a smaller swath of ocean than \ac{MBES} sensors.
-SideScan sonar is ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
+Side-Scan sonar is ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
 In general, SideScan systems are only used for object detection.
-See Figure \ref{fig:sidescandemo} for an illustration of a towed SideScan sensor body.
+Figure \ref{fig:sidescandemo} shows an illustration of a towed SideScan sensor body.
 
 
 
@@ -290,23 +293,27 @@ Satellites measure the attenuated light that is reflected from the bottom and us
 The technique accounts for atmospheric light absorption, water surface reflection, attenuation through and out of the column, and reflectance from the bottom sediment.
 Clear waters are the best environment for this method, which has the potential to predict bathymetry with a small RMSE \cite{chybicki2018three}.
 
+% Define RMSE in the machine learning lit review section for metrics!
+
 \par
-This method is important for its ability to predict swaths of bathymetry in shallow water.
-Shallow waters where larger vessels can not sail and large swaths of coastal waters are measured by \ac{SDB} in a cost and time-effective process.
+This method is important for its ability to predict swaths of bathymetry in shallow water where larger vessels can not sail.
+Large swaths of shallow coastal waters are measured by \ac{SDB} in a cost and time-effective process.
 An example where \ac{SDB} is useful is the marshlands of Louisiana where water depth is only deep enough for flat-bed vessels.
 This method also has been used in the scope of national defense for predicting or identifying changes in shallow water bathymetry.
 These changes can be caused by sediments or man-made objects. 
 
+%Complex interaction between water column!!
 \begin{figure}[htp]
     \centering
     \includegraphics[scale=0.5]{CBYK292WkAAIkzH.jpg}
-    \caption{The above graphic demonstrates \ac{SDB}.
-    Specifically, it illustrates how light will penetrate the water column and reflect back into space where it is monitored by a satellite.}
+    \caption{\ac{SDB}.
+    Sunlight penetrates the water column and reflects back into space where it is captured by a satellite.}
     \label{fig:sdb}
 \end{figure}
 
 \par
 The limitations of the \ac{SDB} method are based on water depth and clarity.
+%Reword this sentence!
 As depth increases, light is unable to pass through the water column to the bottom.
 The depth that light can penetrate is determined by the characteristics of the water.
 Clear water will allow for much deeper depths to be predicted, whereas murky, cluttered water limits the maximum depth.
