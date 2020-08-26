@@ -31,35 +31,33 @@ This is applied to the data before training to ensure that land data is not used
 %I want to describe the value that was added by binning my data into classes!
 \par
 Classification requires discrete class labels to predict.
-To accommodate this requirement the \ac{ETOPO} dataset was binned into discrete classes.
+To accommodate this requirement, the \ac{ETOPO} dataset was binned into discrete classes.
 This binning was performed on 150 meter intervals.
 This partitioning scheme was chosen to compare to the results from a similar work~\cite{jena2012prediction}.
 
 \subsection{Training Data}
 All feature data was aggregated from ocean and earth studies.
 This data was then normalized and formatted for this project.
-This aggregation was performed to gather a large set of testing samples regardless of whether the data is relevant.
-For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as a useful feature.
+This aggregation was performed to gather a large set of testing samples regardless of the data's relevance.
+For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as such.
 This approach is fundamentally different to building a physics model.
 For example, the mass of a geoid causes a vertical gravity gradient which creates ocean swells that can be measured by satellite altimetry.
 Larger geoids will naturally affect the bathymetry of the sea floor.
 This relationship is obvious and correlated in a measurable way.
 On the other hand, machine learning can potentially identify relations in the data that otherwise will be difficult for a human to identify and model.
 
-All features and their origin datasets can be seen in table 1. %Insert point to figure yadaydada
+All features and their origin datasets can be seen in Table 1. %Insert point to figure yadaydada
 Absent data points were either interpolated, or filled with default values.
-See table 1 for a complete list of all features.
 
 \par
 Figure~\ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
 It can be conjectured that this relationship is more correlation that causality.
 For example, biomass increases are not caused by shallow depths.
-The shallow depth has more available light which allows for vegetation and energy supplies for more species.
-This could explain the relationship shown in Figure~\ref{fig:bathyxfish}
+The shallow depth has more available light which allows for vegetation and energy supplies for more species, which could explain the relationship shown in this figure.
 
 \par
 Figure~\ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
-This relationship may be more of a causality relationship than correlation.
+This relationship may be more of a causality than correlation.
 Denser crust is caused by many different factors that are separate from bathymetry.
 It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
 
@@ -131,9 +129,9 @@ Each string has a character length equal to the number of features in our featur
 The binary characters represent whether a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
 The fitness of that string is represented by the resulting model's accuracy.
-Selection is performed by choosing the most accurate models and their characteristics are passed to the next generation.
+Selection is performed by choosing the most accurate models and their characteristics then passing those onto to the next generation.
 A simple crossover mutation of the strings is used along with a modest 5\% mutation rate.
-Upon termination the resulting fittest string is used as the selected features.
+Upon termination, the resulting fittest string is used as the selected features.
 
 
 \begin{figure}[htp]
@@ -162,8 +160,9 @@ Identifying locally optimum features could lead to better models.
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
-It is standard to represent data on a globe in a grid formatted where each grid represents a area of that globe.
-For this project the Earth is such a globe and a map is a excellent example of how latitude and longitude lines form a grid pattern.
+Representing the topography of the Earth can be done using a grid. 
+Naturally, mapping a large circular sphere to a flat grid is not a direct conversion.
+Latitude and Longitude represent the grid lines for the earth.
 The data in the grid is a representation of the average value across an area.
 This grid representation allows for ease of reading both by computers and humans.
 
@@ -172,7 +171,7 @@ The spatial resolution of a grid defines its coverage.
 It can be described as the height and width of a grid.
 This height and width is not spatially constant.
 For example, a cell at the equator is larger and covers more physical area than a cell at the poles.
-However, this is the best way to represent the data in a consistent and structured manner.
+However, this is the preferred to represent the data in a consistent and structured manner.
 
 \par
 All data in this project has been organized into two minute bathymetry grids.
@@ -181,8 +180,14 @@ The grids have a column length of 5400 and a row width of 10800.
 This resolution was chosen for experiments to conserve memory and time.
 Larger grids have a exponentially larger memory and computational footprint.
 I used the \ac{ETOPO}2v2~\cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
-Finer resolution datasets exist, such as the SRMT30~\cite{becker2009global} at 30 second resolution.
-In any event, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
+Finer resolution datasets exist, such as the SRMT30~\cite{becker2009global} at 30 second resolution, however, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
+
+\subsection{Metrics}
+Metrics are useful for evaluating a model and determining its usefulness.
+The metrics used in this paper were chosen with this goal in mind.
+RMSE, R2, F1-score, and Balanced Accuracy are the metrics used in this paper.
+
+RMSE stands for Root Mean Square Error. 
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
 %The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
