@@ -187,7 +187,48 @@ Metrics are useful for evaluating a model and determining its usefulness.
 The metrics used in this paper were chosen with this goal in mind.
 RMSE, R2, F1-score, and Balanced Accuracy are the metrics used in this paper.
 
-RMSE stands for Root Mean Square Error. 
+\par
+RMSE stands for Root Mean Square Error.
+It is the square of average squared error, and is ideal for aggregating the magnitudes of error.
+It is given by the following equation.
+\begin{equation}
+    RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(\frac{d_i -f_i}{\sigma_i}\Big)^2}}
+\end{equation}
+
+\par
+R2 stands for "R Squared".
+In statistics, this is the coefficient of determination, it is defined as the proportion of the variance in the dependent variable that is predictable from the independent variables.
+Having a high R squared score will denote that the features of a model are good predictors.
+It is given by the following equation.
+\begin{equation}
+    r = \frac{n(\Sigma x y)-(\Sigma x)(\Sigma y)}{\sqrt{[n \Sigma x^2  - (\Sigma x)^2][n(\Sigma y^2) - (\Sigma y)^2]}}
+\end{equation}
+
+\par
+F1-Score represents a harmonic mean of a models precision and recall..
+Precision is the measurement of how good a model is at avoiding false positives.
+It is known as the true positive rate.
+Recall is a measurment of how good a model is at avoding false negatives.
+The equations are given below.
+\begin{equation}
+    precision = \frac{True Positives}{True Positives + False Positives}
+\end{equation}
+\begin{equation}
+    recall = \frac{True Positives}{True Positives + False Negatives}
+\end{equation}
+\begin{equation}
+    f1 = \frac{True Positives}{True Positives + \frac{1}{2}(False Positives + False Negatives)}
+\end{equation}
+
+\par
+Balanced Accuracy gives a indication of accuracy for datasets that are not balanced.
+A dataset that is not balanced means that one label has signifigantly more or less samples than another.
+The equation is given below.
+\begin{equation}
+    balanced accuracy = \frac{True Positive Rate + True Negative Rate}{2}
+\end{equation}
+
+
 
 %\ref{fig:pairplot} Shows a pair plot of all the features used in training.
 %The diagonal in the pair plot will show the correlation of point distributions in each individual plot.
