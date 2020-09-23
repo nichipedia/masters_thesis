@@ -1,15 +1,11 @@
 \section{Results}
+\label{sec:results}
 \setlength{\parindent}{10ex}
 
 This section contains the results for each model observed by this work, including results for the regression, classification, and novel grid optimized model.
 Each section includes figures representing the metric scores.
 
 \subsection{Regression Results}
-Regression \ac{ML} models were fit in order to compare to existing physics models.
-Three models were fit to the data: 
-an SVM regression model, a Naive Bayes regression model, and a simple linear regression model.
-These models were trained against a reduced set of data shown in Figure~\ref{fig:trainset}, and validated against the world wide data not used in the training phase.
-Each model was fit against selected features from the Genetic Algorithm feature selector.
 The \(R^2\) score for each model can be found in Figure~\ref{fig:r2_barplot_regression}.
 The RMSE of each model can be found in Figure~\ref{fig:rmse_barplot_regression}.
 
@@ -62,19 +58,6 @@ The RMSE of each model can be found in Figure~\ref{fig:rmse_barplot_regression}.
 
 \subsection{Classification Results}
 \setlength{\parindent}{10ex}
-%Maybe reword this opening chapter???
-To facilitate classification, trained models needed to predict discrete values instead of continuous values.
-This conversion was executed by mapping the bathymetry values into discrete classes.
-This conversion proved to be trivial because of the ordered nature of bathymetry.
-Classification models are simpler and easier to fit than regression models.
-Ideally, the decision surfaces will benefit from the conversion and yield better results.
-This makes it difficult to compare directly to the error reported in existing physics models.
-A set of metrics including precision, recall, F1\-score, and balanced accuracy were used to analyze the viability of the models.
-
-\par
-The ordinal classes were binned on an interval of 150 meters.
-This was done to easily compare accuracy to the model in~\cite{jena2012prediction}.
-Validation was performed using a 10\-fold cross validation using balanced accuracy as the scoring function.
 The F1 results for each model can be found in Figure~\ref{fig:f1_barplot_classification}.
 The Balanced Accuracy for each model can be found in Figure~\ref{fig:balacc_barplot_classification}.
 
@@ -121,15 +104,6 @@ Potentially, parameter tuning, and feature selection could improve this model.
 % In an attempt to test this notion and increase the accuracy of these models a novel model selection method was employed.
 % The objective being to identify if a model will predict more accuractly based on geospatial location.
 % The hypothysis being that decision boundaries across different models will respond to features based on location.
-
-The Grid Optimized Model Injector Classifier is concerned with testing the best model fit hypothesis.
-The theory is that there does not exist a best fit model for predicting bathymetry across the earth.
-For example, a model may be excellent at predicting shallow bathymetry.
-The models performance could be explained by how it interprets data and models it.
-That specific models approach may leverage the predictors in the data well.
-However, this same model that works well in shallow water may be awful in deep water.
-Whereas, another model may be excellent at predicting bathymetry in deep water scenarios.
-This novel Grid Optimized Model Injector tests this theory by implementing a model that optimizes against geospatial location.
 
 \begin{figure}[htp]
     \centering
