@@ -5,8 +5,8 @@ This chapter explores the interesting concepts and emergent ideas that stem from
 It is divided into a discussion of the three core experiments performed, specifically, the regression, classification, and novel grid optimization experiments.
 
 \subsection{Regression Results Discussion}
-\cite{jena2012prediction} achieved a \ac{RMSE} of \~175m in their optimized model.
-Their model used \ac{ML} to predict a optimum scaling factor \textbf{S}.
+\cite{jena2012prediction} achieved an \ac{RMSE} of \~175m in their optimized model.
+Their model used \ac{ML} to predict an optimum scaling factor \textbf{S}.
 The linear regression model fit in this project is 100 meters less accurate than the optimized model used in \cite{jena2012prediction}.
 The purpose of the test is not to achieve accurate predictions, but to identify if \ac{ML} models can be viable for predicting bathymetry.
 Therefore, the accuracy of these models is less important than identifying the viability of the models.
@@ -22,30 +22,30 @@ This percentage can be seen in Figure~\ref{fig:pie_best_fit}.
 \par
 The Bagging classifier performed on par with the Random Forest Classifier with a balanced accuracy of 79\%.
 However, Figure~\ref{fig:coveragegrid} shows that the bagging classifier performed best around coastlines.
-This suggests that model responds well to shallow waters.
-Shoreline data will also be consistently more accurate because of proximity to land.
-Most of the world's high resolution bathymetry is shoreline, and it is possible that the model responded to the quality data.
+This suggests that the model responds well to shallow waters.
+Shoreline data will also be consistently more accurate because of the proximity to land.
+Most of the world's high-resolution bathymetry is shoreline, and it is possible that the model responded to the quality data.
 
 
 \par
-Classification shows that labeling bathymetry can improve the performance of the models.
+The classification results show that labeling bathymetry can improve the performance of the models.
 In this work, it was tested that a random forest classifier can predict 82\% of the world's predicted bathymetry within 150 meters of accuracy. 
 However, what is more interesting to analyze is the behavior of the models.
 The data used in training comes from aggregated external datasets and a predicted bathymetry dataset.
-The predictions of these models is being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
+The predictions of these models are being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
 This means that the accuracy in these models is not indicative of truly predicting global bathymetry.
-It does show that a \ac{ML} model can be fit to data and be used to predict bathymetry, and if actual measured bathymetry and ocean features were used in training, the results would be comparable.
+It does show that an \ac{ML} model can be fit to data and be used to predict bathymetry, and if actually measured bathymetry and ocean features were used in training, the results would be comparable.
 Furthermore, parameter tuning, model selection, and dynamic feature selection could be used the increase the accuracy beyond current results.
 
 \par
 Interestingly, some models excel along fault lines.
 For example, the decision tree classifier in Figure~\ref{fig:coveragegrid} performs well along what appear to be fault lines.
 However, when making predictions in the global scope the classifier is very inaccurate.
-This suggests that a classifier can be optimized by geospatial position.
+This suggests that a classifier can be optimized using geospatial position.
 
 
 
-\subsection{Grid Optimized Model Discussion}
+\subsection{Grid-Optimized Model Discussion}
 %The world wide ETOPO bathymetry dataset \cite{national1988etopo} at two minute resolution is used for valadation and metrics.
 %This dataset is treated as the ground truth for all predictions.
 %During the experiment, a one third holdout was used for validation in some cases.
@@ -63,7 +63,7 @@ The Grid Optimized Model Injector improved the accuracy of predictions by \~{}5\
 These results are displayed in Figure~\ref{fig:grid_opt_graph}.
 Obviously, the model selection and subsequent injection improved the results of this classifier, creating an ensemble of many models and selecting them on demand.
 This could be caused by geophysical characteristics that benefit one classifier.
-For example, in Figure~\ref{fig:coveragegrid} the Decision Tree classifier preformed best along what appears to be fault lines.
+For example, in Figure~\ref{fig:coveragegrid} the Decision Tree classifier performed best along what appears to be fault lines.
 It is possible that the characteristics related to being in proximity to a fault line benefited the model's decision boundary. 
 
 \par
@@ -73,7 +73,7 @@ Analysis of Figure~\ref{fig:coveragegrid} shows interesting consistencies that r
 For example, in Figure~\ref{fig:coveragegrid} the Bagging classifier appears to perform best around coast lines.
 This is consistent for most of the globe.
 However, in some coastal areas the Random Forest Classifier performs best. 
-It is possible these areas are linked to port cities and the high resolution bathymetry collected from shipping lanes.
+It is possible these areas are linked to port cities and the high-resolution bathymetry collected from shipping lanes.
 
 \par
 Another interesting consistency is around fault lines.
@@ -96,8 +96,8 @@ What this graph shows is that the Random Forest Classifier had an average predic
 This is fairly consistent with what was expected. 
 The models only trained on data contained within a coverage, which limited the training and fitting for models. 
 However, other models did not suffer from this on average.
-This suggests that some coverages can be larger than others.
-For example, coverages where the random forest classifier performed well may yield a higher accuracy if they are decreased or reformed.
+This suggests that some coverages can be broader than others.
+For example, coverages where the random forest classifier performed well, may yield a higher accuracy if they are decreased or reformed.
 Other coverages can be increased in size and potentially yield similar results.
 
 % \begin{table}[htp]
@@ -146,8 +146,8 @@ It is reasonable to assume that selecting a model with a decision function will 
 Identifying the optimal decision function will help to explain why different models perform better or worse over a coverage.
 The Grid Optimized Model Injector shows that a simple geospatial decision function can be used to improve a theoretical prediction accuracy.
 
-Selecting a model based off a decision function is a novel concept for predicting bathymetry.
+Selecting a model with a decision function is a novel concept for predicting bathymetry.
 The evidence supports that this will yield better results.
-An effective decision function could be something similar to the geospatial cache utilized in the Model Injector, or a decision based off selected features, or discovering optimal polygon coverages.
+An effective decision function could be something similar to the geospatial cache utilized in the Model Injector, or a decision based on selected features, or discovering optimal polygon coverages.
 In theory, optimizing the predictor for a region extend to utilizing both \ac{ML} models and physics models.
-Resulting in the most accurate model making predictions across the globe, therefore rasing accuracy globally.
+This results in the most accurate model making predictions across the globe, therefore rasing accuracy globally.

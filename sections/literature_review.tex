@@ -14,7 +14,7 @@ For example, when a model is trained to predict if an image contains a car, data
 Images with cars are considered positive images.
 Images without cars are considered negative images.
 New images that are labeled as positive or negative are given to the model for validation.
-If the model successfully predicts the labels, it will have a high accuracy and be a "valid" model.
+If the model successfully predicts the labels, it will have high accuracy and be a "valid" model.
 
 \par
 The two main types of models in Machine Learning are classification and regression.
@@ -39,9 +39,9 @@ Regression models predict a continuous value.
 For example, predicting the value of a home.
 Essentially, this model represents a mathematical function where the input data is the function parameters.
 The parameters for the model are predictors for the value of the home.
-Predictors for a home include square footage, number of rooms, acrerage, and school distance.
+Predictors for a home include square footage, number of rooms, acreage, and school distance.
 This method is appropriate when the desired result cannot be grouped into discrete "labeled" data.
-This is because classification is not ideal for predicting a infinite set of continuous values.
+This is because classification is not ideal for predicting an infinite set of continuous values.
 
 \par
 Unsupervised learning describes a model that is trained without labels, that is, the training data does not have corresponding truth values \cite{bishop2006pattern}.
@@ -52,7 +52,7 @@ This approach is ideal for identifying correlations in data that is otherwise un
 \par
 Supervised learning describes a model that is trained with labeled truth data. \cite{bishop2006pattern}.
 Training is guided or supervised by comparing results to labeled truth data.
-This method of training is effective at fitting accurate models, and is used in this project for predicting bathymetry.
+This method of training is effective at fitting accurate models and is used in this project for predicting bathymetry.
 All models trained in this project use supervised learning.
 Each model used will be discussed in subsequent sections.
 
@@ -70,12 +70,12 @@ Optimally, accurate models should have low bias and variance.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{sphx_glr_plot_underfitting_overfitting_001.png}
-    \caption{Three plots of the function \( f(x) = cos(\frac{3}{2} \pi x)\) with noisy samples along the graph. 
-    A linear regression model is fit to the samples with orders of 1, 4 and 15.
+    \caption{Three plots of the function \( f(x) = cos(\frac{3}{2} \pi x) \) with noisy samples along with the graph. 
+    A linear regression model is fit to the samples with orders of 1, 4, and 15.
     The model fit with order 1 does not respond well to changes in the samples and is a great example of high bias.
-    The model fit with order 4 fits the function very well and is a example of balanced bias and variance.
-    The model fit with order 15 fits the samples too well, but flucuates wildly. 
-    It is a excellent example of high variance.}
+    The model fit with order 4 fits the function very well and is an example of balanced bias and variance.
+    The model fit with order 15 fits the samples too well, but fluctuates wildly. 
+    It is an excellent example of high variance.}
     \label{}
 \end{figure}
 
@@ -100,7 +100,7 @@ Over fitting is where a model will fit too closely to a training set \cite{cawle
 \par
 The Random Forest Classifier is an ensemble of many decision trees \cite{breiman2001random}.
 It fits a number of decision trees on various sub samples of the dataset.
-This also helps to control over fitting because each tree is fit to a sub sample of the dataset.
+This also helps to control over fitting because each tree is fit to a sub-sample of the dataset.
 It averages the prediction of each tree to make a more accurate prediction than any single tree.
 
 
@@ -141,13 +141,13 @@ This classifier is good for combining equally performing models in order to bala
 The K-Nearest Neighbors algorithm is a non-parametric algorithm for classification and regression \cite{altman1992introduction}.
 K-Nearest Neighbors for classification stores the instances of the training data and associated labels.
 Predictions are made by computing the distance of new instances to the training set.
-This model is based on the nearest neighbor algorithm and is excellent for its simplicity and domain independent applications.
+This model is based on the nearest neighbor algorithm and is excellent for its simplicity and domain-independent applications.
 The nearest neighbors algorithm can be explained using the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
 The K-Nearest Neighbors algorithm is a generalization.
 To describe simply, instead of searching for the nearest post office, the algorithm searches for the K-nearest post offices.
 This can be extended for use in classification.
 For example, if the K-Nearest Neighbors of an object are a positive class, it is natural to classify the object as positive.
-See Figure \ref{fig:knn} for a illustration.
+See Figure \ref{fig:knn} for an illustration.
 
 \begin{figure}[htp]
     \centering
@@ -215,7 +215,7 @@ Famously, it has performed well for document classification and spam filtering.
 Regression models are utilized for predicting continuous values.
 Specifically, regression is used for approximating a function given a set of inputs to yield output.
 Linear regression is the simplest type and is concerned with fitting a linear combination of all training features.
-Polynomial regression fits a polynomial combination to the training figures.
+Polynomial regression fits a polynomial combination with the training figures.
 This can fit a function up to order N with the cost of complexity.
 
 \begin{figure}[htp]
@@ -230,11 +230,11 @@ This can fit a function up to order N with the cost of complexity.
 
 % Put linear regression equation right here for the world to see YO
 
-This project utilizes three regression models from Python's sci kit library.
+This project utilizes three regression models from Python's sci-kit library.
 The Naive Bayes\cite{sklearn_api}, logistic regression\cite{sklearn_api}, and svm regression\cite{sklearn_api} models are utilized for regression.
 
 \subsection{Global Bathymetry Data}
-The oceans of the Earth are humanities last frontiers.
+The oceans of the earth are humanities last frontiers.
 Ironically, we knows very little about the bathymetry of these frontiers \cite{becker2009global}.
 This is due to several factors including but not limited to: measurement techniques, sediment migration, tectonic activity, and the vast size of oceans.
 This section is concerned with explaining the many measurement techniques for bathymetry and how they are used for creating global bathymetry grids.
@@ -244,16 +244,16 @@ This section is concerned with explaining the many measurement techniques for ba
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Geophy03-01.jpg}
-    \caption{An \ac{MBES} system illustrated by a hull mounted sensor.
+    \caption{An \ac{MBES} system illustrated by a hull\-mounted sensor.
     The sensor ensonifies the sea floor and listens for the echo of the sound.
     The time the echo takes to return is used to measure the depth. 
     The illustration was taken from \cite{monacoWeb}.}
     \label{fig:MBES}
 \end{figure}
 
-Echo sounders have been mounted on vessels for decades to accurately measure bathymetry.
+Echo sounders have been mounted on vessels for decades to measure bathymetry accurately.
 The purpose of this is often for a ship to avoid running aground.
-This is where a ship strikes ground in a body of water.
+This is where a ship strikes the bottom of a body of water.
 Survey vessels have utilized \ac{MBES} systems to create reliable bathymetry charts \cite{farr1980multibeam}.
 These charts give an accurate measurement of bathymetry in all water depths.
 The downside of this method is the cost and time required to map global coverage.
@@ -274,7 +274,7 @@ There are two main categories of echo sounders: \ac{MBES} and \ac{SBES}.
 \ac{MBES} are large swath sonar based sensors.
 They produce several artifacts including: bathymetry, backscatter, and salinity.
 These sensors are used for a wide array of commercial and research applications.
-See Figure~\ref{fig:MBES} for a illustration of \ac{MBES}.
+See Figure~\ref{fig:MBES} for an illustration of \ac{MBES}.
 Side-Scan sonar is a focused sonar system.
 They produce "imagery" artifacts and will sense a smaller swath of ocean than \ac{MBES} sensors.
 Side-Scan sonar is ideal for detecting objects on the ocean floor due to the image quality of the artifacts.
@@ -285,7 +285,7 @@ Figure \ref{fig:sidescandemo} shows an illustration of a towed SideScan sensor b
 
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
-\subsection{Satellite Derived Bathymetry (SDB)}
+\subsection{Satellite\-Derived Bathymetry (SDB)}
 \ac{SDB} is a precise method of predicting coastal bathymetry. 
 This method relies on the phenomena of light passing through a water column at a certain depth described by the Beer-Lambert law \cite{chybicki2018three}\cite{vinayaraj2016satellite}.
 Sunlight passes through the water column and is reflected by the sediment at the bottom.
@@ -344,7 +344,7 @@ Equation~\ref{eq:egm} represents the model created by~\cite{smith1994bathymetric
 Finally, \textbf{g} represents inferred gravity from satellite imaging.
 
 \par
-Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship based \ac{MBES} sonar data.
+Smith and Sandwell aggregated their predicted values from their \ac{EGM} with ship-based \ac{MBES} sonar data.
 The sonar data is sparse, but provides accurate readings of the ocean's bathymetry.
 This aggregation yielded global coverage up to 81 degrees latitude.
 The aggregation yielded prediction accuracy within \~100 meters in coastal waters and \~200 meters in the global ocean space.
@@ -354,8 +354,8 @@ The aggregation yielded prediction accuracy within \~100 meters in coastal water
 This work was later improved in~\cite{becker2009global}.
 By increasing the number of ship soundings and increasing the aggregation sources.
 Ten external datasets were aggregated for the SRTM30 grid.
-Agencies in these sources include \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and \ac{JAMSTEC}.
-These datasets include high-resolution coastal bathymetry from around the world and greatly increased the global accuracy.
+Agencies in these sources include the \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and the \ac{JAMSTEC}.
+These datasets include high-resolution coastal bathymetry from around the world and greatly increased global accuracy.
 
 %Spelling check big time bruh
 \par
@@ -365,7 +365,7 @@ A dense geoid will generate greater sea surface gravity than a less dense geoid.
 Flat sea floors with a less dense composition can appear lower than normal.
 This is all controlled by the scaling factor described in~\cite{smith1994bathymetric} and shown in equation~\ref{eq:egm}.
 There is not, however, an optimal scaling factor for the entire world.
-Identifying an optimal scaling factor for an area will require knowledge of the sediment type in the global scale.
+Identifying an optimal scaling factor for an area will require knowledge of the sediment type on a global scale.
 
 
 \subsection{Machine Learning Optimized \ac{EGM}}\label{subsec:machine-learning-optimizedac}

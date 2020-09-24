@@ -18,7 +18,7 @@ Using this data is not intended to build accurate predictors, but to show that a
 \par
 The \ac{ETOPO} dataset is used in this project for bathymetry data.
 This dataset is an aggregation of sparse \ac{MBES} ship soundings and predicted bathymetry from an \ac{EGM}.
-It is an updated version of the original ETOPO2 dataset and was chosen because of the two minute resolution it offers.
+It is an updated version of the original ETOPO2 dataset and was chosen because of the two\-minute resolution it offers.
 \ac{ETOPO} was aggregated by the \ac{NGDC} which is a department of \ac{NOAA}.
 
 \par
@@ -32,7 +32,7 @@ This is applied to the data before training to ensure that land data is not used
 \par
 Classification requires discrete class labels to predict.
 To accommodate this requirement, the \ac{ETOPO} dataset was binned into discrete classes.
-This binning was performed on 150 meter intervals.
+This binning was performed on 150\-meter intervals.
 This partitioning scheme was chosen to compare to the results from a similar work~\cite{jena2012prediction}.
 
 \subsection{Training Data}
@@ -40,7 +40,7 @@ All feature data was aggregated from ocean and earth studies.
 This data was then normalized and formatted for this project.
 This aggregation was performed to gather a large set of testing samples regardless of the data's relevance.
 For example, crust age may not be obviously useful for predicting bathymetry, but if it is useful, then feature selection will identify it as such.
-This approach is fundamentally different to building a physics model.
+This approach is fundamentally different from building a physics model.
 For example, the mass of a geoid causes a vertical gravity gradient which creates ocean swells that can be measured by satellite altimetry.
 Larger geoids will naturally affect the bathymetry of the sea floor.
 This relationship is obvious and correlated in a measurable way.
@@ -51,14 +51,14 @@ Absent data points were either interpolated, or filled with default values.
 
 \par
 Figure~\ref{fig:bathyxfish} shows a plot of estimated fish biomass and bathymetry.
-It can be conjectured that this relationship is more correlation that causality.
+It can be conjectured that this relationship is more correlation than causality.
 For example, biomass increases are not caused by shallow depths.
 The shallow depth has more available light which allows for vegetation and energy supplies for more species, which could explain the relationship shown in this figure.
 
 \par
 Figure~\ref{fig:bathyxdensity} shows a graph of crust density and bathymetry.
-This relationship may be more of a causality than correlation.
-Denser crust is caused by many different factors that are separate from bathymetry.
+This relationship may be more of causality than correlation.
+The denser crust is caused by many different factors that are separate from bathymetry.
 It is possible that deeper water columns and the resulting weight contributed, but it can not be used to describe the correlation of the variables.
 
 \par
@@ -66,7 +66,7 @@ In general, the features used in this project were a collection of potential pre
 Features such as estimated oxygen, nitrogen, and salinity make sense for being related to bathymetry.
 Other features such as crust density may not naturally be explained.
 The feature selection was used to identify the best performing features.
-Future study in the relationship of these features and how they benefit predicting bathymetry will be necessary.
+Future studies in the relationship between these features and how they benefit predicting bathymetry will be necessary.
 
 \begin{figure}[htp]
     \centering
@@ -79,7 +79,7 @@ Future study in the relationship of these features and how they benefit predicti
     \centering
     \includegraphics[width=\textwidth]{Bathymetry_X_SS_DENSITY_KGM-3_SACD_Aquarius_MISSION_MEANx.png}
     \caption{Graph of Bathymetry and Estimated Crust Density.
-    Bathymetry is measured in meters and Crust Density is measured is milligrams per squared centimeter.}
+    Bathymetry is measured in meters and Crust Density is measured in milligrams per squared centimeter.}
     \label{fig:bathyxdensity}
 \end{figure}
 
@@ -90,6 +90,7 @@ Future study in the relationship of these features and how they benefit predicti
 
 \begin{table}[htp]
     \centering
+    \caption{List of Ocean Features used in Models for this project.}
     \begin{tabular}{ |p{0.5\textwidth} p{0.5\textwidth}| }
         \hline
             \textbf{Feature} & \textbf{Origin Study} \\
@@ -108,7 +109,6 @@ Future study in the relationship of these features and how they benefit predicti
         \hline
     \end{tabular}
     \label{table:FEATURE_LIST}
-    \caption{List of Ocean Features used in Models for this Project.}
 \end{table}
 %I am using this section to introduce the feature selection method that I preformed
 %Maybe I can flesh this out more and talk about it in def??
@@ -129,38 +129,38 @@ Each string has a character length equal to the number of features in our featur
 The binary characters represent whether a feature is active or inactive.
 Essentially these strings represent a set of features to use in training a model.
 The fitness of that string is represented by the resulting model's accuracy.
-Selection is performed by choosing the most accurate models and their characteristics then passing those onto to the next generation.
+Selection is performed by choosing the most accurate models and their characteristics then passing those onto the next generation.
 A simple crossover mutation of the strings is used along with a modest 5\% mutation rate.
 Upon termination, the resulting fittest string is used as the selected features.
 
 
 \begin{figure}[htp]
     \centering
+    \label{fig:GA}
+    \includegraphics[scale=0.5]{genetic_algorithm.png}
     \caption{State Diagram of Generic Genetic Algorithm.
     The algorithm begins at an initialization state where the population is created.
     It then assigns a fitness attribute to each member of the population.
     This is the Fitness Assignment State.
-    Then in the Selection State a selection is performed where the highest ranking members are selected for crossover and mutation.
+    Then in the Selection State a selection is performed where the highest\-ranking members are selected for crossover and mutation.
     These states are designed to replenish the population.
     These actions are performed in the Crossover and Mutation States respectively.
     Finally, a stopping criterion is evaluated.
-    If the population meets this criterion the algorithm exits, else, it goes to the Fitness Assignment State and repeats the previous steps.}
-    \label{fig:GA}
-    \includegraphics[scale=0.5]{genetic_algorithm.png}
+    If the population meets this criterion the algorithm exits; else, it goes to the Fitness Assignment State and repeats the previous steps.}
 \end{figure}
 
 \par
 Feature selection was used to remove noise from the training data.
-This down sizing happened at a global scale.
+This down sizing happened on a global scale.
 It is possible that this may affect localized predictions where a feature is a strong predictor.
-This was not tested in this work, but is an interesting question.
+This was not tested in this work but it is an interesting question.
 Identifying locally optimum features could lead to better models.
 
 
 %This decribes how the grid files are used and oragnized...
 %They are essentially binary files...
 \subsection{Data Representation}
-Representing the topography of the Earth can be done using a grid. 
+Representing the topography of the earth can be done using a grid. 
 Naturally, mapping a large circular sphere to a flat grid is not a direct conversion.
 Latitude and Longitude represent the grid lines for the earth.
 The data in the grid is a representation of the average value across an area.
@@ -169,18 +169,17 @@ This grid representation allows for ease of reading both by computers and humans
 \par
 The spatial resolution of a grid defines its coverage.
 It can be described as the height and width of a grid.
-This height and width is not spatially constant.
-For example, a cell at the equator is larger and covers more physical area than a cell at the poles.
-However, this is the preferred to represent the data in a consistent and structured manner.
+This height and width are not spatially constant.
+For example, a cell at the equator is larger and covers more physical area than a cell at the poles, however, this is the preferred to represent the data in a consistent and structured manner.
 
 \par
-All data in this project has been organized into two minute bathymetry grids.
-A two minute bathymetry grid has a spatial resolution of 0.034 degrees per cell, which is approximately 3 kilometers of spatial coverage.
+All data in this project has been organized into two\-minute bathymetry grids.
+A two\-minute bathymetry grid has a spatial resolution of 0.034 degrees per cell, which is approximately 3 kilometers of spatial coverage.
 The grids have a column length of 5400 and a row width of 10800.
 This resolution was chosen for experiments to conserve memory and time.
-Larger grids have a exponentially larger memory and computational footprint.
-I used the \ac{ETOPO}2v2~\cite{national1988etopo} dataset as the source of the two minute bathymetry grid.
-Finer resolution datasets exist, such as the SRMT30~\cite{becker2009global} at 30 second resolution, however, the two minute resolution offered a good balance of memory, accuracy, and computational costs.
+Larger grids have an exponentially larger memory and computational footprint.
+I used the \ac{ETOPO}2v2~\cite{national1988etopo} dataset as the source of the two\-minute bathymetry grid.
+Finer resolution datasets exist, such as the SRMT30~\cite{becker2009global} at 30 second resolution, however, the two\-minute resolution offered a good balance of memory, accuracy, and computational costs.
 
 \subsection{Metrics}
 Metrics are useful for evaluating a model and determining its usefulness.
@@ -208,7 +207,7 @@ It is given by the following equation.
 F1-Score represents a harmonic mean of a models precision and recall..
 Precision is the measurement of how good a model is at avoiding false positives.
 It is known as the true positive rate.
-Recall is a measurement of how good a model is at avoiding false negatives.
+The recall is a measurement of how good a model is at avoiding false negatives.
 The equations are given below.
 \begin{equation}
     precision = \frac{True Positives}{True Positives + False Positives}
@@ -221,11 +220,11 @@ The equations are given below.
 \end{equation}
 
 \par
-Balanced Accuracy gives a indication of accuracy for datasets that are not balanced.
+Balanced Accuracy gives an indication of accuracy for datasets that are not balanced.
 A dataset that is not balanced means that one label has significantly more or less samples than another.
 The equation is given below.
 \begin{equation}
-    balanced accuracy = \frac{True Positive Rate + True Negative Rate}{2}
+    Balanced_Accuracy = \frac{True Positive Rate + True Negative Rate}{2}
 \end{equation}
 
 
@@ -246,20 +245,20 @@ These models were trained against a reduced set of data shown in Figure~\ref{fig
 Each model was fit against selected features from the Genetic Algorithm feature selector.
 
 \subsection{Classification Methodology}
-To facilitate classification, trained models needed to predict discrete values instead of continuous values.
+To facilitate classification, trained models are needed to predict discrete values instead of continuous values.
 This conversion was executed by mapping the bathymetry values into discrete classes.
-Conversion proved to be trivial because of the ordered nature of bathymetry.
+The conversion proved to be trivial because of the ordered nature of bathymetry.
 Classification models are simpler and easier to fit than regression models.
 Ideally, the decision surfaces will benefit from the conversion and yield better results.
 This makes it difficult to compare directly to the error reported in existing physics models.
-A set of metrics including precision, recall, F1\-score, and balanced accuracy were used to analyze the viability of the models.
+A set of metrics including precision, recall, F1-score, and Balanced Accuracy were used to analyze the viability of the models.
 
 \par
 The ordinal classes were binned on an interval of 150 meters.
-Essentially, this gives a true positive an error of approximately 150 meters.
+Essentially, this gives a true positive error of approximately 150 meters.
 This was done to easily compare accuracy to the model in~\cite{jena2012prediction}.
-Validation was performed using a 10\-fold cross validation using balanced accuracy as the scoring function.
-The following models were imported from Sklearns library and trained: Random Forest Classifier, Quadratic Discriminant Classifier, AdaBoost Classifier, Gradient Boosting Clasifier, Decision Tree Classifier, Artificial Neural Network Classifier, Voting Classifier, KNN Classifier, Bagging Classifier, NaiveBayes Classifier.
+Validation was performed using a 10-fold cross-validation using Balanced Accuracy as the scoring function.
+The following models were imported from the Sklearn library and trained: Random Forest Classifier, Quadratic Discriminant Classifier, AdaBoost Classifier, Gradient Boosting Clasifier, Decision Tree Classifier, Artificial Neural Network Classifier, Voting Classifier, KNN Classifier, Bagging Classifier, NaiveBayes Classifier.
 
 
 \subsection{Model Selection Methodology}
@@ -268,8 +267,8 @@ Each model's accuracy was compared and the model with the highest accuracy was s
 Selection identified that model accuracy varied by region.
 Figure \ref{fig:coveragegrid} shows this observed trend.
 Showing evidence that there does not exist a best fit model for predicting bathymetry across the earth.
-For example, consider a model this is excellent at predicting shallow bathymetry.
-This models performance could be explained by how it interprets data and models it.
+For example, consider a model that is excellent at predicting shallow bathymetry.
+This model's performance could be explained by how it interprets data and models it.
 Specifically, it may leverage the predictors in the data well.
 However, this same model that works well in shallow water may be awful in deep water.
 Whereas, another model may be excellent at predicting bathymetry in deep water scenarios.
@@ -277,7 +276,7 @@ Whereas, another model may be excellent at predicting bathymetry in deep water s
 \par
 A cache of selected models for a set of coverages was created from the model selection process.
 This cache was then used to select and inject models for predictions. 
-Dynamically injecting selected models allows for the best predictor be used across the globe.
-In reality, this methodology resulted in a higher accuracy, and can be extended to other selection functions.
+Dynamically injecting selected models allows for the best predictor to be used across the globe.
+In reality, this methodology resulted in higher accuracy, and can be extended to other selection functions.
 The results are discussed in chapter \ref{sec:results} and the decision functions are discussed in chapter \ref{sec:discussion}.
 
