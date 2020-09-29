@@ -64,7 +64,7 @@ The Balanced Accuracy for each model can be found in Figure~\ref{fig:balacc_barp
 \par
 The Decision Tree classifier performed significantly worse than the other models.
 The 47\% balanced accuracy is not usable for predictions.
-Potentially, parameter tuning, and feature selection could improve this model.
+Potentially, parameter tuning and feature selection could improve this model.
 
 % \begin{table}[htp]
 %     \centering
@@ -105,6 +105,20 @@ Potentially, parameter tuning, and feature selection could improve this model.
 % The objective being to identify if a model will predict more accuractly based on geospatial location.
 % The hypothysis being that decision boundaries across different models will respond to features based on location.
 
+%Give the background for the idea in this section!
+\subsection{Analysis of Global Model Optimization}
+This hypothesis was tested by building a model that optimizes using the geospatial location.
+In order to optimize by location, a cache of "best fit" models for each location needed to be created.
+This could be performed by comparing the performance of a set of models for predicting every point in a grid, however, this could take an extremely long time due to the size of these geospatial grids.
+To simplify this experiment, for the sake of time and computing resources, the world was instead split into \textbf{N} coverages.
+These coverages represent an area of the earth and will suffice for the experiment of comparing model performance across geospatial locations.
+The performance of a selected set of models was recorded.
+The best performing model in a particular coverage was then exported and saved to a cache of best fit models.
+This cache maps each model to a bounding box representing its coverage area.
+The results of this experiment are displayed in Figure~\ref{fig:coveragegrid}.
+
+\newpage
+
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{optgriddraft.png}
@@ -114,18 +128,8 @@ Potentially, parameter tuning, and feature selection could improve this model.
     \label{fig:coveragegrid}
 \end{figure}
 
-%Give the background for the idea in this section!
-\subsection{Analysis of Global Model Optimization}
-This hypothesis was tested by building a model that optimizes using the geospatial location.
-In order to optimize by location, a cache of "best fit" models for each location needed to be created.
-This could be performed by comparing the performance of a set of models for predicting every point in a grid, however, this could take an extremely long time due to the size of these geospatial grids.
-To simplify this experiment, for the sake of time and computing resources, the world was instead split into \textbf{N} coverages.
-These coverages represent an area of the earth and will suffice for the experiment of comparing model performance across geospatial locations.
-The performance of a set of models were recorded.
-The best performing model in a particular coverage was then exported and saved to a cache of best fit models.
-This cache maps each model to a bounding box representing its coverage area.
-The results of this experiment are displayed in Figure~\ref{fig:coveragegrid}.
 
+\newpage
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{best_fit_percentage.png}
@@ -140,7 +144,7 @@ The random forest classifier was the best fit model for a large portion of the o
 On the other hand, the Bagging classifier consistently performed well along the coast lines.
 The reasons why these classifiers may have performed so well in those areas will be discussed/explained in Section 6.
 
-
+\newpage
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{grid_opt_results.png}

@@ -10,14 +10,14 @@ Altimetry is the measurement of height or altitude.
 Specifically, this paper is referring to the altimetry of the sea surface using the distance to a satellite.
 Measuring the altimetry can lead to the identification of swells that are caused by gravity gradients that originate from geoids.
 Modeling the resulting bathymetry as a function of the approximated gravity is an excellent approach at coarse resolutions, but at finer resolutions, the prediction error becomes an issue.
-Modern \ac{EGM} predictions have a error of approximately 180 meters.
+Modern \ac{EGM} predictions have an error of approximately 180 meters.
 On the other hand, sonar platforms such as the \ac{MBES}~\cite{farr1980multibeam} provide extremely accurate measurements of depth.
 They operate using the simple physics of sound traveling through the medium of water.
 Measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor will provide the bathymetry.
-Many survey and commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor~\cite{becker2009global}.
+Survey and commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor~\cite{becker2009global}.
 This is because \ac{MBES} measure a limited swath of ocean, and often vessels need to sail slower for high-resolution mappings.
 Thus, global coverage using \ac{MBES} is time and cost-prohibitive.
-\ac{SDB} is a method that measures the attenuation of light in a water column which correlates to the bathymetry.
+\ac{SDB} is a method that measures the attenuation of light in a water column, which correlates to the bathymetry.
 This method has an average error of two meters but is only effective in shallow water, leaving it unable to measure the vast majority of the world's deep oceans.
 The lack of accurate techniques for measuring bathymetry at a global scale creates a need for innovative prediction methods.
 
@@ -44,7 +44,7 @@ In this project, a genetic algorithm~\cite{yang1998feature} is used to select op
 The genetic algorithm approach for feature selection will select optimum features in a reasonable time frame.
 After selecting the features, the resulting model can be evaluated for performance and validated against known labels.
 The more predicted labels that compare accurately to known data, the higher the accuracy of the model.
-Models where predictions do not match known data will have poor accuracy.
+Models, where predictions do not match known data will have poor accuracy.
 The known data used in this project is bathymetry from existing \ac{EGM}s.
 It is important to note that this data is inherently predicted and validated to the best of human knowledge.
 Each predicted point has an estimated error of 180 meters~\cite{becker2009global}.
@@ -53,12 +53,12 @@ Therefore, the data from \ac{EGM}s is only sufficient for creating theoretical m
 \par
 Predicting bathymetry is a complicated problem that involves several unknowns.
 Many potential models and approaches that have not been explored because of this unfamiliarity.
-The vast nature of the Earth's oceans contributes to these unknowns.
-Currently, only ten percent of the Earth's oceans have been surveyed, and little is known about the majority of the ocean's ecosystems.
+The vast nature of the earth's oceans contributes to these unknowns.
+Currently, only ten percent of the earth's oceans have been surveyed, and little is known about the majority of the ocean's ecosystems.
 Because so little of the worlds oceans have been surveyed, if there is to be bathymetry data, then it must be interpolated or predicted in some way.
-Naturally, it is impossible to precisely measure all of the elements in the ocean.
+Naturally, it is impossible to measure all of the elements in the ocean.
 Elements such as oxygen levels, silicate levels, sediment thickness, and sediment type all must be predicted or interpolated.
-On the other hand, satellite measurements of altimetry from the sea surface is readily available.
+On the other hand, the measurement of satellite altimetry data from the sea surface is readily available.
 These measurements are accurate, which is why \ac{EGM}s use gravity as the main feature.
 However, using estimated features to predict estimated bathymetry could identify new approaches for building viable models.
 
@@ -66,7 +66,7 @@ However, using estimated features to predict estimated bathymetry could identify
 This thesis is focused on experimenting with machine learning for predicting global bathymetry.
 The goal is to glean new approaches and identify interesting behaviors.
 Regression and classification approaches are compared for effectiveness.
-Models used in this project are all from Python's ScikitLearn library and include: Linear Regression Models, Decision Trees and related ensembles, Voting ensembles, K Nearest Neighbors classifier, neural networks, and bagging models.
+Models used in this project are all from Python's ScikitLearn library and include: Linear Regression Models, Decision Trees, Random Forest models, Voting ensembles, K Nearest Neighbors classifier, neural networks, and bagging models.
 A genetic algorithm was introduced for initial feature selection, and a modified grid search was used to identify trends in model performance.
 Finally, the behaviors of the models were recorded and discussed.
 
@@ -88,7 +88,7 @@ This selection is important for identifying optimal models.
 
 \par
 Using classification for bathymetry is not an intuitive idea.
-Bathymetry is a mostly continuous value that would appear to be ideal for regression models.
+Bathymetry is mostly a continuous value that would appear to be ideal for regression models.
 In reality, the ranged nature of bathymetry makes classification trivial for bathymetry.
 There is a consistent known minimum and maximum for bathymetry.
 For example, the maximum for bathymetry is 0, and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.

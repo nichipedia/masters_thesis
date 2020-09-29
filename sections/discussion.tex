@@ -24,15 +24,15 @@ The Bagging classifier performed on par with the Random Forest Classifier with a
 However, Figure~\ref{fig:coveragegrid} shows that the bagging classifier performed best around coastlines.
 This suggests that the model responds well to shallow waters.
 Shoreline data will also be consistently more accurate because of the proximity to land.
-Most of the world's high-resolution bathymetry is shoreline, and it is possible that the model responded to the quality data.
+Most of the world's high-resolution bathymetry is shoreline data, and it is possible that the model responded to the quality data.
 
 
 \par
 The classification results show that labeling bathymetry can improve the performance of the models.
 In this work, it was tested that a random forest classifier can predict 82\% of the world's predicted bathymetry within 150 meters of accuracy. 
-However, what is more interesting to analyze is the behavior of the models.
+However, the more interesting topic to analyze is the behavior of the models.
 The data used in training comes from aggregated external datasets and a predicted bathymetry dataset.
-The predictions of these models are being compared to predicted bathymetry which represents the accuracy with relation to predicted values.
+The predictions of these models are being compared to predicted bathymetry, which represents the accuracy with relation to predicted values.
 This means that the accuracy in these models is not indicative of truly predicting global bathymetry.
 It does show that an \ac{ML} model can be fit to data and be used to predict bathymetry, and if actually measured bathymetry and ocean features were used in training, the results would be comparable.
 Furthermore, parameter tuning, model selection, and dynamic feature selection could be used the increase the accuracy beyond current results.
@@ -63,22 +63,22 @@ The Grid Optimized Model Injector improved the accuracy of predictions by \~{}5\
 These results are displayed in Figure~\ref{fig:grid_opt_graph}.
 Obviously, the model selection and subsequent injection improved the results of this classifier, creating an ensemble of many models and selecting them on demand.
 This could be caused by geophysical characteristics that benefit one classifier.
-For example, in Figure~\ref{fig:coveragegrid} the Decision Tree classifier performed best along what appears to be fault lines.
+For example, in Figure~\ref{fig:coveragegrid}, the Decision Tree classifier performed best along what appears to be fault lines.
 It is possible that the characteristics related to being in proximity to a fault line benefited the model's decision boundary. 
 
 \par
 Clearly, Figure~\ref{fig:coveragegrid} provides evidence that model decision boundaries are sensitive to the features based on location.
 This leads to the theory that there is not a single best fit model for predicting global bathymetry.
 Analysis of Figure~\ref{fig:coveragegrid} shows interesting consistencies that raise questions about the underlying features.
-For example, in Figure~\ref{fig:coveragegrid} the Bagging classifier appears to perform best around coast lines.
+For example, in Figure~\ref{fig:coveragegrid}, the Bagging classifier appears to perform best around coast lines.
 This is consistent for most of the globe.
 However, in some coastal areas the Random Forest Classifier performs best. 
 It is possible these areas are linked to port cities and the high-resolution bathymetry collected from shipping lanes.
 
 \par
 Another interesting consistency is around fault lines.
-The coverages where the DecisionTree classifier performed best seems to follow fault lines.
-It is possible there is a geospatial attribute that contributes to this success, or a specific feature in these locations that contributes to the DecisionTree classifier's performance.
+The coverages where the decision tree classifier performed best seems to follow fault lines.
+It is possible there is a geospatial attribute that contributes to this success, or a specific feature in these locations that contributes to the decision tree classifier's performance.
 The AdaBoostClassifier also performs well around fault lines, but to a lesser extent.
 It is possible there are trends in the data that explain why the AdaBoostClassifier shows this behavior.
 
@@ -91,7 +91,8 @@ It is possible there are trends in the data that explain why the AdaBoostClassif
 \end{figure}
 
 \par
-Figure~\ref{fig:grid_opt_graph} represents the average prediction accuracy across all coverages where a model was "best fit".
+Figure~\ref{fig:grid_opt_graph} represents the average prediction accuracy across all coverages where a model was the best-fit
+, which means that the model had the highest accuracy for predictions in that coverage.
 What this graph shows is that the Random Forest Classifier had an average prediction rate of 51\% across coverages.
 This is fairly consistent with what was expected. 
 The models only trained on data contained within a coverage, which limited the training and fitting for models. 
@@ -114,7 +115,7 @@ Other coverages can be increased in size and potentially yield similar results.
 % \end{table}
 
 \par
-The evidence supports the theory that a \ac{ML} model can be chosen based on geospatial location.
+The evidence supports the theory that an \ac{ML} model can be chosen based on geospatial location.
 Future work may include investigating the appropriate feature sets, coverage boundaries, depth boundaries, parameters, and metrics based on geophysical location.
 For example, volcanic activity creates new land.
 This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipodal point.
@@ -143,11 +144,11 @@ This means that an ensemble of some kind, combining models based on geospatial l
 
 The experiments in this work provide evidence for optimal model selection with regards to predicting global bathymetry.
 It is reasonable to assume that selecting a model with a decision function will produce better predictions.
-Identifying the optimal decision function will help to explain why different models perform better or worse over a coverage.
-The Grid Optimized Model Injector shows that a simple geospatial decision function can be used to improve a theoretical prediction accuracy.
+Identifying the optimal decision function will help to explain why different models perform better or worse over the coverages.
+The Grid Optimized Model Injector shows that a simple geospatial decision function can be used to improve theoretical prediction accuracy.
 
 Selecting a model with a decision function is a novel concept for predicting bathymetry.
 The evidence supports that this will yield better results.
 An effective decision function could be something similar to the geospatial cache utilized in the Model Injector, or a decision based on selected features, or discovering optimal polygon coverages.
-In theory, optimizing the predictor for a region extend to utilizing both \ac{ML} models and physics models.
+In theory, optimizing the predictor for a region extends to utilizing both \ac{ML} models and physics models.
 This results in the most accurate model making predictions across the globe, therefore rasing accuracy globally.
