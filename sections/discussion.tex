@@ -59,9 +59,9 @@ This suggests that a classifier can be optimized using geospatial position.
 %This research is to identify those coverages and then use those results to build a super classifier.
 %These metrics are important for identifying where the models preform well. 
 \par
-The Grid Optimized Model Injector improved the accuracy of predictions by \~{}5\%.
+Grid optimization improved the accuracy of predictions by \~{}5\%.
 These results are displayed in Figure~\ref{fig:grid_opt_graph}.
-Obviously, the model selection and subsequent injection improved the results of this classifier, creating an ensemble of many models and selecting them on demand.
+Obviously, the model selection and subsequent injection improved the results, creating an ensemble of many models and selecting them on demand.
 This could be caused by geophysical characteristics that benefit one classifier.
 For example, in Figure~\ref{fig:coveragegrid}, the Decision Tree classifier performed best along what appears to be fault lines.
 It is possible that the characteristics related to being in proximity to a fault line benefited the model's decision boundary. 
@@ -115,7 +115,7 @@ Other coverages can be increased in size and potentially yield similar results.
 % \end{table}
 
 \par
-The evidence supports the theory that an \ac{ML} model can be chosen based on geospatial location.
+The evidence shows that an \ac{ML} model for predicting bathymetry could be chosen based on geospatial location.
 Future work may include investigating the appropriate feature sets, coverage boundaries, depth boundaries, parameters, and metrics based on geophysical location.
 For example, volcanic activity creates new land.
 This activity has a causal relationship to bathymetry, but volcanic activity at a specific point may not affect the bathymetry at a potential antipodal point.
@@ -124,8 +124,8 @@ It is possible that choosing models by performance across depth boundaries prove
 %Extending off the research preformed in \cite{jena2012prediction} these metrics allow the selection of the best preforming model.
 %This is where I define what happens after the appropriate coverages have been found.
 \par
-In theory, this injection will allow each model to perform to its optimum.
-Each coverage highlights distinct characteristics that will produce a better decision boundary.
+In this research, this optimization allowed each model to perform to its optimum.
+Each coverage highlighted distinct characteristics that could produce a better decision boundary.
 These coverages are simple partitions of the world, but could be extended in future work to optimize the selection.
 % Reconsider this sentence....
 
@@ -142,13 +142,12 @@ The experiments in this work do show that there are accuracy gains to be achieve
 Figure~\ref{fig:coveragegrid} gives evidence that there is not a best fit model for predicting bathymetry globally.
 This means that an ensemble of some kind, combining models based on geospatial location, feature sets, or any other unknown parameter, will likely yield better results.
 
-The experiments in this work provide evidence for optimal model selection with regards to predicting global bathymetry.
+The grid optimization for model selection performed in this work provide evidence for optimal model selection with regards to predicting global bathymetry.
 It is reasonable to assume that selecting a model with a decision function will produce better predictions.
 Identifying the optimal decision function will help to explain why different models perform better or worse over the coverages.
-The Grid Optimized Model Injector shows that a simple geospatial decision function can be used to improve theoretical prediction accuracy.
+Grid optimization shows that a simple geospatial decision function can be used to improve theoretical prediction accuracy.
 
 Selecting a model with a decision function is a novel concept for predicting bathymetry.
-The evidence supports that this will yield better results.
 An effective decision function could be something similar to the geospatial cache utilized in the Model Injector, or a decision based on selected features, or discovering optimal polygon coverages.
 In theory, optimizing the predictor for a region extends to utilizing both \ac{ML} models and physics models.
 This results in the most accurate model making predictions across the globe, therefore rasing accuracy globally.

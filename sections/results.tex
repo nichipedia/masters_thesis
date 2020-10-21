@@ -95,27 +95,14 @@ Potentially, parameter tuning and feature selection could improve this model.
     \label{fig:balacc_barplot_classification}
 \end{figure}
 
-\subsection{Optimized Grid Model}
-\setlength{\parindent}{10ex}
-%Purpose of this section is to identify the optimized grid structure.
-%I need to check with Hoque to identify what I should and shouldnt include
-%I need to consider rewording this and restructuring to manage the correctness for example etc.
-% Further analysis of figure \ref{fig:rfc_report} shows that models are sensitive to potentially local characteristics.
-% In an attempt to test this notion and increase the accuracy of these models a novel model selection method was employed.
-% The objective being to identify if a model will predict more accuractly based on geospatial location.
-% The hypothysis being that decision boundaries across different models will respond to features based on location.
+\subsection{Grid-Optimization Results}
+The Grid Optimized Classifier used the results from Figure~\ref{fig:coveragegrid} as a decision function to select an \textit{optimum} model.
+Simply, the classifier checks the location of the prediction for its corresponding grid in Figure~\ref{fig:coveragegrid}.
+The model that performed best in that coverage is then used for classification.
+This optimum model selection improved the prediction accuracy of the model by several percent.
+See Figure~\ref{fig:grid_opt_barplot} for the results of the model.
 
-%Give the background for the idea in this section!
-\subsection{Analysis of Global Model Optimization}
-This hypothesis was tested by building a model that optimizes using the geospatial location.
-In order to optimize by location, a cache of "best fit" models for each location needed to be created.
-This could be performed by comparing the performance of a set of models for predicting every point in a grid, however, this could take an extremely long time due to the size of these geospatial grids.
-To simplify this experiment, for the sake of time and computing resources, the world was instead split into \textbf{N} coverages.
-These coverages represent an area of the earth and will suffice for the experiment of comparing model performance across geospatial locations.
-The performance of a selected set of models was recorded.
-The best performing model in a particular coverage was then exported and saved to a cache of best fit models.
-This cache maps each model to a bounding box representing its coverage area.
-The results of this experiment are displayed in Figure~\ref{fig:coveragegrid}.
+
 
 \newpage
 
@@ -153,11 +140,4 @@ The reasons why these classifiers may have performed so well in those areas will
 \end{figure}
 %In this section I am defining what the Grid optimization is and why it matters.
 %There may be a better name for this?? Who knows really...
-\subsubsection{Grid-Optimization Results}
-The Grid Optimizing Classifier used the results from Figure~\ref{fig:coveragegrid} to select an \textit{optimum} model.
-Simply, the classifier checks the location of the prediction for its corresponding grid in Figure~\ref{fig:coveragegrid}.
-The model that performed best in that coverage is then used for classification.
-This optimum model selection improved the prediction accuracy of the model by several percent.
-See Figure~\ref{fig:grid_opt_barplot} for the results of the model.
-
 

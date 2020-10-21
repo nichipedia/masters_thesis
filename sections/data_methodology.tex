@@ -172,7 +172,8 @@ This grid representation allows for ease of reading both by computers and humans
 The spatial resolution of a grid defines its coverage.
 It can be described as the height and width of a grid.
 This height and width are not spatially constant.
-For example, a cell at the equator is larger and covers more physical area than a cell at the poles, however, this is the preferred to represent the data in a consistent and structured manner.
+For example, a cell at the equator is larger and covers more physical area than a cell at the poles.
+This format is preferred because it represents the data in a consistent and structured manner.
 
 \par
 All data in this project has been organized into two-minute bathymetry grids.
@@ -206,7 +207,7 @@ It is given by the following equation.
 \end{equation}
 
 \par
-F1-Score represents a harmonic mean of a model's precision and recall..
+F1-Score represents a harmonic mean of a model's precision and recall.
 Precision is the measurement of how good a model is at avoiding false positives.
 It is known as the true positive rate.
 The recall is a measurement of how good a model is at avoiding false negatives.
@@ -264,21 +265,32 @@ The following models were imported from the Sklearn library and trained: Random 
 
 
 \subsection{Model Selection Methodology}
-Model selection was utilized to determine the model with the highest prediction accuracy.
-Each model's accuracy was compared, and the model with the highest accuracy was selected.
-Selection identified that model accuracy varied by region.
-Figure \ref{fig:coveragegrid} shows this observed trend.
+\setlength{\parindent}{10ex}
+%Purpose of this section is to identify the optimized grid structure.
+%I need to check with Hoque to identify what I should and shouldnt include
+%I need to consider rewording this and restructuring to manage the correctness for example etc.
+% Further analysis of figure \ref{fig:rfc_report} shows that models are sensitive to potentially local characteristics.
+% In an attempt to test this notion and increase the accuracy of these models a novel model selection method was employed.
+% The objective being to identify if a model will predict more accuractly based on geospatial location.
+% The hypothysis being that decision boundaries across different models will respond to features based on location
+For optimization a grid optimization methodology was developed.
+Essentially, grid optimization uses a decision function to select the best predictor.
+A cache of models was used for this decision function, specifically, the cache is a map of a model to a geospatial area.
+The methodology is that specific models will be better at predicting specific geospatial areas.
+This cache was implemented by comparing the performance of a set of models for predicting across the globe.
+For sake of time and computing resources, the world was split into \textbf{N} coverages.
+These coverages represent an area of the earth and sufficed for the experiment.
+Each model was trained using data contained by a radius surrounding the coverage.
+Using 10-fold cross validation each model was scored and then compared.
+The best performing model was then placed into the cache.
+For predicting globally, each model was trained and validated against the entire dataset.
+
+Model selection using this grid optimization methodology allowed the best predictor to be used at all times.
+Figure \ref{fig:coveragegrid} shows that model accuracy varied greatly by region.
 Showing evidence that there does not exist a best fit model for predicting bathymetry across the earth.
 For example, consider a model that is excellent at predicting shallow bathymetry.
 This model's performance could be explained by how it interprets data and models it.
 Specifically, it may leverage the predictors in the data well.
 However, this same model that works well in shallow water may be awful in deep water.
 Whereas, another model may be excellent at predicting bathymetry in deep water scenarios.
-
-\par
-A cache of selected models for a set of coverages was created from the model selection process.
-This cache was then used to select and inject models for predictions. 
-Dynamically injecting selected models allows for the best predictor to be used across the globe.
-In reality, this methodology resulted in higher accuracy, and can be extended to other selection functions.
-The results are discussed in chapter \ref{sec:results}, and the decision functions are discussed in chapter \ref{sec:discussion}.
-
+This methodology solved this problem by always using the best predictor for an area.
