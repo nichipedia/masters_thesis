@@ -2,8 +2,9 @@
 \section{Introduction}
 \setlength{\parindent}{10ex}
 Bathymetry is defined as the measure of depth in a body of water.
-The forefront in global bathymetry mapping is aggregations of predicted and measured sources. 
-These \ac{EGM}s are the standard for measuring global bathymetry~\cite{becker2009global,smith1994bathymetric,smith1997global,smith2010planning}.
+The forefront in global bathymetry mapping is the aggregation of predicted and measured sources. 
+The predictions come from models called \ac{EGM}.
+These \acf{EGM} are the standard for measuring global bathymetry~\cite{becker2009global,smith1994bathymetric,smith1997global,smith2010planning}.
 They predict bathymetry by modeling the relationship between the vertical gravity gradient of a geoid and the depth of a water column.
 This relationship is modeled by measuring the altimetry of the sea surface to a constellation of satellites.
 Altimetry is the measurement of height or altitude. 
@@ -13,13 +14,13 @@ Modeling the resulting bathymetry as a function of the approximated gravity is a
 Modern \ac{EGM} predictions have an error of approximately 180 meters.
 On the other hand, sonar platforms such as the \ac{MBES}~\cite{farr1980multibeam} provide extremely accurate measurements of depth.
 They operate using the simple physics of sound traveling through the medium of water.
-Measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor will provide the bathymetry.
+Specifically, the operate by measuring the time a sonar ping requires to travel to the bottom and back to a hull-mounted sensor.
+This measurement of time is used along with sound speed in water to calculate the depth.
 Survey and commercial vessels have been equipped with these sensors for decades, but have only mapped 10\% of the ocean floor~\cite{becker2009global}.
 This is because \ac{MBES} measure a limited swath of ocean, and often vessels need to sail slower for high-resolution mappings.
 Thus, global coverage using \ac{MBES} is time and cost-prohibitive.
 \ac{SDB} is a method that measures the attenuation of light in a water column, which correlates to the bathymetry.
 This method has an average error of two meters but is only effective in shallow water, leaving it unable to measure the vast majority of the world's deep oceans.
-The lack of accurate techniques for measuring bathymetry at a global scale creates a need for innovative prediction methods.
 
 \par
 A team of researchers in India~\cite{jena2012prediction} used \ac{ML} to optimize a local \ac{EGM} in the Arabian Sea.
@@ -52,10 +53,9 @@ Therefore, the data from \ac{EGM}s is only sufficient for creating theoretical m
 
 \par
 Predicting bathymetry is a complicated problem that involves several unknowns.
-Many potential models and approaches that have not been explored because of this unfamiliarity.
 The vast nature of the earth's oceans contributes to these unknowns.
 Currently, only ten percent of the earth's oceans have been surveyed, and little is known about the majority of the ocean's ecosystems.
-Because so little of the worlds oceans have been surveyed, if there is to be bathymetry data, then it must be interpolated or predicted in some way.
+Because so little of the earths oceans have been surveyed, if there is to be bathymetry data, then it must be interpolated or predicted in some way.
 Naturally, it is impossible to measure all of the elements in the ocean.
 Elements such as oxygen levels, silicate levels, sediment thickness, and sediment type all must be predicted or interpolated.
 On the other hand, the measurement of satellite altimetry data from the sea surface is readily available.
@@ -63,8 +63,7 @@ These measurements are accurate, which is why \ac{EGM}s use gravity as the main 
 However, using estimated features to predict estimated bathymetry could identify new approaches for building viable models.
 
 \par
-This thesis is focused on experimenting with machine learning for predicting global bathymetry.
-The goal is to glean new approaches and identify interesting behaviors.
+This thesis is focused on identifying if there is a best fit model, and if there is a way to optimize theoretical predictions.
 Regression and classification approaches are compared for effectiveness.
 Models used in this project are all from Python's ScikitLearn library and include: Linear Regression Models, Decision Trees, Random Forest models, Voting ensembles, K Nearest Neighbors classifier, neural networks, and bagging models.
 A genetic algorithm was introduced for initial feature selection, and a modified grid search was used to identify trends in model performance.
@@ -91,7 +90,7 @@ Using classification for bathymetry is not an intuitive idea.
 Bathymetry is mostly a continuous value that would appear to be ideal for regression models.
 In reality, the ranged nature of bathymetry makes classification trivial for bathymetry.
 There is a consistent known minimum and maximum for bathymetry.
-For example, the maximum for bathymetry is 0, and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
+For example, the maximum depth value for bathymetry is 0 meters, and the minimum is the deepest known depth in the Mariana Trench at 11 kilometers.
 This range allows for simple labels to be placed on a number of ranges.
 The number of ranges is arbitrary and can be adjusted to test error.
 The principal is that selecting a range will infer the maximum error for the prediction.

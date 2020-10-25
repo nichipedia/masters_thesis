@@ -1,10 +1,10 @@
 \section{Literature Review}
 \setlength{\parindent}{10ex}
 In this review, different approaches for predicting bathymetry are discussed.
-The two main methods for collecting bathymetry data are \ac{SDB} and \ac{EGM}.
+The two main methods for collecting bathymetry data are \acf{SDB} and \acf{EGM}.
 There is also a third approach discussed that improves upon the idea of an \ac{EGM}.
-\ac{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
-The \ac{ML} models used for training are explained in detail, as well.
+\acf{MBES} for precise measurements of bathymetry \cite{farr1980multibeam} is also covered.
+The \acf{ML} models used for training are explained in detail, as well.
 
 \subsection{Machine Learning}
 Machine Learning can be defined as the process of fitting a model to data with an algorithm \cite{bishop2006pattern}.
@@ -21,8 +21,7 @@ The two main types of models in Machine Learning are classification and regressi
 There are several high-level descriptions of classification and regression models, including supervised learning, unsupervised learning, and reinforcement learning.
 
 \par
-Classification models that predict a discrete value, for example, whether an image contains a car.
-The model predicts a discrete value of either positive or negative.
+Classification models predict a discrete value, for example, whether an image contains a car.
 These types of models are effective at predicting values that can be grouped into "labeled" data.
 Data is labeled when it is assigned an output value as a "truth" label.
 For example, to train a model to detect cars, the model must be supplied with labeled images. 
@@ -37,7 +36,7 @@ Examples of ensemble classifiers used in this project include: Random Forest Cla
 \par
 Regression models predict a continuous value.
 For example, predicting the value of a home.
-Essentially, this model represents a mathematical function where the input data is the function parameters.
+Essentially, this model represents a mathematical function where the the function parameters are instances of new input data.
 The parameters for the model are predictors for the value of the home.
 Predictors for a home include square footage, number of rooms, acreage, and school distance.
 This method is appropriate when the desired result cannot be grouped into discrete "labeled" data.
@@ -83,8 +82,8 @@ Optimally, accurate models should have low bias and variance.
 
 \subsubsection{Decision Trees}
 Decision trees are supervised models used for classification or regression \cite{breiman2017classification}.
-However, they are easy to understand and interpret due to their simple decision structure. 
-They are susceptible to over-fitting and can create overly complex trees that do not generalize well.
+They are easy to understand and interpret due to their simple decision structure. 
+However, they are susceptible to over-fitting and can create overly complex trees that do not generalize well.
 % Maybe put this with Bias and Variance
 Over fitting is where a model will fit too closely to a training set \cite{cawley2010over}, making it unable to make accurate predictions on data outside of what was used in training.
 

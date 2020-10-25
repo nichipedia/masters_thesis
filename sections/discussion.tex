@@ -93,13 +93,12 @@ It is possible there are trends in the data that explain why the AdaBoostClassif
 \par
 Figure~\ref{fig:grid_opt_graph} represents the average prediction accuracy across all coverages where a model was the best-fit
 , which means that the model had the highest accuracy for predictions in that coverage.
+It is important to note that this is representing models that were trained on a reduce set of data, therefore, it is expected for the accuracy to be lower.
 What this graph shows is that the Random Forest Classifier had an average prediction rate of 51\% across coverages.
-This is fairly consistent with what was expected. 
-The models only trained on data contained within a coverage, which limited the training and fitting for models. 
-However, other models did not suffer from this on average.
-This suggests that some coverages can be broader than others.
-For example, coverages where the random forest classifier performed well, may yield a higher accuracy if they are decreased or reformed.
-Other coverages can be increased in size and potentially yield similar results.
+This is fairly consistent with what was expected as it was the best performing global model. 
+However, other models that performed very poor on a global scale made accurate predictions in specific areas.
+For example, the Quadratic Discriminant Analysis classifier performed exceptionally well in specific areas, as well as the Ada Boost Classifier and the Artificial Neural Network classifier.
+With this being noted, selecting a optimal grid for prediction will allow the strongest classifier to be used at all times.
 
 % \begin{table}[htp]
 %     \centering
@@ -137,17 +136,12 @@ These coverages are simple partitions of the world, but could be extended in fut
 
 \subsection{General Discussion}
 The predictions made in this work are based on predicted bathymetry.
-Even with an 85\% prediction rate, these models are not able to compete with physics models.
+Even with an 85\% prediction rate, these models are not fit to compare with \acf{EGM}.
 The experiments in this work do show that there are accuracy gains to be achieved with model selection.
 Figure~\ref{fig:coveragegrid} gives evidence that there is not a best fit model for predicting bathymetry globally.
-This means that an ensemble of some kind, combining models based on geospatial location, feature sets, or any other unknown parameter, will likely yield better results.
+Figure~\ref{fig:grid_opt_graph} gives evidence that an ensemble of some kind, optimizing by a decision function, will likely yield better results.
 
-The grid optimization for model selection performed in this work provide evidence for optimal model selection with regards to predicting global bathymetry.
+The grid optimization for model selection performed in this work is a novel approach for predicting bathymetry and provides evidence for optimal model selection with regards to predicting global bathymetry.
 It is reasonable to assume that selecting a model with a decision function will produce better predictions.
 Identifying the optimal decision function will help to explain why different models perform better or worse over the coverages.
 Grid optimization shows that a simple geospatial decision function can be used to improve theoretical prediction accuracy.
-
-Selecting a model with a decision function is a novel concept for predicting bathymetry.
-An effective decision function could be something similar to the geospatial cache utilized in the Model Injector, or a decision based on selected features, or discovering optimal polygon coverages.
-In theory, optimizing the predictor for a region extends to utilizing both \ac{ML} models and physics models.
-This results in the most accurate model making predictions across the globe, therefore rasing accuracy globally.

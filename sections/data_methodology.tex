@@ -219,15 +219,20 @@ The equations are given below.
     recall = \frac{True Positives}{True Positives + False Negatives}
 \end{equation}
 \begin{equation}
-    F1 = 2 * \frac{precision * recall}{precision + recall}
+    F1\ Score = 2 * \frac{precision * recall}{precision + recall}
 \end{equation}
 
 \par
 Balanced Accuracy gives an indication of accuracy for datasets that are not balanced.
 A dataset that is not balanced means that one label has significantly more or fewer samples than another.
+This is especially useful for this work because the training data is very imbalanced.
+Imagine a classification problem where there are 100 samples.
+95 of those samples are positive and 5 are negative.
+If a classifier predicts all 100 as positive, then it will have a 95\% accuracy if you just compare the correctly classified class against the whole.
+However, balanced accuracy will give a score of 50\%, which gives a better indication of the success of that classifier.
 The equation is given below.
 \begin{equation}
-    Balanced\! Accuracy = \frac{True Positive Rate + True Negative Rate}{2}
+    Balanced\ Accuracy = \frac{True Positive Rate + True Negative Rate}{2}
 \end{equation}
 
 
