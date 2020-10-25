@@ -36,7 +36,7 @@ Examples of ensemble classifiers used in this project include: Random Forest Cla
 \par
 Regression models predict a continuous value.
 For example, predicting the value of a home.
-Essentially, this model represents a mathematical function where the the function parameters are instances of new input data.
+Essentially, this model represents a mathematical function where the function parameters are instances of new input data.
 The parameters for the model are predictors for the value of the home.
 Predictors for a home include square footage, number of rooms, acreage, and school distance.
 This method is appropriate when the desired result cannot be grouped into discrete "labeled" data.
@@ -144,7 +144,7 @@ K-Nearest Neighbors for classification stores the instances of the training data
 Predictions are made by computing the distance of new instances to the training set.
 This model is based on the nearest neighbor algorithm and is excellent for its simplicity and domain-independent applications.
 The nearest neighbors algorithm can be explained using the Post Office problem where a residence needs to be assigned the closest post office \cite{knuth1997art}.
-The K-Nearest Neighbors algorithm is a generalization.
+The K-Nearest Neighbors algorithm is a generalization of the Post Office problem.
 To describe simply, instead of searching for the nearest post office, the algorithm searches for the K-nearest post offices.
 This can be extended for use in classification.
 For example, if the K-Nearest Neighbors of an object are a positive class, it is natural to classify the object as positive.
@@ -166,7 +166,7 @@ See Figure \ref{fig:knn} for an illustration.
 \subsubsection{Multi-Layer Perceptron}
 %Talk about MLP Classifier here!!!
 % Include MLP picture here I guess
-The Multi-Layer Perceptron is a model that fits a function iteratively through a process called back-propagation.
+The \ac{MLP} is a model that fits a function iteratively through a process called back-propagation.
 The MLP classifier is a neural network model that is based on the structure of the human brain.
 It consists of many layers beginning with an input layer.
 The middle layers are called the "hidden layers" and are each assigned a weight.
@@ -202,7 +202,7 @@ Bayes theorem states the following relationship:
 \end{equation}
 
 In equation \ref{eq:bayes}, $\theta$ and \textbf{D} are events. 
-P($\theta$|\textbf{D}) represents the probability of $\theta$ occurring given event \textbf{D} is true, where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
+\(P(\theta | \textbf{D})\) represents the probability of $\theta$ occurring given event \textbf{D} is true, where P(\textbf{D}) is the probability of observing event \textbf{D} alone.
 Bayes Theorem will produce a probability of an event happening given another event using prior probabilities.
 For example, say you wanted to predict the probability of both a stock falling and the DOW being down.
 If you knew the probability of both falling independently, then you could use Bayes theorem to calculate the probability of both happening together.
@@ -289,7 +289,7 @@ Figure \ref{fig:sidescandemo} shows an illustration of a towed SideScan sensor b
 
 
 %VERY VERY VERY IMPORTANT SECTION....2018 paper contains good content for my thesis!
-\subsection{Satellite\-Derived Bathymetry (SDB)}
+\subsection{\acf{SDB}}
 \ac{SDB} is a precise method of predicting coastal bathymetry. 
 This method relies on the phenomena of light passing through a water column at a certain depth described by the Beer-Lambert law \cite{chybicki2018three}\cite{vinayaraj2016satellite}.
 Sunlight passes through the water column and is reflected by the sediment at the bottom.
@@ -334,7 +334,8 @@ Work performed by~\cite{chybicki2018three} improved the accuracy by using advanc
 
 \subsection{Aggregated Earth Gravitational Models (EGM)}
 Work performed by Smith and Sandwell~\cite{smith1994bathymetric,smith1997global} pioneered the use of Earth Gravitational Models (EGM) for predicting bathymetry.
-They proposed that the relationship between seafloor topography and sea surface gravity is conveniently related~\cite{smith1994bathymetric}.
+Dixon et al. demonstrated a correlation between depth and sea surface gravimetry by comparing known bathymetry and known geoid heights with satellite measured altimetry \cite{dixon1983bathymetric}.
+Using this correlation, Smith and Sandwell developed a model for global predictions \cite{smith1994bathymetric}.
 Their work identified the wavelength bands at which this relation holds true.
 They identified the areas that could be predicted with this relationship and used sparse ship soundings to fill in the gaps of their predictions.
 Areas with large seamounts found the correlation to be strongest, while areas of flat sediments found the correlation to be weakest.
@@ -345,7 +346,7 @@ They named this technique the "Inverse Nettleton Procedure" and used a simple li
 \end{equation}
 
 \par
-Equation~\ref{eq:egm} represents the model created by~\cite{smith1994bathymetric}, where \textbf{b} represents the predicted bathymetry.
+Equation~\ref{eq:egm} represents the model defined by~\cite{smith1994bathymetric}, where \textbf{b} represents the predicted bathymetry.
 \textbf{D} represents a function of regional estimated depth via satellite.
 \textbf{s} representing a regional scaling factor based on known sediments.
 Finally, \textbf{g} represents inferred gravity from satellite imaging.
@@ -362,7 +363,7 @@ This work was later improved in~\cite{becker2009global}.
 By increasing the number of ship soundings and increasing the aggregation sources.
 Ten external datasets were aggregated for the SRTM30 grid.
 Agencies in these sources include the \ac{NAVO}, \ac{GEBCO}, \ac{NOAA}, \ac{NGA}, and the \ac{JAMSTEC}.
-These datasets include high-resolution coastal bathymetry from around the world and greatly increased global accuracy.
+These datasets include high-resolution coastal bathymetry from around the world and greatly increased global accuracy
 
 %Spelling check big time bruh
 \par
@@ -378,7 +379,7 @@ Identifying an optimal scaling factor for an area will require knowledge of the 
 \subsection{Machine Learning Optimized \ac{EGM}}\label{subsec:machine-learning-optimizedac}
 The aggregated \ac{EGM} is a physics-based model that relies on the relationship between gravity and bathymetry to be directly correlated.
 This correlation is often non-trivial to define due to environmental factors.
-The nondeterministic behavior is compensated by the scaling factor detailed section 3.5.
+The nondeterministic behavior is compensated by the scaling factor detailed in section 3.5.
 Attempts to optimize this scaling factor have been made, and \ac{ML} has shown much promise in this regard \cite{jena2012prediction}.
 
 \par

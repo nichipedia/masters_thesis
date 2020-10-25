@@ -129,7 +129,7 @@ Using a genetic algorithm for feature selection is a simple application of the o
 The initialized population is a set of random binary strings.
 Each string has a character length equal to the number of features in our feature space.
 The binary characters represent whether a feature is active or inactive.
-Essentially these strings represent a set of features to use in training a model.
+Essentially, these strings represent a set of features to use in training a model.
 The fitness of that string is represented by the resulting model's accuracy.
 Selection is performed by choosing the most accurate models and their characteristics then passing those onto the next generation.
 A simple crossover mutation of the strings is used along with a modest 5\% mutation rate.
@@ -192,18 +192,18 @@ RMSE, R2, F1-score, and Balanced Accuracy are the metrics used in this paper.
 \par
 RMSE stands for Root Mean Square Error.
 It is the square of average squared error, and is ideal for aggregating the magnitudes of error.
-It is given by the following equation.
+It is given by the following equation. In this equation, $d_i$ represents a true known value and $f_i$ represents a predicted value.
 \begin{equation}
-    RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(\frac{d_i -f_i}{\sigma_i}\Big)^2}}
+    RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(d_i -f_i)^2}}
 \end{equation}
 
 \par
-R2 stands for "R Squared".
+$R^2$ stands for "R Squared".
 In statistics, this is the coefficient of determination, it is defined as the proportion of the variance in the dependent variable that is predictable from the independent variables.
 Having a high R squared score will denote that the features of a model are good predictors.
-It is given by the following equation.
+It is given by the following equation. In this equation, $y_i$ represents a known value from a dataset that is associated with a predicted value $f_i$ and $\mu$ represents the mean of the series of known values \([y_1...y_n]\).
 \begin{equation}
-    r = \frac{n(\Sigma x y)-(\Sigma x)(\Sigma y)}{\sqrt{[n \Sigma x^2  - (\Sigma x)^2][n(\Sigma y^2) - (\Sigma y)^2]}}
+    R^2 = 1 - \frac{\Sigma_i{(y_i - f_i)}^2}{\Sigma_i{(y_i - \mu)}^2}
 \end{equation}
 
 \par
