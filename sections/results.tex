@@ -14,7 +14,7 @@ The RMSE of each model can be found in Figure~\ref{fig:rmse_barplot_regression}.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{worldtraininglocal.png}
-    \caption{Initial training sets for regression. Testing was performed against the rest of the world.}
+    \caption[Figure depicting regression training sets]{Initial training sets for regression. Testing was performed against the rest of the world.}
     \label{fig:trainset}
 \end{figure}
 
@@ -36,14 +36,14 @@ The RMSE of each model can be found in Figure~\ref{fig:rmse_barplot_regression}.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{rsquared_barplot_regression.png}
-    \caption{\(R^2\) score for each model. Higher values represent better performing models.}
+    \caption[Graphs depicting regression \(R^2\) results]{\(R^2\) score for each model. Higher values represent better performing models.}
     \label{fig:r2_barplot_regression}
 \end{figure}
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{rmse_bar_regression.png} 
-    \caption{RMSE for each model. Lower values represent lower error for a model.}
+    \caption[Graphs depicting regression RMSE results]{RMSE for each model. Lower values represent lower error for a model.}
     \label{fig:rmse_barplot_regression}
 \end{figure}
 
@@ -84,14 +84,14 @@ Potentially, parameter tuning and feature selection could improve this model.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{f1_bar_classification.png}
-    \caption{F1 score for each classifier. Higher values represent better precision and recall. From this, we see the Decision Tree does not make useful predictions.}
+    \caption[Graph depicting the F1 score for each classifier]{F1 score for each classifier. Higher values represent better precision and recall. From this, we see the Decision Tree does not make useful predictions.}
     \label{fig:f1_barplot_classification}
 \end{figure}
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{balacc_bar_classification.png}
-    \caption{Balanced accuracy for each classifier. Higher values represent higher accuracy.}
+    \caption[Graph depicting Balanced Accuracy for each classifier]{Balanced accuracy for each classifier. Higher values represent higher accuracy.}
     \label{fig:balacc_barplot_classification}
 \end{figure}
 
@@ -109,7 +109,7 @@ See Figure~\ref{fig:grid_opt_barplot} for the results of the model.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{optgriddraft.png}
-    \caption{World Coverages and Successful Models.
+    \caption[Figure depicting the successful model cache]{World Coverages and Successful Models.
     Each square represents a coverage.
     The shaded color represents the model that was most successful in that coverage.}
     \label{fig:coveragegrid}
@@ -120,7 +120,7 @@ See Figure~\ref{fig:grid_opt_barplot} for the results of the model.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{best_fit_percentage.png}
-    \caption{Percentage of coverages where a model was "best fit".}
+    \caption[Graph depicting the percentage of predictions each model will perform]{Percentage of coverages where a model was "best fit".}
     \label{fig:pie_best_fit}
 \end{figure}
 
@@ -135,7 +135,7 @@ The reasons why these classifiers may have performed so well in those areas will
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{grid_opt_results.png}
-    \caption{Grid Optimized Model results. Higher values represent better performing models.}
+    \caption[Graph depicting metrics using the Grid Selection Optimization]{Grid Optimized Model results. Higher values represent better performing models.}
     \label{fig:grid_opt_barplot}
 \end{figure}
 %In this section I am defining what the Grid optimization is and why it matters.

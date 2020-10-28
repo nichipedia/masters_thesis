@@ -69,7 +69,7 @@ Optimally, accurate models should have low bias and variance.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{sphx_glr_plot_underfitting_overfitting_001.png}
-    \caption{Three plots of the function \( f(x) = cos(\frac{3}{2} \pi x) \) with noisy samples along with the graph. 
+    \caption[Figure describing bias and variance]{Three plots of the function \( f(x) = cos(\frac{3}{2} \pi x) \) with noisy samples along with the graph. 
     A linear regression model is fit to the samples with orders of 1, 4, and 15.
     The model fit with order 1 does not respond well to changes in the samples and is a great example of high bias.
     The model fit with order 4 fits the function very well and is an example of balanced bias and variance.
@@ -90,7 +90,7 @@ Over fitting is where a model will fit too closely to a training set \cite{cawle
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{dtreesepal.png}
-    \caption{An example of a decision tree.
+    \caption[Figure depicting a decision tree model]{An example of a decision tree.
     Decision trees work by making binary decisions across a decision boundary.
     Each leaf node represents a classification label and the binary decisions that selected that label.}
     \label{}
@@ -153,7 +153,7 @@ See Figure \ref{fig:knn} for an illustration.
 \begin{figure}[htp]
     \centering
     \includegraphics[]{220px-KnnClassification.png}
-    \caption{An example of the KNN algorithm for classification.
+    \caption[Figure depicting the K Nearest Neighbors algorithm]{An example of the KNN algorithm for classification.
     There are 2 classes in this example: Blue squares and Red triangles.
     The green circle needs to be classified.
     If K is 3 (the solid line), then the green circle will be classified as a red triangle.
@@ -181,7 +181,7 @@ Training on very large datasets is known as Deep Learning.
 \begin{figure}[htp]:
     \centering
     \includegraphics[scale=0.5]{multilayerperceptron_network.png}
-    \caption{A Multi-Layer Perceptron.
+    \caption[Figure depicting hidden layers in a neural network]{A Multi-Layer Perceptron.
     The middle or hidden layers are assigned weights that affect the selected class in classification.
     This model effectively models a function.}
     \label{}
@@ -223,7 +223,7 @@ This can fit a function up to order N with the cost of complexity. \\
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{polynomialvslinearregression.png}
-    \caption{3 example regression models fit to a set of points.
+    \caption[Figure depicting a regression model]{3 example regression models fit to a set of points.
     A linear regression (red line) does not fit the data well.
     As the order rises the line will better fit the data.
     These higher-order polynomial regression lines come at the cost of complexity and increasing the variance of the function.}
@@ -248,7 +248,7 @@ This section is concerned with explaining the many measurement techniques for ba
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Geophy03-01.jpg}
-    \caption{An \ac{MBES} system illustrated by a hull\-mounted sensor.
+    \caption[Figure depicting a Multi-Beam Echo Sounder]{An \ac{MBES} system illustrated by a hull\-mounted sensor.
     The sensor ensonifies the sea floor and listens for the echo of the sound.
     The time the echo takes to return is used to measure the depth. 
     The illustration was taken from \cite{monacoWeb}.}
@@ -266,7 +266,7 @@ A vessel must transport these sensors, and potentially require decades of expens
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{Schematic-presentation-of-the-side-scan-sonar-and-sub-bottom-profiling-survey-conducted.png}
-    \caption{Sidescan sensor used by a survey ship via a tow fish.
+    \caption[Figure depicting a Sidescan echo sounder]{Sidescan sensor used by a survey ship via a tow fish.
     SideScan sonar is a type of \ac{SBES}.
     A tow fish is a sensor enclosing that is attached to a tow line from the stern of the vessel.
     This image was taken from \cite{sakellariou2015preliminary}.}
@@ -310,7 +310,7 @@ These changes can be caused by sediments or man-made objects. \\
 \begin{figure}[htp]
     \centering
     \includegraphics[scale=0.5]{CBYK292WkAAIkzH.jpg}
-    \caption{\ac{SDB}.
+    \caption[Figure depicting Satellite-Derived Bathymetry]{\ac{SDB}.
     Sunlight penetrates the water column and reflects back into space where it is captured by a satellite.}
     \label{fig:sdb}
 \end{figure} 
