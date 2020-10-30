@@ -5,11 +5,17 @@
 %\thispagestyle{empty}arg
     \pagenumbering{roman}
     \input{title.tex}
+    \setcounter{page}{2}
     \tableofcontents
+    \newpage
+    \input{acknowledgements.tex}
     \newpage
     \listoftables
     \newpage
     \listoffigures
+    \newpage
+    \section{Acronyms}
+    \input{acronyms.tex}
     \newpage
     \doublespacing
     \input{sections/abstract.tex}
@@ -28,9 +34,6 @@
     \input{sections/conclusion.tex}
     \newpage
     \input{sections/limitations.tex}
-    \newpage
-    \section{Acronyms}
-    \input{acronyms.tex}
     \newpage
     \printbibliography
     \newpage
